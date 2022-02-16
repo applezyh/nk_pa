@@ -142,7 +142,6 @@ bool real_expr(const char** expr,int* val){
         add_expr(expr,val);
         *expr+=1;
     } else if((re=next(*expr,&size))>1000){
-        printf("%d\n", re-1000);
         *val=re-1000;
         *expr+=size;
     } else if((re=next(*expr, &size))>=REG){
@@ -209,6 +208,7 @@ bool add_expr(const char** expr,int* val){
     int v1,v2;
     int op=-1;
    if(mul_expr(expr, &v1)&&add_expr1(expr, &v2, &op)){
+       printf("%d %d\n",v1,v2);
        if(op==-1) *val=v1;
        else if(op==ADD) *val=v1+v2;
        else *val=v1-v2;
