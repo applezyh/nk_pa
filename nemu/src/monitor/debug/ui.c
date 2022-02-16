@@ -36,6 +36,23 @@ static int cmd_q(char *args) {
   return -1;
 }
 
+static int cmd_info(char *args) {
+  Log("---------REG INFO---------");
+  for(int i=R_EAX;i<R_EDI;i++){
+      Log("(reg: %s value: %x)\n",reg_name(i, 4), reg_l(i));
+  }
+  Log("------------------");
+  for(int i=R_EAX;i<R_EDI;i++){
+      Log("(reg: %s value: %x)\n",reg_name(i, 2), reg_w(i));
+  }
+  Log("------------------");
+  for(int i=R_EAX;i<R_EDI;i++){
+      Log("(reg: %s value: %x)\n",reg_name(i, 1), reg_w(i));
+  }
+  Log("---------END---------");
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -46,7 +63,8 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-
+  { "info", "print register infomation on screen", cmd_info},
+  {}
   /* TODO: Add more commands */
 
 };
