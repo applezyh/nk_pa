@@ -133,6 +133,7 @@ bool mul_expr(const char** expr,int* val);
 bool real_expr(const char** expr,int* val){
     int size=0;
     int re;
+    printf("aaaaaaaaa\n");
     if(next(*expr, &size)==LB){
         add_expr(expr,val);
         *expr+=1;
@@ -146,7 +147,6 @@ bool real_expr(const char** expr,int* val){
             *val=reg_w((re-2*REG));
         } else {
             *val=reg_l((re-1*REG));
-            printf("%d\n",*val);
         }
         *expr+=size;
     } else{
