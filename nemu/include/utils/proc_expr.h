@@ -150,6 +150,7 @@ bool real_expr(const char* expr,int* val){
 bool mul_expr1(const char* expr,int* val, int *op_type){
     int size;
     int type;
+    printf("aaaaaaaaaabbbbbbbbb\n");
     if((type=next(expr, &size))==MUL||(type=next(expr, &size))==DIV){
         printf("aaaaaaaaaa\n");
         expr+=size;
