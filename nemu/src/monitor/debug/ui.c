@@ -41,15 +41,15 @@ static int cmd_info(char *args) {
   for(int i=R_EAX;i<R_EDI;i++){
       Log("(reg: %s value: %x)\n",reg_name(i, 4), reg_l(i));
   }
-  Log("------------------");
+  Log("--------------------------");
   for(int i=R_EAX;i<R_EDI;i++){
       Log("(reg: %s value: %x)\n",reg_name(i, 2), reg_w(i));
   }
-  Log("------------------");
+  Log("--------------------------");
   for(int i=R_EAX;i<R_EDI;i++){
-      Log("(reg: %s value: %x)\n",reg_name(i, 1), reg_w(i));
+      Log("(reg: %s value: %x)\n",reg_name(i, 1), reg_b(i));
   }
-  Log("---------END---------");
+  Log("-----------END-----------");
   return 0;
 }
 
