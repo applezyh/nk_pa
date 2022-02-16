@@ -161,6 +161,10 @@ bool real_expr(const char** expr,int* val){
             else *val=reg_l((re-1*REG));
         }
         *expr+=size;
+    } else if(next(*expr, &size)==MUL){
+        expr+=size;
+        re=next(*expr,&size);
+        *val = vaddr_read(re-1000,4);
     } else{
         return false;
     }
