@@ -75,7 +75,7 @@ bool spot_hex_number(const char *expr, int *value, int *number_size){
 
 
 int next(const char* expr,int* size){
-    while(*expr==' ') expr++;
+    while(*expr==' ') {*size++; expr++;}
 
     *size=3;
 
