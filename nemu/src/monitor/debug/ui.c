@@ -107,6 +107,7 @@ static int cmd_p(char* expr){
 }
 
 static int cmd_x(char* args){
+  printf("%s\n",args);
   int n = check_si_args(args);
   return n;
 }
