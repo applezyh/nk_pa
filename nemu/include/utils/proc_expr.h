@@ -163,6 +163,7 @@ bool real_expr(const char** expr,int* val){
         *expr+=size;
     } else if(next(*expr, &size)==MUL){
         expr+=size;
+        printf("%d\n",size);
         re=next(*expr,&size);
         *val = vaddr_read(re-1000,4);
     } else{
