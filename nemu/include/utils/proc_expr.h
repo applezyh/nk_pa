@@ -154,7 +154,7 @@ bool real_expr(const char** expr,int* val){
     } else if((re=next(*expr, &size))>=REG){
         if(re>3*REG){
             printf("%d\n",re-3*REG);
-            *val=reg_b((re-3*REG));
+            // *val=reg_b((re-3*REG));
         } else if(re>2*REG){
             *val=reg_w((re-2*REG));
         } else {
