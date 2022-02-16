@@ -160,7 +160,7 @@ bool real_expr(const char** expr,int* val){
         } else {
             printf("%d %d\n",re, re-3*REG);
             if(re-REG==R_EIP) *val=cpu.eip;
-            else *val=reg_l((re-1*REG));
+            //else *val=reg_l((re-1*REG));
         }
         *expr+=size;
     } else{
