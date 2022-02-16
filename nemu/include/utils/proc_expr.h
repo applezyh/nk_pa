@@ -131,11 +131,14 @@ int next(const char* expr,int* size){
 
 bool add_expr(const char** expr,int* val);
 bool mul_expr(const char** expr,int* val);
+bool add_expr1(const char** expr,int* val, int *op_type);
+bool mul_expr1(const char** expr,int* val, int *op_type);
 
 bool real_expr(const char** expr,int* val){
     int size=0;
     int re;
     if(next(*expr, &size)==LB){
+        *expr+=1;
         add_expr(expr,val);
         *expr+=1;
     } else if((re=next(*expr,&size))>1000){
@@ -163,7 +166,12 @@ bool mul_expr1(const char** expr,int* val, int *op_type){
     int type;
     if((type=next(*expr, &size))==MUL||(type=next(*expr, &size))==DIV){
         *expr+=size;
-        mul_expr(expr, val);
+        int v1,v2,op;
+        real_expr(expr, &v1);
+        mul_expr1(expr, &v2, &op);
+        if(op==-1) *val=v1;
+        else if(op==MUL) *val=v1*v2;
+        else *val=v1/v2;
         *op_type=type;
     }
     return true;
@@ -186,7 +194,12 @@ bool add_expr1(const char** expr,int* val, int *op_type){
     int type;
     if((type=next(*expr, &size))==ADD||(type=next(*expr, &size))==SUB){
         *expr+=size;
-        add_expr(expr, val);
+        int v1,v2,op;
+        mul_expr(expr, &v1);
+        add_expr1(expr, &v2, &op);
+        if(op==-1) *val=v1;
+        else if(op==MUL) *val=v1+v2;
+        else *val=v1-v2;
         *op_type=type;
     }
     return true;
