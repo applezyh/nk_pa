@@ -148,20 +148,6 @@ bool real_expr(const char** expr,int* val){
         *expr+=1;
         add_expr(expr,val);
         *expr+=1;
-    } else if((re=next(*expr,&size))>=1000){
-        *val=re-1000;
-        *expr+=size;
-    } else if((re=next(*expr, &size))>=REG){
-        printf("%d\n",re);
-        if(re>=3*REG){
-            *val=reg_b((re-3*REG));
-        } else if(re>=2*REG){
-            *val=reg_w((re-2*REG));
-        } else {
-            if(re-REG==R_EIP) *val=cpu.eip;
-            else *val=reg_l((re-1*REG));
-        }
-        *expr+=size;
     } else if(next(*expr, &size)==MUL){
         *expr+=size;
         re=next(*expr,&size);
@@ -176,7 +162,20 @@ bool real_expr(const char** expr,int* val){
             *val=vaddr_read(reg_l((re-1*REG)),4);
         }
         
-    } else{
+    } else if((re=next(*expr,&size))>=1000){
+        *val=re-1000;
+        *expr+=size;
+    } else if((re=next(*expr, &size))>=REG){
+        if(re>=3*REG){
+            *val=reg_b((re-3*REG));
+        } else if(re>=2*REG){
+            *val=reg_w((re-2*REG));
+        } else {
+            if(re-REG==R_EIP) *val=cpu.eip;
+            else *val=reg_l((re-1*REG));
+        }
+        *expr+=size;
+    }  else{
         return false;
     }
     return true;
