@@ -148,7 +148,7 @@ bool real_expr(const char** expr,int* val){
         *expr+=1;
         add_expr(expr,val);
         *expr+=1;
-    } else if((re=next(*expr,&size))>1000){
+    } else if((re=next(*expr,&size))>=1000){
         *val=re-1000;
         *expr+=size;
     } else if((re=next(*expr, &size))>=REG){
