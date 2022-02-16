@@ -115,6 +115,7 @@ char** split(char* str,int *argv, const char flag){
     while(*str!=flag&&*str!='\0'){
       *argc[i]++=*str++;
     }
+    printf("++++++++ %s\n",argc[i]);
     i++;
     if(*str==flag) {str++;argc[i]=malloc(100*sizeof(char));memset(argc[i],0,100);}
   }
