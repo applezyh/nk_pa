@@ -18,6 +18,19 @@ void init_wp_pool() {
   free_ = wp_pool;
 }
 
+WP* new_wp(){
+  for(int i=0;i<NR_WP;i++){
+    if(!wp_pool[i].is_use){
+      wp_pool[i].is_use=1;
+      return &(wp_pool[i]);
+    }
+  }
+}
+
+void free_wp(WP* wp){
+  wp->is_use=0;
+}
+
 /* TODO: Implement the functionality of watchpoint */
 
 
