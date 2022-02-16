@@ -57,7 +57,7 @@ bool check_watchpoint(){
   struct watchpoint* h=head;
   while(h!=NULL){
     if(h->data!=vaddr_read(h->point_loc,4)){
-      printf("watchpoint NO:%d trigger\n", h->NO);
+      printf("watchpoint NO:%d trigger in address %x\n", h->NO,h->point_loc);
       return true;
     }
   }
