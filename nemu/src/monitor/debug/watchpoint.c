@@ -25,6 +25,7 @@ WP* new_wp(){
       return &(wp_pool[i]);
     }
   }
+  return NULL;
 }
 
 void free_wp(WP* wp){
