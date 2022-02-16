@@ -6,7 +6,7 @@
 typedef struct watchpoint {
   int NO;
   struct watchpoint *next;
-  uint32_t* point_loc;
+  uint32_t point_loc;
   bool is_use;
   uint32_t data;
 

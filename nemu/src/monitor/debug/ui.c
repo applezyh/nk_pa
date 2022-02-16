@@ -154,7 +154,7 @@ int cmd_w(char* args){
     return 0;
   }
   WP->data=vaddr_read(cal_expr(args),4);
-  printf("set watch point in %x success\n",loc);
+  printf("set watch point in %x success\n",(uint32_t)loc);
   return 0;
 }
 
