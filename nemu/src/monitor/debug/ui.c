@@ -36,20 +36,49 @@ static int cmd_q(char *args) {
   return -1;
 }
 
+int check_si_args(char* args){
+    int n=(*args++)-48;
+    int result=n;
+    if(n<1||n>9) {
+      Log("ERROR! bad number!\n");
+      return -1;
+    } else {
+      while(*args!='\0'){
+        n=(*args++)-48;
+        if(n<0||n>9) return -1;
+        result = (result+n)*10;
+      }
+    }
+    return result;
+}
+
+static int cmd_si(char* args){
+  int n = check_si_args(args);
+  if(n>0) cpu_exec(n);
+  return n>0?0:-1;
+}
+
 static int cmd_info(char *args) {
-  Log("---------REG INFO---------");
-  for(int i=R_EAX;i<R_EDI;i++){
-      Log("(reg: %s value: %x)\n",reg_name(i, 4), reg_l(i));
+  if (strcmp(args, "r")){
+      printf("---------REG INFO---------");
+      for(int i=R_EAX;i<R_EDI;i++){
+          printf("(reg: %s value: %x)\n",reg_name(i, 4), reg_l(i));
+      }
+      printf("--------------------------");
+      for(int i=R_EAX;i<R_EDI;i++){
+          printf("(reg: %s value: %x)\n",reg_name(i, 2), reg_w(i));
+      }
+      printf("--------------------------");
+      for(int i=R_EAX;i<R_EDI;i++){
+          printf("(reg: %s value: %x)\n",reg_name(i, 1), reg_b(i));
+      }
+      printf("-----------END-----------"); 
+  } else if(strcmp(args, "w")){
+    printf("function not implemented we will release new version to suppot this function\n");
+  } else {
+    Log("ERROR! bad args!\n");
+    return -1;
   }
-  Log("--------------------------");
-  for(int i=R_EAX;i<R_EDI;i++){
-      Log("(reg: %s value: %x)\n",reg_name(i, 2), reg_w(i));
-  }
-  Log("--------------------------");
-  for(int i=R_EAX;i<R_EDI;i++){
-      Log("(reg: %s value: %x)\n",reg_name(i, 1), reg_b(i));
-  }
-  Log("-----------END-----------");
   return 0;
 }
 
@@ -63,8 +92,8 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "info", "print register infomation on screen", cmd_info},
-  {}
+  { "info", "`r` print register infomation on screen\n`w` function under development", cmd_info},
+  { "si", "single step debugging use si N to run N step instruction", cmd_si}
   /* TODO: Add more commands */
 
 };
