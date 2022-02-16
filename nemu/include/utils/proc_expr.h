@@ -138,7 +138,7 @@ bool real_expr(const char* expr,int* val){
     } else if(next(expr,&size)>1000){
         *val=next(expr,&size)-1000;
         expr+=size;
-        printf("%s",expr);
+        printf("+++++++%s\n",expr);
     } else if(next(expr, &size)>REG){
         *val=next(expr,&size)-1000;
         expr+=size;
