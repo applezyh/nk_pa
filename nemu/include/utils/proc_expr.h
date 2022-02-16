@@ -79,6 +79,8 @@ int next(const char* expr,int* size){
 
     *size=3;
 
+    if(*expr=='e'&&*(expr+1)=='i'&&*(expr+2)=='p') return REG + R_EIP;
+
     if(*expr=='e'&&*(expr+1)=='a'&&*(expr+2)=='x') return REG + R_EAX;
     if(*expr=='e'&&*(expr+1)=='c'&&*(expr+2)=='x') return REG + R_ECX;
     if(*expr=='e'&&*(expr+1)=='d'&&*(expr+2)=='x') return REG + R_EDX;
@@ -145,7 +147,8 @@ bool real_expr(const char** expr,int* val){
         } else if(re>2*REG){
             *val=reg_w((re-2*REG));
         } else {
-            *val=reg_l((re-1*REG));
+            if(re-REG==R_EIP) *val=cpu.eip;
+            else *val=reg_l((re-1*REG));
         }
         *expr+=size;
     } else{
