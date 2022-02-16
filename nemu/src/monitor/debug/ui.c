@@ -116,7 +116,6 @@ char** split(char* str,int *argv, const char flag){
     while(*str!=flag&&*str!='\0'){
       argc[i][k++]=*str++;
     }
-    printf("++++++++ %s\n",argc[i]);
     i++;
     if(*str==flag) {str++;argc[i]=malloc(100*sizeof(char));memset(argc[i],0,100);}
   }
@@ -127,9 +126,6 @@ char** split(char* str,int *argv, const char flag){
 static int cmd_x(char* args){
   int argv=0;
   char** argc = split(args, &argv, ' ');
-  for(int i=0;i<argv;i++){
-    printf("----------- %s\n", argc[i]);
-  }
   if(2!=argv){
     Log("ERROR! bad args!\n");
     return 0;
