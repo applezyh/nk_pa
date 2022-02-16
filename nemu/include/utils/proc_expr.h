@@ -75,9 +75,10 @@ bool spot_hex_number(const char *expr, int *value, int *number_size){
 
 
 int next(const char* expr,int* size){
+    *size=0;
     while(*expr==' ') {(*size)++; expr++;}
 
-    *size=3;
+    *size+=3;
 
     if(*expr=='e'&&*(expr+1)=='i'&&*(expr+2)=='p') return REG + R_EIP;
 
@@ -90,7 +91,9 @@ int next(const char* expr,int* size){
     if(*expr=='e'&&*(expr+1)=='s'&&*(expr+2)=='i') return REG + R_ESI;
     if(*expr=='e'&&*(expr+1)=='d'&&*(expr+2)=='i') return REG + R_EDI;
 
-    *size=2;
+    *size-=3;
+
+    *size+=2;
 
     if(*expr=='a'&&*(expr+1)=='x') return 2*REG + R_AX;
     if(*expr=='c'&&*(expr+1)=='x') return 2*REG + R_CX;
@@ -110,7 +113,9 @@ int next(const char* expr,int* size){
     if(*expr=='d'&&*(expr+1)=='h') return 3*REG + R_DH;
     if(*expr=='b'&&*(expr+1)=='h') return 3*REG + R_BH;
 
-    *size=1;
+    *size-=2;
+
+    *size+=1;
 
     if(*expr=='+') return ADD;
     if(*expr=='-') return SUB;
@@ -119,6 +124,8 @@ int next(const char* expr,int* size){
 
     if(*expr=='(') return LB;
     if(*expr==')') return RB;
+
+    *size-=1;
 
     int value=0;
     if(spot_hex_number(expr,&value,size)) return value+1000;
@@ -193,7 +200,6 @@ bool add_expr1(const char** expr,int* val, int *op_type){
     int size;
     int type;
     if((type=next(*expr, &size))==ADD||(type=next(*expr, &size))==SUB){
-        printf("%s ---- %d\n",*expr, size);
         *expr+=size;
         int v1,v2,op=-1;
         mul_expr(expr, &v1);
