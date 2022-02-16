@@ -107,6 +107,7 @@ static int cmd_p(char* expr){
 }
 
 char** split(char* str,int *argv, const char flag){
+  printf("++++++++ %s\n",str);
   char** argc=malloc(10*sizeof(char*));
   int i=0;
   argc[i]=malloc(100*sizeof(char));
