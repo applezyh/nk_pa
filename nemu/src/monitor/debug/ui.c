@@ -159,7 +159,8 @@ static struct {
   { "info", "`r` print register infomation on screen\n`w` function under development", cmd_info},
   { "si", "single step debugging use si N to run N step instruction", cmd_si},
   { "p", "calculate expression", cmd_p},
-  { "x", "scan mem", cmd_x}
+  { "x", "scan mem", cmd_x},
+  { "w", "use \"w addr\" set watch point in address addr"}
   /* TODO: Add more commands */
 
 };
