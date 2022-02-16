@@ -41,7 +41,7 @@ int check_si_args(char* args){
     
     int n=(*args++)-48;
     int result=n;
-    if(n==0&&*args==' '||*args=='\0')
+    if(n==0&&(*args==' '||*args=='\0'))
     if(n<1||n>9) {
       Log("ERROR! bad number!\n");
       return -1;
