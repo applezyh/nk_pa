@@ -165,7 +165,7 @@ bool mul_expr1(const char** expr,int* val, int *op_type){
     int type;
     if((type=next(*expr, &size))==MUL||(type=next(*expr, &size))==DIV){
         *expr+=size;
-        int v1,v2,op;
+        int v1,v2,op=-1;
         real_expr(expr, &v1);
         mul_expr1(expr, &v2, &op);
         if(op==-1) *val=v1;
@@ -193,7 +193,7 @@ bool add_expr1(const char** expr,int* val, int *op_type){
     int type;
     if((type=next(*expr, &size))==ADD||(type=next(*expr, &size))==SUB){
         *expr+=size;
-        int v1,v2,op;
+        int v1,v2,op=-1;
         mul_expr(expr, &v1);
         add_expr1(expr, &v2, &op);
         if(op==-1) *val=v1;
