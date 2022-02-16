@@ -193,7 +193,7 @@ bool add_expr1(const char** expr,int* val, int *op_type){
     int size;
     int type;
     if((type=next(*expr, &size))==ADD||(type=next(*expr, &size))==SUB){
-        printf("---- %d\n",size);
+        printf("%s ---- %d\n",*expr, size);
         *expr+=size;
         int v1,v2,op=-1;
         mul_expr(expr, &v1);
