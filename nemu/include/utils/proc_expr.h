@@ -146,6 +146,7 @@ bool real_expr(const char** expr,int* val){
             *val=reg_w((re-2*REG));
         } else {
             *val=reg_l((re-1*REG));
+            printf("%d\n",*val);
         }
         *expr+=size;
     } else{
