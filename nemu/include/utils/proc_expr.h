@@ -144,6 +144,7 @@ bool mul_expr1(const char** expr,int* val, int *op_type);
 bool real_expr(const char** expr,int* val){
     int size=0;
     int re;
+    printf("%d\n",next(*expr, &size));
     if(next(*expr, &size)==LB){
         *expr+=1;
         add_expr(expr,val);
