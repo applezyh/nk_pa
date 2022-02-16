@@ -163,6 +163,7 @@ bool real_expr(const char** expr,int* val){
 bool mul_expr1(const char** expr,int* val, int *op_type){
     int size;
     int type;
+    printf("%s\n",*expr);
     if((type=next(*expr, &size))==MUL||(type=next(*expr, &size))==DIV){
         *expr+=size;
         int v1,v2,op=-1;
@@ -180,7 +181,6 @@ bool mul_expr(const char** expr,int* val){
     int v1,v2;
     int op=-1;
    if(real_expr(expr, &v1)&&mul_expr1(expr, &v2, &op)){
-       printf("%d %d %d\n",v1,v2,op);
        if(op==-1) *val=v1;
        else if(op==MUL) *val=v1*v2;
        else *val=v1/v2;
