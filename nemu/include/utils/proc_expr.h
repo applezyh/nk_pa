@@ -151,7 +151,6 @@ bool real_expr(const char** expr,int* val){
     } else if(next(*expr, &size)==MUL){
         *expr+=size;
         re=next(*expr,&size);
-        printf("%d %d\n",re,re-3*REG);
         if(re>=1000){
             *val = vaddr_read(re-1000,4);
         } else if(re>=3*REG){
@@ -160,7 +159,7 @@ bool real_expr(const char** expr,int* val){
             *val=vaddr_read(reg_w((re-2*REG)),4);
         } else {
             if(re-REG==R_EIP) *val=cpu.eip;
-            *val=vaddr_read(reg_l((re-1*REG)),4);
+            else *val=vaddr_read(reg_l((re-1*REG)),4);
         }
         
     } else if((re=next(*expr,&size))>=1000){
