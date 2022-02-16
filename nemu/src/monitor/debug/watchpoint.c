@@ -18,10 +18,18 @@ void init_wp_pool() {
   free_ = wp_pool;
 }
 
+/* TODO: Implement the functionality of watchpoint */
+
 WP* new_wp(){
   for(int i=0;i<NR_WP;i++){
     if(!wp_pool[i].is_use){
       wp_pool[i].is_use=1;
+      if(head==NULL){
+        head=&(wp_pool[i]);
+      } else{
+        wp_pool[i].next=head->next;
+        head->next=&(wp_pool[i]);
+      }
       return &(wp_pool[i]);
     }
   }
@@ -30,8 +38,20 @@ WP* new_wp(){
 
 void free_wp(WP* wp){
   wp->is_use=0;
+  struct watchpoint* h=head,* pre_h=NULL;
+  while(h!=NULL){
+    if(h==wp){
+      if(pre_h==NULL){
+        head=h->next;
+      } else{
+        pre_h->next=h->next;
+      }
+    }
+    pre_h=h;
+    h=h->next;
+  }
 }
 
-/* TODO: Implement the functionality of watchpoint */
+
 
 
