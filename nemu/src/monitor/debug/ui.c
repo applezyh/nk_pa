@@ -106,10 +106,40 @@ static int cmd_p(char* expr){
   return 0;
 }
 
+char** split(char* str,int *argv, const char flag){
+  char** argc=malloc(10*sizeof(char*));
+  int i=0;
+  argc[i]=malloc(100*sizeof(char));
+  while(*str!='\0'&&i<10){
+    while(*str!=flag&&*str!='\0'){
+      *argc[i]++=*str++;
+    }
+    i++;
+    if(*str==flag) {str++;argc[i]=malloc(100*sizeof(char));}
+  }
+  *argv=i;
+  return argc;
+}
+
 static int cmd_x(char* args){
-  printf("%s\n",args);
-  int n = check_si_args(args);
-  return n;
+  int argv=0;
+  char** argc = split(args, &argv, ' ');
+  if(2!=argv){
+    Log("ERROR! bad args!\n");
+    return 0;
+  } else {
+    int n = check_si_args(argc[0]);
+    if(n<0){
+      Log("ERROR! bad number!\n");
+      return 0;
+    } else{
+      int mem_loc=cal_expr(expr);
+      for(int i=mem_loc;i<n;i+=4){
+        printf("%x   :   %x\n",mem_loc,*((int*)(pmem+i)));
+      }
+    }
+  }
+  return 0;
 }
 
 static int cmd_help(char *args);
