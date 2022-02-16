@@ -61,20 +61,20 @@ static int cmd_si(char* args){
 
 static int cmd_info(char *args) {
   if (strcmp(args, "r")){
-      printf("---------REG INFO---------");
+      printf("---------REG INFO---------\n");
       printf("(reg: eip value: %x)\n",cpu.eip);
       for(int i=R_EAX;i<R_EDI;i++){
           printf("(reg: %s value: %x)\n",reg_name(i, 4), reg_l(i));
       }
-      printf("--------------------------");
+      printf("--------------------------\n");
       for(int i=R_EAX;i<R_EDI;i++){
           printf("(reg: %s value: %x)\n",reg_name(i, 2), reg_w(i));
       }
-      printf("--------------------------");
+      printf("--------------------------\n");
       for(int i=R_EAX;i<R_EDI;i++){
           printf("(reg: %s value: %x)\n",reg_name(i, 1), reg_b(i));
       }
-      printf("-----------END-----------"); 
+      printf("-----------END-----------\n"); 
   } else if(strcmp(args, "w")){
     printf("function not implemented we will release new version to suppot this function\n");
   } else {
@@ -85,7 +85,7 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_p(char* expr){
-  printf("expr= %d", cal_expr(expr));
+  printf("expr= %d\n", cal_expr(expr));
   return 0;
 }
 

@@ -141,11 +141,11 @@ bool real_expr(const char** expr,int* val){
         *expr+=size;
     } else if((re=next(*expr, &size))>REG){
         if(re>3*REG){
-            *val=reg_l(re-3*REG);
+            *val=reg_b((re-3*REG));
         } else if(re>2*REG){
-            *val=reg_l(re-2*REG);
+            *val=reg_w((re-2*REG));
         } else {
-            *val=reg_l(re-1*REG);
+            *val=reg_l((re-1*REG));
         }
         *expr+=size;
     } else{
