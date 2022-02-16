@@ -124,6 +124,9 @@ char** split(char* str,int *argv, const char flag){
 static int cmd_x(char* args){
   int argv=0;
   char** argc = split(args, &argv, ' ');
+  for(int i=0;i<argv;i++){
+    printf("----------- %s\n", argc[i]);
+  }
   if(2!=argv){
     Log("ERROR! bad args!\n");
     return 0;
