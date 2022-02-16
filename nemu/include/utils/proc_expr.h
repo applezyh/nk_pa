@@ -158,7 +158,7 @@ bool real_expr(const char** expr,int* val){
         } else if(re>=2*REG){
             *val=vaddr_read(reg_w((re-2*REG)),4);
         } else {
-            if(re-REG==R_EIP) *val=cpu.eip;
+            if(re-REG==R_EIP) *val=vaddr_read(cpu.eip,4);
             else *val=vaddr_read(reg_l((re-1*REG)),4);
         }
         
