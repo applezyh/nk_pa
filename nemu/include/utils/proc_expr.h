@@ -164,7 +164,6 @@ bool real_expr(const char** expr,int* val){
     } else if(next(*expr, &size)==MUL){
         *expr+=size;
         re=next(*expr,&size);
-        uint32_t loc=0;
         if(re>=1000){
             *val = vaddr_read(re-1000,4);
         } else if(re>=3*REG){
