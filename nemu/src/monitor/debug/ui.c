@@ -43,7 +43,7 @@ int check_si_args(char* args){
     int result=n;
     if(n<1||n>9) {
       Log("ERROR! bad number!\n");
-      return -1;
+      return 0;
     } else {
       while(*args!='\0'){
         n=(*args++)-48;
@@ -57,17 +57,21 @@ int check_si_args(char* args){
 static int cmd_si(char* args){
   if(args==NULL){
       Log("si instruction need a parameter\n");
-      return -1;
+      return 0;
   }
   int n = check_si_args(args);
   if(n>0) cpu_exec(n);
-  return n>0?0:-1;
+  else{
+    Log("si instruction need a parameter\n");
+    return 0;
+  }
+  return 0;
 }
 
 static int cmd_info(char *args) {
   if(args==NULL){
       Log("info instruction need a parameter\n");
-      return -1;
+      return 0;
     }
   if (strcmp(args, "r")){
       printf("---------REG INFO---------\n");
@@ -88,7 +92,7 @@ static int cmd_info(char *args) {
     printf("function not implemented we will release new version to suppot this function\n");
   } else {
     Log("ERROR! bad args!\n");
-    return -1;
+    return 0;
   }
   return 0;
 }
@@ -100,6 +104,11 @@ static int cmd_p(char* expr){
   }
   printf("expr= %d\n", cal_expr(expr));
   return 0;
+}
+
+static int cmd_x(char* args){
+  int n = check_si_args(args);
+  return n;
 }
 
 static int cmd_help(char *args);
@@ -114,7 +123,8 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   { "info", "`r` print register infomation on screen\n`w` function under development", cmd_info},
   { "si", "single step debugging use si N to run N step instruction", cmd_si},
-  { "p", "calculate expression", cmd_p}
+  { "p", "calculate expression", cmd_p},
+  { "x", "scan mem", cmd_x}
   /* TODO: Add more commands */
 
 };
