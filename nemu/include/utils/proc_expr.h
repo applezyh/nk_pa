@@ -144,7 +144,6 @@ bool mul_expr1(const char** expr,int* val, int *op_type);
 bool real_expr(const char** expr,int* val){
     int size=0;
     int re;
-    printf("%d\n",next(*expr, &size));
     if(next(*expr, &size)==LB){
         *expr+=1;
         add_expr(expr,val);
@@ -156,6 +155,7 @@ bool real_expr(const char** expr,int* val){
         if(re>=3*REG){
             *val=reg_b((re-3*REG));
         } else if(re>=2*REG){
+            printf("%d\n",re);
             *val=reg_w((re-2*REG));
         } else {
             if(re-REG==R_EIP) *val=cpu.eip;
