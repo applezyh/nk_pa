@@ -75,7 +75,7 @@ bool spot_hex_number(const char *expr, int *value, int *number_size){
 
 
 int next(const char* expr,int* size){
-    while(*expr==' ') {*size++; expr++;}
+    while(*expr==' ') {(*size)++; expr++;}
 
     *size=3;
 
@@ -160,7 +160,6 @@ bool real_expr(const char** expr,int* val){
 bool mul_expr1(const char** expr,int* val, int *op_type){
     int size;
     int type;
-    printf("%s\n",*expr);
     if((type=next(*expr, &size))==MUL||(type=next(*expr, &size))==DIV){
         *expr+=size;
         mul_expr(expr, val);
