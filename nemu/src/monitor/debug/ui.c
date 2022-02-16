@@ -38,6 +38,7 @@ static int cmd_q(char *args) {
 }
 
 int check_si_args(char* args){
+    
     int n=(*args++)-48;
     int result=n;
     if(n<1||n>9) {
@@ -54,12 +55,20 @@ int check_si_args(char* args){
 }
 
 static int cmd_si(char* args){
+  if(args==NULL){
+      Log("si instruction need a parameter\n");
+      return -1;
+  }
   int n = check_si_args(args);
   if(n>0) cpu_exec(n);
   return n>0?0:-1;
 }
 
 static int cmd_info(char *args) {
+  if(args==NULL){
+      Log("info instruction need a parameter\n");
+      return -1;
+    }
   if (strcmp(args, "r")){
       printf("---------REG INFO---------\n");
       printf("(reg: eip value: %x)\n",cpu.eip);
@@ -85,6 +94,10 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_p(char* expr){
+  if(expr==NULL){
+    printf(" ");
+    return 0;
+  }
   printf("expr= %d\n", cal_expr(expr));
   return 0;
 }
