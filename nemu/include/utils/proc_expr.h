@@ -163,9 +163,19 @@ bool real_expr(const char** expr,int* val){
         *expr+=size;
     } else if(next(*expr, &size)==MUL){
         *expr+=size;
-        printf("%d\n",size);
         re=next(*expr,&size);
-        *val = vaddr_read(re-1000,4);
+        uint32_t loc=0;
+        if(re>=1000){
+            *val = vaddr_read(re-1000,4);
+        } else if(re>=3*REG){
+            *val=vaddr_read(reg_b((re-3*REG)),4);
+        } else if(re>=2*REG){
+            *val=vaddr_read(reg_w((re-2*REG)),4);
+        } else {
+            if(re-REG==R_EIP) *val=cpu.eip;
+            *val=vaddr_read(reg_l((re-1*REG)),4);
+        }
+        
     } else{
         return false;
     }
