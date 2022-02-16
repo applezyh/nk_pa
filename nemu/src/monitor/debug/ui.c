@@ -110,12 +110,13 @@ char** split(char* str,int *argv, const char flag){
   char** argc=malloc(10*sizeof(char*));
   int i=0;
   argc[i]=malloc(100*sizeof(char));
+  memset(argc[i],0,100);
   while(*str!='\0'&&i<10){
     while(*str!=flag&&*str!='\0'){
       *argc[i]++=*str++;
     }
     i++;
-    if(*str==flag) {str++;argc[i]=malloc(100*sizeof(char));}
+    if(*str==flag) {str++;argc[i]=malloc(100*sizeof(char));memset(argc[i],0,100);}
   }
   *argv=i;
   return argc;
