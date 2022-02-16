@@ -149,9 +149,9 @@ bool real_expr(const char** expr,int* val){
         add_expr(expr,val);
         *expr+=1;
     } else if(next(*expr, &size)==MUL){
-        printf("%d %d\n",re,re-3*REG);
         *expr+=size;
         re=next(*expr,&size);
+        printf("%d %d\n",re,re-3*REG);
         if(re>=1000){
             *val = vaddr_read(re-1000,4);
         } else if(re>=3*REG){
