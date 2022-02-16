@@ -153,14 +153,12 @@ bool real_expr(const char** expr,int* val){
         *expr+=size;
     } else if((re=next(*expr, &size))>=REG){
         if(re>3*REG){
-            
             *val=reg_b((re-3*REG));
         } else if(re>2*REG){
             *val=reg_w((re-2*REG));
         } else {
-            printf("%d %d\n",re, re-3*REG);
             if(re-REG==R_EIP) *val=cpu.eip;
-            //else *val=reg_l((re-1*REG));
+            else *val=reg_l((re-1*REG));
         }
         *expr+=size;
     } else{
