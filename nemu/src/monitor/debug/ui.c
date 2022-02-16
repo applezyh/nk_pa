@@ -46,7 +46,7 @@ int check_si_args(char* args){
       while(*args!='\0'){
         n=(*args++)-48;
         if(n<0||n>9) return -1;
-        result = (result+n)*10;
+        result = result*10+n;
       }
     }
     return result;
@@ -82,6 +82,10 @@ static int cmd_info(char *args) {
   return 0;
 }
 
+static int cmd_p(char* expr){
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -93,7 +97,8 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "info", "`r` print register infomation on screen\n`w` function under development", cmd_info},
-  { "si", "single step debugging use si N to run N step instruction", cmd_si}
+  { "si", "single step debugging use si N to run N step instruction", cmd_si},
+  { "p", "calculate expression", cmd_p}
   /* TODO: Add more commands */
 
 };
