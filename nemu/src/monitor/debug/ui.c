@@ -62,6 +62,7 @@ static int cmd_si(char* args){
 static int cmd_info(char *args) {
   if (strcmp(args, "r")){
       printf("---------REG INFO---------");
+      printf("(reg: eip value: %x)\n",cpu.eip);
       for(int i=R_EAX;i<R_EDI;i++){
           printf("(reg: %s value: %x)\n",reg_name(i, 4), reg_l(i));
       }
