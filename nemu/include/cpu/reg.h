@@ -16,7 +16,10 @@ enum { R_AL, R_CL, R_DL, R_BL, R_AH, R_CH, R_DH, R_BH };
 
 typedef struct {
   union regs {
-    uint32_t _32;
+    union {
+      uint32_t _32;
+      uint32_t a;
+    };
     uint16_t _16;
     uint8_t _8[2];
   } gpr[8];
