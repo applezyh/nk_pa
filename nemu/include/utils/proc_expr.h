@@ -154,6 +154,7 @@ bool real_expr(const char** expr,int* val){
         if(re>=1000){
             *val = vaddr_read(re-1000,4);
         } else if(re>=3*REG){
+            printf("%d\n",re,re-3*REG);
             *val=vaddr_read(reg_b((re-3*REG)),4);
         } else if(re>=2*REG){
             *val=vaddr_read(reg_w((re-2*REG)),4);
