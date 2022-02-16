@@ -132,14 +132,21 @@ bool mul_expr(const char** expr,int* val);
 
 bool real_expr(const char** expr,int* val){
     int size=0;
+    int re;
     if(next(*expr, &size)==LB){
         add_expr(expr,val);
         *expr+=1;
-    } else if(next(*expr,&size)>1000){
-        *val=next(*expr,&size)-1000;
+    } else if((re=next(*expr,&size))>1000){
+        *val=re-1000;
         *expr+=size;
-    } else if(next(*expr, &size)>REG){
-        *val=next(*expr,&size)-1000;
+    } else if((re=next(*expr, &size))>REG){
+        if(re>3*REG){
+            *val=reg_l(re-3*REG);
+        } else if(re>2*REG){
+            *val=reg_l(re-2*REG);
+        } else {
+            *val=reg_l(re-1*REG);
+        }
         *expr+=size;
     } else{
         return false;
