@@ -18,7 +18,7 @@ typedef struct {
   union regs {
     union {
       uint32_t _32;
-      uint32_t a;
+      uint32_t eax;
     };
     uint16_t _16;
     uint8_t _8[2];
