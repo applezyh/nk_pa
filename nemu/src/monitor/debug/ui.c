@@ -84,6 +84,7 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_p(char* expr){
+  printf("expr= %d", cal_expr(expr));
   return 0;
 }
 
