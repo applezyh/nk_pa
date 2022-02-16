@@ -1,6 +1,6 @@
 #include "monitor/watchpoint.h"
 #include "monitor/expr.h"
-
+#include "memory/memory.h"
 #define NR_WP 32
 
 static WP wp_pool[NR_WP];
@@ -36,7 +36,8 @@ WP* new_wp(){
   return NULL;
 }
 
-void free_wp(WP* wp){
+void free_wp(int no){
+  struct watchpoint* wp=&(wp_pool[no]);
   wp->is_use=0;
   struct watchpoint* h=head,* pre_h=NULL;
   while(h!=NULL){
@@ -50,6 +51,17 @@ void free_wp(WP* wp){
     pre_h=h;
     h=h->next;
   }
+}
+
+bool check_watchpoint(){
+  struct watchpoint* h=head;
+  while(h!=NULL){
+    if(h->data!=vaddr_read(h->point_loc,4)){
+      printf("watchpoint NO:%d trigger\n", h->NO);
+      return true;
+    }
+  }
+  return false;
 }
 
 

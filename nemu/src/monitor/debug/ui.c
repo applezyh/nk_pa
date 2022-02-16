@@ -43,7 +43,7 @@ int check_si_args(char* args){
     int result=n;
     if(n<1||n>9) {
       Log("ERROR! bad number!\n");
-      return 0;
+      return -1;
     } else {
       while(*args!='\0'){
         n=(*args++)-48;
@@ -146,6 +146,28 @@ static int cmd_x(char* args){
   return 0;
 }
 
+int cmd_w(char* args){
+  struct watchpoint* WP=new_wp();
+  long long loc=cal_expr(args);
+  if(loc<0){
+    Log("ERROR! bad addr!\n");
+    return 0;
+  }
+  WP->data=vaddr_read(cal_expr(args),4);
+  printf("set watch point in %x success\n",loc);
+  return 0;
+}
+
+int cmd_d(char* args){
+  int no=check_si_args(args);
+  if(no<0){
+    Log("ERROR! bad no of watchpoint!\n");
+    return 0;
+  }
+  free_wp(no);
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -160,7 +182,8 @@ static struct {
   { "si", "single step debugging use si N to run N step instruction", cmd_si},
   { "p", "calculate expression", cmd_p},
   { "x", "scan mem", cmd_x},
-  { "w", "use \"w addr\" set watch point in address addr"}
+  { "w", "use \"w addr\" set watch point in address addr", cmd_w},
+  { "d", "use \"d N\" delete watch point which NO==N", cmd_d}
   /* TODO: Add more commands */
 
 };
