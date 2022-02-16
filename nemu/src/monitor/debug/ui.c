@@ -137,7 +137,7 @@ static int cmd_x(char* args){
     } else{
       int mem_loc=cal_expr(argc[1]);
       printf("------MEM------\n");
-      for(int i=mem_loc;i<mem_loc+n;i+=4){
+      for(int i=mem_loc;i<mem_loc+4*n;i+=4){
         printf("%x   :   %x\n",i,*((int*)(pmem+i)));
       }
     }
