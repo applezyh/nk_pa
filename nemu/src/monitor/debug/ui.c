@@ -107,14 +107,14 @@ static int cmd_p(char* expr){
 }
 
 char** split(char* str,int *argv, const char flag){
-  printf("++++++++ %s\n",str);
   char** argc=malloc(10*sizeof(char*));
   int i=0;
   argc[i]=malloc(100*sizeof(char));
   memset(argc[i],0,100);
   while(*str!='\0'&&i<10){
+    int k=0;
     while(*str!=flag&&*str!='\0'){
-      *argc[i]++=*str++;
+      argc[i][k++]=*str++;
     }
     printf("++++++++ %s\n",argc[i]);
     i++;
