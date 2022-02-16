@@ -138,7 +138,6 @@ bool real_expr(const char* expr,int* val){
     } else if(next(expr,&size)>1000){
         *val=next(expr,&size)-1000;
         expr+=size;
-        printf("+++++++%s\n",expr);
     } else if(next(expr, &size)>REG){
         *val=next(expr,&size)-1000;
         expr+=size;
@@ -152,6 +151,7 @@ bool mul_expr1(const char* expr,int* val, int *op_type){
     int size;
     int type;
     if((type=next(expr, &size))==MUL||(type=next(expr, &size))==DIV){
+        printf("aaaaaaaaaa\n");
         expr+=size;
         real_expr(expr, val);
         *op_type=type;
