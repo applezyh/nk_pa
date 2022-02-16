@@ -152,7 +152,7 @@ bool mul_expr1(const char** expr,int* val, int *op_type){
     int type;
     if((type=next(*expr, &size))==MUL||(type=next(*expr, &size))==DIV){
         *expr+=size;
-        real_expr(expr, val);
+        mul_expr(expr, val);
         *op_type=type;
     }
     return true;
@@ -175,7 +175,7 @@ bool add_expr1(const char** expr,int* val, int *op_type){
     int type;
     if((type=next(*expr, &size))==ADD||(type=next(*expr, &size))==SUB){
         *expr+=size;
-        mul_expr(expr, val);
+        add_expr(expr, val);
         *op_type=type;
     }
     return true;
