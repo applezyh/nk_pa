@@ -149,12 +149,12 @@ bool real_expr(const char** expr,int* val){
         add_expr(expr,val);
         *expr+=1;
     } else if(next(*expr, &size)==MUL){
+        printf("%d %d\n",re,re-3*REG);
         *expr+=size;
         re=next(*expr,&size);
         if(re>=1000){
             *val = vaddr_read(re-1000,4);
         } else if(re>=3*REG){
-            printf("%d %d\n",re,re-3*REG);
             *val=vaddr_read(reg_b((re-3*REG)),4);
         } else if(re>=2*REG){
             *val=vaddr_read(reg_w((re-2*REG)),4);
