@@ -11,15 +11,13 @@ make_EHelper(push) {
   switch (vaddr_read(*eip,1))
   {
   case 0x55:
-    id_dest->width=4;
-    sprintf(id_dest->str, "ebp", "");
     rtl_push(cpu.ebp);
+    print_asm("pushw %s","ebp");
     break;
   
   default:
     break;
   }
-  print_asm_template1(push);
 }
 
 make_EHelper(pop) {
