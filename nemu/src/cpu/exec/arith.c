@@ -4,9 +4,11 @@ make_EHelper(add) {
   //TODO();
   rtl_add(&(id_dest->val), &(id_dest->val), &(id_src->val));
   if(id_dest->width==4){
-    cpu.gpr[id_dest->reg]._32=id_dest->val; 
+    if(id_dest->type==OP_TYPE_REG) cpu.gpr[id_dest->reg]._32=id_dest->val; 
+    else vaddr_write(id_dest->addr,id_dest->val,4);
   } else if(id_dest->width==2){
-    cpu.gpr[id_dest->reg]._16=id_dest->val; 
+    if(id_dest->type==OP_TYPE_REG) cpu.gpr[id_dest->reg]._16=id_dest->val; 
+    else vaddr_write(id_dest->addr,id_dest->val,4); 
   }
   print_asm_template2(add);
 }
@@ -15,9 +17,11 @@ make_EHelper(sub) {
   // TODO();
   rtl_sub(&(id_dest->val), &(id_dest->val), &(id_src->val));
   if(id_dest->width==4){
-    cpu.gpr[id_dest->reg]._32=id_dest->val; 
+    if(id_dest->type==OP_TYPE_REG) cpu.gpr[id_dest->reg]._32=id_dest->val; 
+    else vaddr_write(id_dest->addr,id_dest->val,4);
   } else if(id_dest->width==2){
-    cpu.gpr[id_dest->reg]._16=id_dest->val; 
+    if(id_dest->type==OP_TYPE_REG) cpu.gpr[id_dest->reg]._16=id_dest->val; 
+    else vaddr_write(id_dest->addr,id_dest->val,4);
   }
   print_asm_template2(sub);
 }
