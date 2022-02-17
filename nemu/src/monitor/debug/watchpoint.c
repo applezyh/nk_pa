@@ -57,6 +57,7 @@ void free_wp(int no){
 bool check_watchpoint(){
   struct watchpoint* h=head;
   while(h!=NULL){
+    printf("%s\n",h->expr);
     if(h->data!=cal_expr(h->expr)){
       printf("watchpoint NO:%d trigger\n", h->NO);
       return true;
