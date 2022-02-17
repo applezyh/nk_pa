@@ -9,13 +9,12 @@ make_EHelper(push) {
   //TODO();
   printf("%x\n",vaddr_read(*(eip-1),1));
   switch (vaddr_read(*eip,1))
-  { 
-  case 0x55:{
-    const uint32_t ebp=cpu.ebp;
-    rtl_push(ebp);
+  {
+  case 0x55:
+    rtl_push(&(cpu.ebp));
     print_asm("pushw %s","ebp");
     break;
-  }
+  
   default:
     break;
   }
