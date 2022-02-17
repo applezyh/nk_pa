@@ -49,6 +49,7 @@ void free_wp(int no){
       } else{
         pre_h->next=h->next;
       }
+      printf("delete watchpoint NO:%d\n", h->NO);
     }
     pre_h=h;
     h=h->next;

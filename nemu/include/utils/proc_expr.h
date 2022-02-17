@@ -10,6 +10,8 @@
 #define PREFIX 7
 #define REG 107
 
+// TODO add more token type ("||", "&&", "==", ...)
+
 int cal_dec_number(const char* expr, int size){
     int result=0;
     for(int i=0;i<size;i++){
@@ -125,6 +127,8 @@ int next(const char* expr,int* size){
     if(*expr=='(') return LB;
     if(*expr==')') return RB;
 
+    // TODO add more op
+
     *size-=1;
 
     int value=0;
@@ -136,6 +140,9 @@ int next(const char* expr,int* size){
     return -1;
 }
 
+// TODO add moren function support "==" , "||" ...
+
+bool real_expr(const char** expr,int* val);
 bool add_expr(const char** expr,int* val);
 bool mul_expr(const char** expr,int* val);
 bool add_expr1(const char** expr,int* val, int *op_type);
