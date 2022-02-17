@@ -36,9 +36,51 @@ typedef struct {
     };
     vaddr_t eip;
 
+    rtlreg_t eflag;
+    
+
 } CPU_state;
 
+
+
 extern CPU_state cpu;
+
+bool test_CF(){
+  return (cpu.eflag<<31)>>31;
+}
+bool test_ZF(){
+  return (cpu.eflag<<25)>>25;
+}
+bool test_SF(){
+  return (cpu.eflag<24)>>24;
+}
+bool test_IF(){
+  return (cpu.eflag<<22)>>22;
+}
+bool test_OF(){
+  return (cpu.eflag<<20)>>20;
+}
+
+void set_CF(bool set_flag){
+  if(set_flag) cpu.eflag|=0x00000001;
+  else cpu.eflag&=!0x00000001;
+}
+bool set_ZF(bool set_flag){
+  if(set_flag) cpu.eflag|=(6<<0x00000001);
+  else cpu.eflag&=!(6<<0x00000001);
+}
+bool set_SF(bool set_flag){
+  if(set_flag) cpu.eflag|=(7<<0x00000001);
+  else cpu.eflag&=!(7<<0x00000001);
+}
+bool set_IF(bool set_flag){
+  if(set_flag) cpu.eflag|=(9<<0x00000001);
+  else cpu.eflag&=!(9<<0x00000001);
+}
+bool set_OF(bool set_flag){
+  if(set_flag) cpu.eflag|=(11<<0x00000001);
+  else cpu.eflag&=!(11<<0x00000001);
+}
 
 static inline int check_reg_index(int index) {
   assert(index >= 0 && index < 8);

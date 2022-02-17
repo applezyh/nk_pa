@@ -8,12 +8,11 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
   // TODO();
+  rtl_sub(&(id_dest->val), &(id_dest->val), &(id_src->val));
   if(id_dest->width==4){
-    uint32_t result=id_dest->val-id_src->val;
-    cpu.gpr[id_dest->reg]._32=result; 
+    cpu.gpr[id_dest->reg]._32=id_dest->val; 
   } else if(id_dest->width==2){
-    uint16_t result=id_dest->val-id_src->val;
-    cpu.gpr[id_dest->reg]._16=result; 
+    cpu.gpr[id_dest->reg]._16=id_dest->val; 
   }
   print_asm_template2(sub);
 }
