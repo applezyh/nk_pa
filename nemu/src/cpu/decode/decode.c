@@ -28,7 +28,7 @@ make_DHelper(Av) {
   Operand* op=id_dest;
   op->type = OP_TYPE_IMM;
   op->imm = instr_fetch(eip, op->width);
-  rtl_li(&op->val, op->imm+eip);
+  rtl_li(&op->val, op->imm+*eip);
 
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "$0x%x", op->imm);
