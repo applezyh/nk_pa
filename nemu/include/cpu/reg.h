@@ -65,19 +65,19 @@ void set_CF(bool set_flag){
   if(set_flag) cpu.eflag|=0x00000001;
   else cpu.eflag&=!0x00000001;
 }
-bool set_ZF(bool set_flag){
+void set_ZF(bool set_flag){
   if(set_flag) cpu.eflag|=(6<<0x00000001);
   else cpu.eflag&=!(6<<0x00000001);
 }
-bool set_SF(bool set_flag){
+void set_SF(bool set_flag){
   if(set_flag) cpu.eflag|=(7<<0x00000001);
   else cpu.eflag&=!(7<<0x00000001);
 }
-bool set_IF(bool set_flag){
+void set_IF(bool set_flag){
   if(set_flag) cpu.eflag|=(9<<0x00000001);
   else cpu.eflag&=!(9<<0x00000001);
 }
-bool set_OF(bool set_flag){
+void set_OF(bool set_flag){
   if(set_flag) cpu.eflag|=(11<<0x00000001);
   else cpu.eflag&=!(11<<0x00000001);
 }
