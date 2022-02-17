@@ -6,8 +6,17 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
-  TODO();
+  //TODO();
 
+  switch (vaddr_read(*eip,1))
+  {
+  case 0x55:
+    rtl_push(cpu.ebp);
+    break;
+  
+  default:
+    break;
+  }
   print_asm_template1(push);
 }
 
