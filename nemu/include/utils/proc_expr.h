@@ -1,3 +1,5 @@
+#pragma once
+
 #include "../cpu/reg.h"
 
 #define NUMBER 0
