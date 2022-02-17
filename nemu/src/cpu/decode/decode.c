@@ -28,6 +28,7 @@ make_DHelper(Av) {
   Operand* op=id_dest;
   op->type = OP_TYPE_IMM;
   op->imm = instr_fetch(eip, op->width);
+  printf("%d\n", op->imm);
   rtl_li(&op->val, op->imm+eip);
 
 #ifdef DEBUG
