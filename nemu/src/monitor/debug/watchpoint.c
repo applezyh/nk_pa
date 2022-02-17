@@ -1,5 +1,4 @@
 #include "monitor/watchpoint.h"
-#include "memory/memory.h"
 #include "utils/proc_expr.h"
 
 #define NR_WP 32

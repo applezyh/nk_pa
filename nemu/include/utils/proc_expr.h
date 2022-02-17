@@ -1,6 +1,5 @@
 #include "../cpu/reg.h"
-#include "../memory/memory.h"
-
+#include "memory/memory.h"
 #define NUMBER 0
 #define ADD 1
 #define SUB 2
