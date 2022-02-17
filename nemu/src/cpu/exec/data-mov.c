@@ -11,6 +11,8 @@ make_EHelper(push) {
   switch (vaddr_read(*eip,1))
   {
   case 0x55:
+    id_dest->width=4;
+    sprintf(id_dest->str, "ebp", "");
     rtl_push(cpu.ebp);
     break;
   
