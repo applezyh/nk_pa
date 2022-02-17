@@ -7,14 +7,15 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   //TODO();
-  printf("vaddr_read(*eip,1):%x\n",vaddr_read(*(eip-1),1));
+  printf("%x\n",vaddr_read(*(eip-1),1));
   switch (vaddr_read(*eip,1))
   {
-  case 0x55:
-    rtl_push(cpu.ebp);
+  case 0x55:{
+    const uint32_t ebp=cpu.ebp;
+    rtl_push(ebp);
     print_asm("pushw %s","ebp");
     break;
-  
+  }
   default:
     break;
   }
