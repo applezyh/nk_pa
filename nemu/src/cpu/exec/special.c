@@ -2,6 +2,7 @@
 #include "monitor/monitor.h"
 
 make_EHelper(nop) {
+  instr_fetch(eip, 1);
   print_asm("nop");
 }
 
