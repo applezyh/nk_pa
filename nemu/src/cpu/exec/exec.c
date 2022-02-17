@@ -132,7 +132,7 @@ opcode_entry opcode_table [512] = {
   /* 0xe4 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xe8 */	IDEXW(I, call, 4), EMPTY, EMPTY, EMPTY,
   /* 0xec */	EMPTY, EMPTY, EMPTY, EMPTY,
-  /* 0xf0 */	EMPTY, EMPTY, EMPTY, EXW(endbr, 4),
+  /* 0xf0 */	EMPTY, EMPTY, EMPTY, EXW(endbr, 3),
   /* 0xf4 */	EMPTY, EMPTY, IDEXW(E, gp3, 1), IDEX(E, gp3),
   /* 0xf8 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xfc */	EMPTY, EMPTY, IDEXW(E, gp4, 1), IDEX(E, gp5),
@@ -240,7 +240,6 @@ void exec_wrapper(bool print_flag) {
 #ifdef DEBUG
   int instr_len = decoding.seq_eip - cpu.eip;
   sprintf(decoding.p, "%*.s", 50 - (12 + 3 * instr_len), "");
-  printf("%s\n",decoding.asm_buf);
   memset(decoding.asm_buf+(128-80),0,80);
   my_strcat(decoding.asm_buf, decoding.assembly);
   Log_write("%s\n", decoding.asm_buf);
