@@ -5,9 +5,14 @@ make_EHelper(nop) {
   print_asm("nop");
 }
 
+make_EHelper(endbr) {
+  print_asm("endbr32");
+}
+
+
 make_EHelper(inv) {
   /* invalid opcode */
-
+  
   uint32_t temp[2];
   vaddr_t ori_eip = cpu.eip;
   *eip = ori_eip;
