@@ -1,4 +1,3 @@
-#pragma once
 #include "nemu.h"
 #include "monitor/monitor.h"
 #include "monitor/watchpoint.h"
