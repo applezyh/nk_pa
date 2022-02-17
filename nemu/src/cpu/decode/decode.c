@@ -304,19 +304,6 @@ make_DHelper(out_a2dx) {
 #endif
 }
 
-/* Av */
-make_DHelper(Av) {
-  /* eip here is pointing to the immediate address*/
-  Operand* op=id_dest;
-  op->type = OP_TYPE_IMM;
-  op->imm = instr_fetch(eip, op->width);
-  rtl_li(&op->val, op->imm+*eip);
-
-#ifdef DEBUG
-  snprintf(op->str, OP_STR_SIZE, "$0x%x", op->imm);
-#endif
-}
-
 void operand_write(Operand *op, rtlreg_t* src) {
   if (op->type == OP_TYPE_REG) { rtl_sr(op->reg, op->width, src); }
   else if (op->type == OP_TYPE_MEM) { rtl_sm(&op->addr, op->width, src); }
