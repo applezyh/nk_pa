@@ -23,10 +23,10 @@ static inline void set_width(int width) {
 /* Instruction Decode and EXecute */
 static inline void idex(vaddr_t *eip, opcode_entry *e) {
   /* eip is pointing to the byte next to opcode */
+  memset(decoding.assembly,0,80);
   if (e->decode)
     e->decode(eip);
   e->execute(eip);
-  memset(decoding.assembly,0,80);
 }
 
 static make_EHelper(2byte_esc);
