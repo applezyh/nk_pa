@@ -191,7 +191,7 @@ static inline void rtl_update_SF(const rtlreg_t* result, int width) {
   int zero_um=0;
   for(int i=0;i<width;i++){
     zero_um+=(*result&0x1);
-    *result>>1;
+    (*result)>>1;
   }
   uint32_t zf_flag = (*result==0);
   cpu.eflag&=((zf_flag<<7)|0xffffff7f);
