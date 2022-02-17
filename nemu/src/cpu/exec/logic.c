@@ -20,7 +20,6 @@ make_EHelper(xor) {
   } else if(id_dest->width==2){
     cpu.gpr[id_dest->reg]._16=id_dest->val; 
   }
-
   print_asm_template2(xor);
 }
 
