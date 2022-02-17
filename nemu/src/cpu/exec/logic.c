@@ -14,7 +14,13 @@ make_EHelper(and) {
 
 make_EHelper(xor) {
   // TODO();
-  
+  rtl_xor(&(id_dest->val), &(id_dest->val), &(id_src->val));
+  if(id_dest->width==4){
+    cpu.gpr[id_dest->reg]._32=id_dest->val; 
+  } else if(id_dest->width==2){
+    cpu.gpr[id_dest->reg]._16=id_dest->val; 
+  }
+
   print_asm_template2(xor);
 }
 
