@@ -9,9 +9,39 @@ make_EHelper(push) {
   //TODO();
   switch (decoding.opcode)
   {
+  case 0x50:
+    rtl_push(&(cpu.eax));
+    print_asm("pushw %s","eax");
+    break;
+
+  case 0x51:
+    rtl_push(&(cpu.ecx));
+    print_asm("pushw %s","ecx");
+    break;
+
+  case 0x52:
+    rtl_push(&(cpu.edx));
+    print_asm("pushw %s","edx");
+    break;
+
+  case 0x53:
+    rtl_push(&(cpu.ebx));
+    print_asm("pushw %s","ebx");
+    break;
+
+  case 0x54:
+    rtl_push(&(cpu.esp));
+    print_asm("pushw %s","esp");
+    break;
+
   case 0x55:
     rtl_push(&(cpu.ebp));
     print_asm("pushw %s","ebp");
+    break;
+
+  case 0x56:
+    rtl_push(&(cpu.esi));
+    print_asm("pushw %s","esi");
     break;
 
   case 0x57:
