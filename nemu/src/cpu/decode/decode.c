@@ -25,7 +25,7 @@ static inline make_DopHelper(I) {
 /* Av */
 make_DHelper(Av) {
   /* eip here is pointing to the immediate */
-  Operand* op=id_src;
+  Operand* op=id_dest;
   op->type = OP_TYPE_IMM;
   op->imm = instr_fetch(eip, op->width);
   rtl_li(&op->val, op->imm+eip);
