@@ -45,6 +45,13 @@ typedef struct {
 
 extern CPU_state cpu;
 
+#define CF 0
+#define ZF 6
+#define SF 7
+#define IF 9
+#define OF 11
+
+
 static inline int check_reg_index(int index) {
   assert(index >= 0 && index < 8);
   return index;
