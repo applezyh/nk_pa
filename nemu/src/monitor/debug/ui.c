@@ -61,7 +61,6 @@ static int cmd_si(char* args){
       return 0;
   }
   int n = check_si_args(args);
-  printf("%d\n",n);
   if(n>0) cpu_exec(n);
   else{
     Log("si instruction need a parameter\n");
