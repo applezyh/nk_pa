@@ -24,7 +24,7 @@ make_EHelper(jmp_rm) {
 }
 
 make_EHelper(call) {
-  decoding.jmp_eip = id_dest->val+eip;
+  decoding.jmp_eip = id_dest->val+*eip;
   decoding.is_jmp = 1;
   // TODO();
 
