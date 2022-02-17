@@ -8,7 +8,8 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
   // TODO();
-
+  uint32_t result=id_dest->val-id_src->val;
+  cpu.gpr[id_dest->reg]._32=result; 
   print_asm_template2(sub);
 }
 
