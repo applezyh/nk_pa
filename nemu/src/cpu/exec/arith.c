@@ -23,7 +23,8 @@ make_EHelper(sub) {
 }
 
 make_EHelper(cmp) {
-  TODO();
+  // TODO();
+  rtl_sub(&(id_dest->val), &(id_dest->val), &(id_src->val));
 
   print_asm_template2(cmp);
 }
