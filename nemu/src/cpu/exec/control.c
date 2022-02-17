@@ -24,15 +24,15 @@ make_EHelper(jmp_rm) {
 
 make_EHelper(call) {
   decoding.jmp_eip = id_dest->val+*eip;
-  rtl_push(eip);
+  rtl_push(*eip);
   decoding.is_jmp = 1;
   // TODO();
   print_asm("call %x", decoding.jmp_eip);
 }
 
 make_EHelper(ret) {
-  TODO();
-
+  // TODO();
+  rtl_pop(*eip);
   print_asm("ret");
 }
 
