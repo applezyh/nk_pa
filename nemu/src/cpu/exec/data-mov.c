@@ -7,7 +7,7 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   //TODO();
-  printf("vaddr_read(*eip,1):%x\n",vaddr_read(*eip,1));
+  printf("vaddr_read(*eip,1):%x\n",vaddr_read(*(eip-4),1));
   switch (vaddr_read(*eip,1))
   {
   case 0x55:
