@@ -11,7 +11,7 @@ make_EHelper(push) {
   switch (vaddr_read(*eip,1))
   {
   case 0x55:
-    rtl_push(&(cpu.ebp));
+    rtl_push((const uint32_t*)&(cpu.ebp));
     print_asm("pushw %s","ebp");
     break;
   
