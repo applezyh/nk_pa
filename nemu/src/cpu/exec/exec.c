@@ -23,7 +23,6 @@ static inline void set_width(int width) {
 /* Instruction Decode and EXecute */
 static inline void idex(vaddr_t *eip, opcode_entry *e) {
   /* eip is pointing to the byte next to opcode */
-  memset(decoding.assembly,0,80);
   if (e->decode)
     e->decode(eip);
   e->execute(eip);
@@ -242,6 +241,7 @@ void exec_wrapper(bool print_flag) {
   int instr_len = decoding.seq_eip - cpu.eip;
   sprintf(decoding.p, "%*.s", 50 - (12 + 3 * instr_len), "");
   my_strcat(decoding.asm_buf, decoding.assembly);
+  printf("%s\n",decoding.assembly);
   Log_write("%s\n", decoding.asm_buf);
   if (print_flag) {
     puts(decoding.asm_buf);
