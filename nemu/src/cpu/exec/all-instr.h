@@ -10,7 +10,7 @@ make_EHelper(nemu_trap);
 
 make_EHelper(call);
 make_EHelper(ret);
-make_EHelper(jump);
+make_EHelper(jmp);
 
 make_EHelper(endbr);
 
