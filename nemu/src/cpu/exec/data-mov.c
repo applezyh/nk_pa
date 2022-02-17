@@ -13,6 +13,11 @@ make_EHelper(push) {
     rtl_push(&(cpu.ebp));
     print_asm("pushw %s","ebp");
     break;
+
+  case 0x57:
+    rtl_push(&(cpu.edi));
+    print_asm("pushw %s","edi");
+    break;
   
   default:
     break;
