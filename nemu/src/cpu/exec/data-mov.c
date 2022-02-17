@@ -7,7 +7,7 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   //TODO();
-  switch (vaddr_read(*(eip)-1,1))
+  switch (decoding.opcode)
   {
   case 0x55:
     rtl_push(&(cpu.ebp));
