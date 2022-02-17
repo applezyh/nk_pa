@@ -156,7 +156,8 @@ int cmd_w(char* args){
     Log("ERROR! bad addr!\n");
     return 0;
   }
-  WP->data=vaddr_read(cal_expr(args),4);
+  WP->data=cal_expr(args);
+  WP->expr=args;
   printf("set watch point in %x success\n",(uint32_t)loc);
   return 0;
 }
@@ -164,7 +165,7 @@ int cmd_w(char* args){
 int cmd_d(char* args){
   int no=check_si_args(args);
   if(no<0){
-    Log("ERROR! bad no of watchpoint!\n");
+    Log("ERROR! bad NO of watchpoint!\n");
     return 0;
   }
   free_wp(no);
