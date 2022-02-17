@@ -22,6 +22,18 @@ static inline make_DopHelper(I) {
 #endif
 }
 
+/* Av */
+make_DopHelper(Av) {
+  /* eip here is pointing to the immediate */
+  op->type = OP_TYPE_IMM;
+  op->imm = instr_fetch(eip, op->width);
+  rtl_li(&op->val, op->imm+eip);
+
+#ifdef DEBUG
+  snprintf(op->str, OP_STR_SIZE, "$0x%x", op->imm);
+#endif
+}
+
 /* I386 manual does not contain this abbreviation, but it is different from
  * the one above from the view of implementation. So we use another helper
  * function to decode it.
