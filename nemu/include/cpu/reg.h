@@ -45,43 +45,6 @@ typedef struct {
 
 extern CPU_state cpu;
 
-static bool test_CF(){
-  return (cpu.eflag<<31)>>31;
-}
-static bool test_ZF(){
-  return (cpu.eflag<<25)>>25;
-}
-static bool test_SF(){
-  return (cpu.eflag<24)>>24;
-}
-static bool test_IF(){
-  return (cpu.eflag<<22)>>22;
-}
-static bool test_OF(){
-  return (cpu.eflag<<20)>>20;
-}
-
-static void set_CF(bool set_flag){
-  if(set_flag) cpu.eflag|=0x00000001;
-  else cpu.eflag&=!0x00000001;
-}
-static void set_ZF(bool set_flag){
-  if(set_flag) cpu.eflag|=(6<<0x00000001);
-  else cpu.eflag&=!(6<<0x00000001);
-}
-static void set_SF(bool set_flag){
-  if(set_flag) cpu.eflag|=(7<<0x00000001);
-  else cpu.eflag&=!(7<<0x00000001);
-}
-static void set_IF(bool set_flag){
-  if(set_flag) cpu.eflag|=(9<<0x00000001);
-  else cpu.eflag&=!(9<<0x00000001);
-}
-static void set_OF(bool set_flag){
-  if(set_flag) cpu.eflag|=(11<<0x00000001);
-  else cpu.eflag&=!(11<<0x00000001);
-}
-
 static inline int check_reg_index(int index) {
   assert(index >= 0 && index < 8);
   return index;
