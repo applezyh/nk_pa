@@ -26,6 +26,7 @@ WP* new_wp(){
       wp_pool[i].is_use=1;
       if(head==NULL){
         head=&(wp_pool[i]);
+        head->next=NULL;
       } else{
         wp_pool[i].next=head->next;
         head->next=&(wp_pool[i]);
@@ -57,7 +58,6 @@ void free_wp(int no){
 bool check_watchpoint(){
   struct watchpoint* h=head;
   while(h!=NULL){
-    printf("%s\n",h->expr);
     if(h->data!=cal_expr(h->expr)){
       printf("watchpoint NO:%d trigger\n", h->NO);
       return true;
