@@ -40,3 +40,4 @@ make_EHelper(sar);
 make_EHelper(imul2);
 make_EHelper(imul2);
 make_EHelper(dec);
+make_EHelper(sbb);
