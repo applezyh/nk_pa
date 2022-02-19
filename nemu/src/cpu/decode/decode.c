@@ -131,9 +131,9 @@ make_DHelper(Eb2G) {
   decode_op_rm(eip, id_src, true, id_dest, true);
 }
 
-make_DHelper(Ew2G) {
-  id_dest->width=2;
-  decode_op_rm(eip, id_src, true, id_dest, true);
+make_DHelper(Gw2E) {
+  id_src->width=2;
+  decode_op_rm(eip, id_dest, true, id_src, true);
 }
 
 make_DHelper(mov_E2G) {
