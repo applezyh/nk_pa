@@ -43,7 +43,7 @@ int check_si_args(char* args){
       return 0;
     }
     if(n<1||n>9) {
-      Log("ERROR! bad number!\n");
+      Log("ERROR! bad number!");
       return -1;
     } else {
       while(*args!='\0'){
@@ -57,17 +57,17 @@ int check_si_args(char* args){
 
 static int cmd_si(char* args){
   if(args==NULL){
-      Log("si instruction need a parameter\n");
+      Log("si instruction need a parameter");
       return 0;
   }
   int n = check_si_args(args);
   if(n>0&&n<10) cpu_exec(n);
   else if(n>=10) {
-    Log("exceeding the maximum realistic quantity(MAX:10)\n");
+    Log("exceeding the maximum realistic quantity(MAX:10)");
     return 0;
   }
   else{
-    Log("si instruction need a parameter\n");
+    Log("si instruction need a parameter");
     return 0;
   }
   return 0;
@@ -132,12 +132,12 @@ static int cmd_x(char* args){
   int argv=0;
   char** argc = split(args, &argv, ' ');
   if(2!=argv){
-    Log("ERROR! bad args!\n");
+    Log("ERROR! bad args!");
     return 0;
   } else {
     int n = check_si_args(argc[0]);
     if(n<0){
-      Log("ERROR! bad number!\n");
+      Log("ERROR! bad number!");
       return 0;
     } else{
       int mem_loc=cal_expr(argc[1]);
@@ -155,19 +155,19 @@ int cmd_w(char* args){
   struct watchpoint* WP=new_wp();
   long long loc=cal_expr(args);
   if(loc<0){
-    Log("ERROR! bad addr!\n");
+    Log("ERROR! bad addr!");
     return 0;
   }
   WP->data=cal_expr(args);
   WP->expr=args;
-  printf("set watch point in %x success\n",(uint32_t)loc);
+  printf("set watch point in %x success",(uint32_t)loc);
   return 0;
 }
 
 int cmd_d(char* args){
   int no=check_si_args(args);
   if(no<0){
-    Log("ERROR! bad NO of watchpoint!\n");
+    Log("ERROR! bad NO of watchpoint!");
     return 0;
   }
   free_wp(no);
