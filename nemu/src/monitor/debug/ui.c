@@ -61,7 +61,11 @@ static int cmd_si(char* args){
       return 0;
   }
   int n = check_si_args(args);
-  if(n>0) cpu_exec(n);
+  if(n>0&&n<10) cpu_exec(n);
+  else if(n>10) {
+    Log("exceeding the maximum realistic quantity(MAX:10)\n");
+    return 0;
+  }
   else{
     Log("si instruction need a parameter\n");
     return 0;
