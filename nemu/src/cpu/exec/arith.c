@@ -48,7 +48,11 @@ make_EHelper(cmp) {
   rtl_sltu(&t3, &id_dest->val, &t2);
 
   rtl_update_ZFSF(&t2, id_dest->width);
-
+  uint32_t a1;
+  rtl_get_ZF(&a1);
+  if(a1){
+    printf("ZF = %d\n",a1);
+  }
   rtl_sltu(&t0, &id_dest->val, &t2);
   
   rtl_or(&t0, &t3, &t0);
