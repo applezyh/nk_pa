@@ -62,7 +62,7 @@ static int cmd_si(char* args){
   }
   int n = check_si_args(args);
   if(n>0&&n<10) cpu_exec(n);
-  else if(n>10) {
+  else if(n>=10) {
     Log("exceeding the maximum realistic quantity(MAX:10)\n");
     return 0;
   }
