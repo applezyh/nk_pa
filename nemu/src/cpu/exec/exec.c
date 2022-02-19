@@ -51,7 +51,7 @@ make_group(gp2,
 
   /* 0xf6, 0xf7 */
 make_group(gp3,
-    EXW(test,1), EMPTY, EXW(not, 4), EMPTY,
+    IDEXW(I2r,test,1), EMPTY, EXW(not, 4), EMPTY,
     EXW(mul, 4), EXW(imul2, 4), EMPTY, EXW(idiv,4))
 
   /* 0xfe */
