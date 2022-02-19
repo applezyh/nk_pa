@@ -53,7 +53,7 @@ int cal_hex_number(const char* expr,int size){
     int result=0;
     for(int i=0;i<size;i++){
         int n=(*expr++-'0');
-        result+=result*16+n;
+        result=result*16+n;
     }
     return result;
 }
