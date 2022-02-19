@@ -109,9 +109,9 @@ make_EHelper(inc) {
       break;
     
     case 0xff:{
-      uint32_t data=vaddr_read(id_dest->val,4);
+      uint32_t data=vaddr_read(id_src->val,4);
       data++;
-      vaddr_write(id_dest->val,data,4);
+      vaddr_write(id_src->val,data,4);
       print_asm("inc %x",id_dest->val);
       break;
     }
