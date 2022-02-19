@@ -187,7 +187,7 @@ make_DHelper(r) {
 
 make_DHelper(E) {
   decode_op_rm(eip, id_dest, true, NULL, false);
-  decoding.jmp_eip = id_dest->addr;
+  decoding.jmp_eip = id_dest->val;
 }
 
 make_DHelper(gp7_E) {
