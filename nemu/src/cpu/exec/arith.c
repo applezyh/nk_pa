@@ -47,7 +47,7 @@ make_EHelper(cmp) {
   
   rtl_sub(&t2, &id_dest->val, &id_src->val);
   if(cpu.eip==0x1000b4){
-    printf("%d - %d = %d\n",id_dest->val,id_src->val,t2);
+    printf("%d - %d = %d\n",(uint8_t)id_dest->val,(uint8_t)id_src->val,(uint8_t)t2);
   }
   rtl_sltu(&t3, &id_dest->val, &t2);
 
