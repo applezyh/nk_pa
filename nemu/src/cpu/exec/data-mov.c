@@ -90,6 +90,7 @@ make_EHelper(pop) {
 
   case 0x5d:
     rtl_pop(&(cpu.ebp));
+    printf("aaaaaaa\n");
     print_asm("pop %s","ebp");
     break;
 
