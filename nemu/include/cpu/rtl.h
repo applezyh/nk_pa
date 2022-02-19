@@ -118,8 +118,8 @@ static inline void rtl_sr(int r, int width, const rtlreg_t* src1) {
 
 #define make_rtl_setget_eflags(f) \
   static inline void concat(rtl_set_, f) (const rtlreg_t* src) { \
-    if(*src) cpu.eflag|=(concat(_, f)<<0x00000001); \
-    else cpu.eflag&=!(concat(_, f)<<0x00000001); \
+    if(*src) {cpu.eflag|=(concat(_, f)<<0x00000001);printf("set zf=1\n");} \
+    else {cpu.eflag&=!(concat(_, f)<<0x00000001);} \
   } \
   static inline void concat(rtl_get_, f) (rtlreg_t* dest) { \
     *dest = (cpu.eflag<<(31-concat(_, f)))>>31; \
@@ -193,11 +193,6 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // TODO();
   uint32_t zf_flag = (*result==0);
   rtl_set_ZF(&zf_flag);
-  if(zf_flag) {
-    uint32_t a=1;
-    rtl_get_ZF(&a);
-    printf("aaaaaaa%d\n",a);
-  }
 }
 
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
