@@ -196,7 +196,7 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   if(zf_flag) {
     uint32_t a=1;
     rtl_get_ZF(&a);
-    printf("%d\n",a);
+    printf("aaaaaaa%d\n",a);
   }
 }
 
