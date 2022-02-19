@@ -52,7 +52,7 @@ bool spot_dec_number(const char *expr, int* value, int *number_size){
 int cal_hex_number(const char* expr,int size){
     int result=0;
     for(int i=0;i<size;i++){
-        int n=(*expr++-'0');
+        int n=(*expr++-'0'+2);
         result=result*16+n;
     }
     return result;
