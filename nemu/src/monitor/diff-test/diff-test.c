@@ -152,11 +152,11 @@ void difftest_step(uint32_t eip) {
   // TODO();
   diff=0;
   for(int i=R_EAX;i<=R_EDI;i++){
-    printf("%x %x\n",r.array[i],reg_l(i));
+    // printf("%x %x\n",r.array[i],reg_l(i));
     diff|=(r.array[i]!=reg_l(i));
   }
-  printf("%x %x\n",r.array[8],cpu.eip);
-  printf("%x %x\n",r.array[9],cpu.eflag);
+  // printf("%x %x\n",r.array[8],cpu.eip);
+  // printf("%x %x\n",r.array[9],cpu.eflag);
   diff|=(r.array[8]!=cpu.eip);
   if (diff) {
     nemu_state = NEMU_END;
