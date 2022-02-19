@@ -185,7 +185,7 @@ int cmd_b(char* args){
   WP->data=addr;
   WP->expr=args;
   WP->type=BREAKPOINT;
-  printf("set break point in %x success",(uint32_t)addr);
+  printf("set break point in %x success\n",(uint32_t)addr);
   return 0;
 
 }
