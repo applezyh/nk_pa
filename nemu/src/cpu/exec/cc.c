@@ -30,9 +30,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_ZF(&zf);
       rtl_get_OF(&of);
       *dest=(!sf&&!of)||(of&&sf)||zf;
-      if(cpu.eip==0x1000b4){
-        printf("%d %d %d\n",sf,zf,of);
-      }
+      printf("%x : %d %d %d\n",cpu.eip,sf,zf,of);
       break;
     }
     case CC_S:
