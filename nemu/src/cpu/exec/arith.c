@@ -72,6 +72,12 @@ make_EHelper(inc) {
       cpu.eax+=1;
       print_asm("inc eax");
       break;
+    
+    case 0x43:
+      cpu.ebx+=1;
+      print_asm("inc ebx");
+      break;
+
     default:
       TODO();
   }
