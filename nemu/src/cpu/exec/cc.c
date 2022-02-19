@@ -28,6 +28,11 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_LE:
       rtl_get_SF(dest);
       printf("%d %d flag : %d  invert : %d\n",cpu.ecx,cpu.edx,*dest,invert);
+      for(int i=0;i<20;i++){
+        int num=vaddr_read(0x100180+i,4);
+        printf("%d ",num);
+      }
+      printf("\n");
       break;
     default: panic("should not reach here");
     case CC_P: panic("n86 does not have PF");
