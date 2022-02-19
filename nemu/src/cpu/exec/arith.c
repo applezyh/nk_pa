@@ -108,8 +108,12 @@ make_EHelper(inc) {
       print_asm("inc edi");
       break;
     
-    case 0xff:
+    case 0xff:{
+      uint32_t data=vaddr_read(id_dest->val,4);
+      data++;
+      vaddr_write(id_dest->val,data,4);
       break;
+    }
   }
 }
 
