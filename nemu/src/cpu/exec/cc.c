@@ -29,7 +29,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_SF(dest);
       printf("%d %d flag : %d  invert : %d\n",cpu.ecx,cpu.edx,*dest,invert);
       for(int i=0;i<20;i++){
-        int num=vaddr_read(0x100180+i,4);
+        int num=vaddr_read(0x100180+i*4,4);
         printf("%d ",num);
       }
       printf("\n");
