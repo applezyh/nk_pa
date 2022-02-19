@@ -14,7 +14,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
 
   // TODO: Query EFLAGS to determine whether the condition code is satisfied.
   // dest <- ( cc is satisfied ? 1 : 0)
-  if(cpu.eip==0x1000c3) printf("code : %d flag %d invert : %d\n",subcode&0xe,*dest,invert);
+  
   switch (subcode & 0xe) {
     case CC_O:
     case CC_B:
