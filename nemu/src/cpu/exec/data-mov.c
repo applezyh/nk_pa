@@ -132,10 +132,13 @@ make_EHelper(leave) {
 
 make_EHelper(cltd) {
   if (decoding.is_operand_size_16) {
-    TODO();
+    // TODO();
   }
   else {
-    TODO();
+    // TODO();
+    uint32_t flag=reg_l(0)>>15;
+    if(flag) reg_l(0)=0xffff;
+    else reg_l(0)=0x0000;
   }
 
   print_asm(decoding.is_operand_size_16 ? "cwtl" : "cltd");
