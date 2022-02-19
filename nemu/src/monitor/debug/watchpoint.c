@@ -60,7 +60,7 @@ bool check_watchpoint(){
   struct watchpoint* h=head;
   while(h!=NULL){
     if(h->type==WATCHPOINT&&h->data!=cal_expr(h->expr)){
-      printf("%d %d %d\n",h->data,cal_expr(h->expr),cpu.esp);
+      printf("%d %s = %d %d\n",h->data,h->expr,cal_expr(h->expr),cpu.esp);
       h->data=cal_expr(h->expr);
       printf("watchpoint NO:%d trigger\n", h->NO);
       return true;

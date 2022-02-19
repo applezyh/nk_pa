@@ -159,7 +159,6 @@ int cmd_w(char* args){
     return 0;
   }
   WP->data=cal_expr(args);
-  printf("%d\n",WP->data);
   WP->expr=args;
   WP->type=WATCHPOINT;
   printf("set watch point:%d in success:%s\n",WP->NO, args);
