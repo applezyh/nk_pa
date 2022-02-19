@@ -50,6 +50,11 @@ make_EHelper(push) {
     print_asm("pushw %s","edi");
     break;
   
+  case 0xff:
+    rtl_push(&(id_src->val));
+    print_asm_template1(push);
+    break;
+
   default:
     break;
   }
