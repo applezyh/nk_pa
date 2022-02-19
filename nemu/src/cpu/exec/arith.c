@@ -65,7 +65,6 @@ make_EHelper(cmp) {
 
 make_EHelper(inc) {
   // TODO();
-  printf("%d\n",decoding.opcode);
   switch(decoding.opcode){
     case 0x40:
       cpu.eax+=1;
