@@ -70,6 +70,7 @@ make_EHelper(inc) {
     case 0x40:
       cpu.eax+=1;
       print_asm("inc eax");
+      break;
     default:
       TODO();
   }
