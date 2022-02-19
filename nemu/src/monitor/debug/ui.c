@@ -144,7 +144,7 @@ static int cmd_x(char* args){
       printf("--------MEM--------\n");
       for(int i=mem_loc;i<mem_loc+4*n;i+=4){
         uint32_t mem = vaddr_read(i, 4);
-        printf("%x   :   %#8x\n",i,mem);
+        printf("%x   :   %#10x\n",i,mem);
       }
     }
   }
