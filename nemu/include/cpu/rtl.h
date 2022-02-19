@@ -195,6 +195,7 @@ static inline void rtl_msb(rtlreg_t* dest, const rtlreg_t* src1, int width) {
 static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // eflags.ZF <- is_zero(result[width * 8 - 1 .. 0])
   // TODO();
+  if(cpu.eip==0x1000b4) printf("re : %x\n",result);
   uint32_t zf_flag = (*result==0);
   rtl_set_ZF(&zf_flag);
 }
