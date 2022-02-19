@@ -23,6 +23,7 @@ static inline void set_width(int width) {
 /* Instruction Decode and EXecute */
 static inline void idex(vaddr_t *eip, opcode_entry *e) {
   /* eip is pointing to the byte next to opcode */
+  printf("%d\n",e->decode);
   if (e->decode)
     e->decode(eip);
   e->execute(eip);
@@ -217,7 +218,6 @@ make_EHelper(real) {
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
   idex(eip, &opcode_table[opcode]);
-  printf("%d\n",cpu.esp);
 }
 
 static inline void update_eip(void) {
