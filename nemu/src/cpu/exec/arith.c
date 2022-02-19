@@ -51,13 +51,10 @@ make_EHelper(cmp) {
 
   rtl_sltu(&t0, &id_dest->val, &t2);
   
-  rtl_or(&t0, &t3, &t0);uint32_t a;
-  rtl_get_ZF(&a);
-  if(a){
-    printf("ZF = %d\n",a);
-  }
+  printf("%x\n",cpu.eflag);
+  rtl_or(&t0, &t3, &t0);
   rtl_set_CF(&t0);
-  
+  printf("%x\n",cpu.eflag);
 
   rtl_xor(&t0, &id_dest->val, &id_src->val);
   rtl_xor(&t1, &id_dest->val, &t2);
