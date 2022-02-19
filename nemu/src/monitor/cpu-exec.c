@@ -22,11 +22,12 @@ void cpu_exec(uint64_t n) {
 
   bool print_flag = n < MAX_INSTR_TO_PRINT;
 
-  uint32_t eip=cpu.eip;
+  
 
   for (; n > 0; n --) {
     /* Execute one instruction, including instruction fetch,
      * instruction decode, and the actual execution. */
+    uint32_t eip=cpu.eip;
     exec_wrapper(print_flag);
 
 #ifdef DEBUG
