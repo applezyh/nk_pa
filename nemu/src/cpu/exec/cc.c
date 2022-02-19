@@ -25,13 +25,12 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_ZF(dest);
       break;
     case CC_BE:{
-      uint32_t sf,zf,of,cf; 
+      uint32_t sf,zf,of; 
       rtl_get_SF(&sf);
       rtl_get_ZF(&zf);
       rtl_get_OF(&of);
-      rtl_get_CF(&cf);
-      *dest=(!sf&&!of)||(of&&sf)||zf||!cf;
-      printf("%x : %d %d %d %d isjmp = %d\n",cpu.eip,sf,zf,of,cf,*dest);
+      *dest=(!sf&&!of)||(of&&sf)||zf;
+      printf("%x : %d %d %d isjmp = %d\n",cpu.eip,sf,zf,of,*dest);
       break;
     }
     case CC_S:
@@ -41,17 +40,15 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       uint32_t sf,of,cf;  
       rtl_get_SF(&sf);
       rtl_get_OF(&of);
-      rtl_get_CF(&cf);
-      *dest=(sf&&!of)||(of&&!sf)||cf;
+      *dest=(sf&&!of)||(of&&!sf);
       break;
     }
     case CC_LE:{
-      uint32_t sf,zf,of,cf; 
+      uint32_t sf,zf,of; 
       rtl_get_SF(&sf);
       rtl_get_ZF(&zf);
       rtl_get_OF(&of);
-      rtl_get_CF(&cf);
-      *dest=(!sf&&of)||(!of&&sf)||zf||cf;
+      *dest=(!sf&&of)||(!of&&sf)||zf;
       break;
     }
     default: panic("should not reach here");
