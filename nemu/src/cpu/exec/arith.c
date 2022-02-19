@@ -109,6 +109,7 @@ make_EHelper(inc) {
       break;
     
     case 0xff:{
+      printf("%x\n",id_dest->addr);
       uint32_t data=vaddr_read(id_dest->val,4);
       data++;
       vaddr_write(id_dest->val,data,4);
