@@ -67,6 +67,7 @@ bool check_watchpoint(){
       printf("breakpoint NO:%d trigger\n", h->NO);
       return true;
     }
+    h=h->next;
   }
   return false;
 }
