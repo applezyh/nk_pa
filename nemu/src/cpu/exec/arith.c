@@ -79,7 +79,7 @@ make_EHelper(inc) {
       break;
 
     case 0x46:
-      cpu.edi+=1;
+      cpu.esi+=1;
       print_asm("inc esi");
       break;
 
