@@ -159,7 +159,8 @@ int cmd_w(char* args){
     return 0;
   }
   WP->data=cal_expr(args);
-  WP->expr=args;
+  WP->expr=malloc(strlen(args));
+  memcpy(WP->expr,args,strlen(args));
   WP->type=WATCHPOINT;
   printf("set watch point:%d in success:%s\n",WP->NO, args);
   return 0;
@@ -183,7 +184,8 @@ int cmd_b(char* args){
   }
   struct watchpoint* WP=new_wp();
   WP->data=addr;
-  WP->expr=args;
+  WP->expr=malloc(strlen(args));
+  memcpy(WP->expr,args,strlen(args));
   WP->type=BREAKPOINT;
   printf("set break point:%d in %x success\n",WP->NO,(uint32_t)addr);
   return 0;
