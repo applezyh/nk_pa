@@ -10,7 +10,7 @@ make_EHelper(jcc) {
   // the target address is calculated at the decode stage
   uint8_t subcode = decoding.opcode & 0xf;
   rtl_setcc(&t2, subcode);
-  if(subcode&0xe==14){
+  if((subcode&0xe)==14){
     printf("%x               %d %d flag : %d\n",cpu.eip,cpu.ecx,cpu.edx,t2);
         for(int i=0;i<20;i++){
           int num=vaddr_read(0x100180+i*4,4);
