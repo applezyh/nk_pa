@@ -141,8 +141,8 @@ make_EHelper(cltd) {
     flag>>=15;
     uint32_t re1=0xffff;
     uint32_t re2=0x0000;
-    if(flag) rtl_sr_l(R_AX,&re1);
-    else rtl_sr_l(R_AX,&re2);
+    if(flag) rtl_sr_l(R_DX,&re1);
+    else rtl_sr_l(R_DX,&re2);
   }
 
   print_asm(decoding.is_operand_size_16 ? "cwtl" : "cltd");
