@@ -22,9 +22,9 @@ int cal_dec_number(const char* expr, int size){
 }
 
 bool spot_dec_number(const char *expr, int* value, int *number_size){
+    if(*expr==' ') return 0;
     int state=0;
     int size=0;
-    printf("%s\n",expr);
     while(*expr!='\0'&&('0'<=*expr&&*expr<='9')){
         int ca;
         if(*expr=='0') ca=0;
