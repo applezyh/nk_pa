@@ -11,7 +11,7 @@ make_EHelper(jcc) {
   uint8_t subcode = decoding.opcode & 0xf;
   rtl_setcc(&t2, subcode);
   if((subcode&0xe)==14){
-    printf("%x       %d %d flag : %d\n target : %x",cpu.eip,cpu.ecx,cpu.edx,t2,decoding.jmp_eip);
+    printf("%x       %d %d flag : %d  target : %x",cpu.eip,cpu.ecx,cpu.edx,t2,decoding.jmp_eip);
         for(int i=0;i<20;i++){
           int num=vaddr_read(0x100180+i*4,4);
           printf("%d ",num);
