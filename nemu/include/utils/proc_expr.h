@@ -157,18 +157,8 @@ bool real_expr(const char** expr,int* val){
         *expr+=1;
     } else if(next(*expr, &size)==MUL){
         *expr+=size;
-        re=next(*expr,&size);
-        if(re>=1000){
-            *val = vaddr_read(re-1000,4);
-        } else if(re>=3*REG){
-            *val=vaddr_read(reg_b((re-3*REG)),4);
-        } else if(re>=2*REG){
-            *val=vaddr_read(reg_w((re-2*REG)),4);
-        } else {
-            if(re-REG==R_EIP) *val=vaddr_read(cpu.eip,4);
-            else *val=vaddr_read(reg_l((re-1*REG)),4);
-        }
-        
+        add_expr(expr, &re);
+        *val=vaddr_read(re, 4);
     } else if((re=next(*expr,&size))>=1000){
         *val=re-1000;
         *expr+=size;
