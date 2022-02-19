@@ -200,7 +200,7 @@ static inline void rtl_update_SF(const rtlreg_t* result, int width) {
   // eflags.SF <- is_sign(result[width * 8 - 1 .. 0])
   // TODO();
   uint32_t sf_flag = (*result<<31)>>31;
-  rtl_set_ZF(&sf_flag);
+  rtl_set_SF(&sf_flag);
   
 }
 
