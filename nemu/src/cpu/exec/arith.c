@@ -66,7 +66,7 @@ make_EHelper(cmp) {
 make_EHelper(inc) {
   // TODO();
   switch(decoding.opcode){
-    case 0x0:
+    case 0x40:
       cpu.eax+=1;
       print_asm("inc eax");
     default:
