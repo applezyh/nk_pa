@@ -94,7 +94,9 @@ make_EHelper(dec) {
   // TODO();
   switch(decoding.opcode){
     case 0x4b:
-      id_dest->val=cpu.ebx;
+      cpu.ebx--;
+      print_asm("dec ebx");
+      return;
   }
   uint32_t sub_num=1;
   rtl_sub(&t2, &id_dest->val, &sub_num);
