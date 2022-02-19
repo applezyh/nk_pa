@@ -64,8 +64,6 @@ make_EHelper(cmp) {
   rtl_msb(&t0, &t0, id_dest->width);
   rtl_set_OF(&t0);
 
-  if(cpu.eip==0x1000b4) printf("%d\n",t0);
-
   print_asm_template2(cmp);
 }
 
