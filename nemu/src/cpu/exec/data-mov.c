@@ -50,7 +50,7 @@ make_EHelper(push) {
     break;
   
   case 0xff:
-    rtl_push(&(id_src->val));
+    rtl_push(&(id_dest->val));
     print_asm_template1(push);
     break;
 
