@@ -82,15 +82,15 @@ static int cmd_info(char *args) {
       printf("---------REG INFO---------\n");
       printf("(reg: eip value: %x)\n",cpu.eip);
       for(int i=R_EAX;i<R_EDI;i++){
-          printf("(reg: %s value: %08x)\n",reg_name(i, 4), reg_l(i));
+          printf("(reg: %s value: %#010x)\n",reg_name(i, 4), reg_l(i));
       }
       printf("--------------------------\n");
       for(int i=R_EAX;i<R_EDI;i++){
-          printf("(reg: %s value: %04x)\n",reg_name(i, 2), reg_w(i));
+          printf("(reg: %s value: %#06x)\n",reg_name(i, 2), reg_w(i));
       }
       printf("--------------------------\n");
       for(int i=R_EAX;i<R_EDI;i++){
-          printf("(reg: %s value: %02x)\n",reg_name(i, 1), reg_b(i));
+          printf("(reg: %s value: %#04x)\n",reg_name(i, 1), reg_b(i));
       }
       printf("-----------END-----------\n"); 
   } else if(strcmp(args, "w")){
@@ -144,7 +144,7 @@ static int cmd_x(char* args){
       printf("--------MEM--------\n");
       for(int i=mem_loc;i<mem_loc+4*n;i+=4){
         uint32_t mem = vaddr_read(i, 4);
-        printf("%x   :   %08x\n",i,mem);
+        printf("%x   :   %#010x\n",i,mem);
       }
     }
   }
