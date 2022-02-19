@@ -52,7 +52,7 @@ bool spot_dec_number(const char *expr, int* value, int *number_size){
 int cal_hex_number(const char* expr,int size){
     int result=0;
     for(int i=0;i<size;i++){
-        int n=(*expr++-'0'+2);
+        int n=(*expr++-'0');
         result=result*16+n;
     }
     return result;
@@ -69,7 +69,7 @@ bool spot_hex_number(const char *expr, int *value, int *number_size){
         expr++;
     }
     expr-=(size+2);
-    *value=cal_hex_number(expr,size);
+    *value=cal_hex_number(expr+2,size);
     *number_size=size+2;
     return true;
 }
