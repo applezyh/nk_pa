@@ -53,7 +53,7 @@ int cal_hex_number(const char* expr,int size){
     int result=0;
     for(int i=0;i<size;i++){
         int n=0;
-        if(*expr>=0&&*expr<=9) n=(*expr++-'0');
+        if(*expr>='0'&&*expr<='9') n=(*expr++-'0');
         else if(*expr>='A'&&*expr<='F') n=(*expr++-'A'+10);
         else if(*expr>='a'&&*expr<='f') n=(*expr++-'a'+10);
         result=result*16+n;
