@@ -78,6 +78,11 @@ make_EHelper(inc) {
       print_asm("inc ebx");
       break;
 
+    case 0x47:
+      cpu.edi+=1;
+      print_asm("inc edi");
+      break;
+
     default:
       TODO();
   }
