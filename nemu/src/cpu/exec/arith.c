@@ -64,8 +64,11 @@ make_EHelper(cmp) {
 }
 
 make_EHelper(inc) {
-  TODO();
-
+  // TODO();
+  switch(decoding.opcode){
+    case 0x0:
+      cpu.eax+=1;
+  }
   print_asm_template1(inc);
 }
 
