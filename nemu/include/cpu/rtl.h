@@ -161,7 +161,9 @@ static inline void rtl_pop(rtlreg_t* dest) {
   // dest <- M[esp]
   // esp <- esp + 4
   *dest = vaddr_read(cpu.esp, 4);
+  printf("b %d\n",cpu.esp);
   cpu.esp+=4;
+  printf("e %d\n",cpu.esp);
   // TODO();
 }
 
