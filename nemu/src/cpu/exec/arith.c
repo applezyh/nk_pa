@@ -113,15 +113,47 @@ make_EHelper(inc) {
 make_EHelper(dec) {
   // TODO();
   switch(decoding.opcode){
+    case 0x48:
+      cpu.eax--;
+      print_asm("dec eax");
+      return;
+
+    case 0x49:
+      cpu.ecx--;
+      print_asm("dec ecx");
+      return;
+
+    case 0x4a:
+      cpu.edx--;
+      print_asm("dec edx");
+      return;
+
     case 0x4b:
       cpu.ebx--;
       print_asm("dec ebx");
       return;
 
-    case 0x48:
-      cpu.eax--;
-      print_asm("dec eax");
+    case 0x4c:
+      cpu.esp--;
+      print_asm("dec esp");
       return;
+
+    case 0x4d:
+      cpu.ebp--;
+      print_asm("dec ebp");
+      return;
+
+    case 0x4e:
+      cpu.esi--;
+      print_asm("dec esi");
+      return;
+
+    case 0x4f:
+      cpu.edi--;
+      print_asm("dec edi");
+      return;
+
+    
   }
   uint32_t sub_num=1;
   rtl_sub(&t2, &id_dest->val, &sub_num);
