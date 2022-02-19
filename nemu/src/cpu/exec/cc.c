@@ -25,11 +25,12 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_ZF(dest);
       break;
     case CC_BE:{
-      uint32_t sf,zf,of; 
+      uint32_t sf,zf,of,cf; 
       rtl_get_SF(&sf);
       rtl_get_ZF(&zf);
       rtl_get_OF(&of);
-      *dest=(!sf&&!of)||(of&&sf)||zf;
+      rtl_get_CF(&cf);
+      *dest=(!sf&&!of)||(of&&sf)||zf||cf;
       printf("%x : %d %d %d\n",cpu.eip,sf,zf,of);
       break;
     }
