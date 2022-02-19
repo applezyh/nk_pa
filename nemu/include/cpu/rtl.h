@@ -56,6 +56,7 @@ static inline void rtl_div(rtlreg_t* q, rtlreg_t* r, const rtlreg_t* src1_hi, co
 }
 
 static inline void rtl_idiv(rtlreg_t* q, rtlreg_t* r, const rtlreg_t* src1_hi, const rtlreg_t* src1_lo, const rtlreg_t* src2) {
+  printf("%d\n",*src2);
   asm volatile("idiv %4" : "=a"(*q), "=d"(*r) : "d"(*src1_hi), "a"(*src1_lo), "r"(*src2));
 }
 
@@ -148,7 +149,6 @@ static inline void rtl_sext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // dest <- signext(src1[(width * 8 - 1) .. 0])
   // TODO();
   *dest=(uint32_t)(int32_t)(*src1);
-  printf("%d %d\n",*dest, *src1);
 }
 
 static inline void rtl_push(const rtlreg_t* src1) {
