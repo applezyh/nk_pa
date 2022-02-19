@@ -56,7 +56,7 @@ make_group(gp3,
 
   /* 0xfe */
 make_group(gp4,
-    EMPTY, IDEXW(E,dec, 1), EMPTY, EMPTY,
+    EMPTY, IDEXW(r,dec, 1), EMPTY, EMPTY,
     EMPTY, EMPTY, EMPTY, EMPTY)
 
   /* 0xff */
