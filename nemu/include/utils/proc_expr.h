@@ -157,7 +157,7 @@ bool real_expr(const char** expr,int* val){
         *expr+=1;
     } else if(next(*expr, &size)==MUL){
         *expr+=size;
-        add_expr(expr, &re);
+        real_expr(expr, &re);
         *val=vaddr_read(re, 4);
     } else if((re=next(*expr,&size))>=1000){
         *val=re-1000;
