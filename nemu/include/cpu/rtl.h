@@ -118,7 +118,7 @@ static inline void rtl_sr(int r, int width, const rtlreg_t* src1) {
 
 #define make_rtl_setget_eflags(f) \
   static inline void concat(rtl_set_, f) (const rtlreg_t* src) { \
-    if(*src) {cpu.eflag|=(concat(_, f)<<0x00000001);printf("set zf=1\n");} \
+    if(*src) {cpu.eflag|=(concat(_, f)<<0x00000001);printf("%d\n",*src);} \
     else {cpu.eflag&=!(concat(_, f)<<0x00000001);} \
   } \
   static inline void concat(rtl_get_, f) (rtlreg_t* dest) { \
