@@ -185,7 +185,6 @@ make_DHelper(r) {
 }
 
 make_DHelper(E) {
-  printf("E");
   decode_op_rm(eip, id_dest, true, NULL, false);
 }
 
