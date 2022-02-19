@@ -26,6 +26,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_S:
     case CC_L:
     case CC_LE:
+      printf("%d %d\n",cpu.ecx,cpu.edx);
       rtl_get_SF(dest);
       break;
     default: panic("should not reach here");
