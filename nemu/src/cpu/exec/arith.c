@@ -52,6 +52,7 @@ make_EHelper(cmp) {
 
   rtl_sltu(&t0, &id_dest->val, &t2);
   rtl_or(&t0, &t3, &t0);
+  print("%d\n",t0);
   rtl_set_CF(&t0);
 
   rtl_xor(&t0, &id_dest->val, &id_src->val);
