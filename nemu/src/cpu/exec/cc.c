@@ -4,7 +4,7 @@
 
 void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
   bool invert = subcode & 0x1;
-  printf("%d\n",invert);
+  
   enum {
     CC_O, CC_NO, CC_B,  CC_NB,
     CC_E, CC_NE, CC_BE, CC_NBE,
@@ -19,6 +19,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_B:
     case CC_E:
       rtl_get_ZF(dest);
+      printf("%d\n",*dest);
       break;
     case CC_BE:
     case CC_S:
