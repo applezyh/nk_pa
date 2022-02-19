@@ -17,7 +17,7 @@ static inline make_DopHelper(I) {
   op->imm = instr_fetch(eip, op->width);
 
   rtl_li(&op->val, op->imm);
-  printf("%x %x\n",eip, op->imm);
+  printf("%x %x\n",*eip, op->imm);
 
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "$0x%x", op->imm);
