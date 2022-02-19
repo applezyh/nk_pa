@@ -67,49 +67,6 @@ make_EHelper(cmp) {
 
 make_EHelper(inc) {
   // TODO();
-  switch(decoding.opcode){
-    case 0x40:
-      cpu.eax+=1;
-      print_asm("inc eax");
-      break;
-
-    case 0x41:
-      cpu.ecx+=1;
-      print_asm("inc ecx");
-      break;
-
-    case 0x42:
-      cpu.edx+=1;
-      print_asm("inc edx");
-      break;
-    
-    case 0x43:
-      cpu.ebx+=1;
-      print_asm("inc ebx");
-      break;
-
-    case 0x44:
-      cpu.esp+=1;
-      print_asm("inc esp");
-      break;
-
-    case 0x45:
-      cpu.ebp+=1;
-      print_asm("inc ebp");
-      break;
-
-    case 0x46:
-      cpu.esi+=1;
-      print_asm("inc esi");
-      break;
-
-    case 0x47:
-      cpu.edi+=1;
-      print_asm("inc edi");
-      break;
-    default:
-      break;
-  }
   uint32_t sub_num=1;
   rtl_add(&t2, &id_dest->val, &sub_num);
   rtl_sltu(&t3, &id_dest->val, &t2);
@@ -130,49 +87,7 @@ make_EHelper(inc) {
 
 make_EHelper(dec) {
   // TODO();
-  switch(decoding.opcode){
-    case 0x48:
-      cpu.eax--;
-      print_asm("dec eax");
-      return;
-
-    case 0x49:
-      cpu.ecx--;
-      print_asm("dec ecx");
-      return;
-
-    case 0x4a:
-      cpu.edx--;
-      print_asm("dec edx");
-      return;
-
-    case 0x4b:
-      cpu.ebx--;
-      print_asm("dec ebx");
-      return;
-
-    case 0x4c:
-      cpu.esp--;
-      print_asm("dec esp");
-      return;
-
-    case 0x4d:
-      cpu.ebp--;
-      print_asm("dec ebp");
-      return;
-
-    case 0x4e:
-      cpu.esi--;
-      print_asm("dec esi");
-      return;
-
-    case 0x4f:
-      cpu.edi--;
-      print_asm("dec edi");
-      return;
-
-    
-  }
+  
   uint32_t sub_num=1;
   rtl_sub(&t2, &id_dest->val, &sub_num);
   rtl_sltu(&t3, &id_dest->val, &t2);
