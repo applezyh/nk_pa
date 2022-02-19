@@ -67,7 +67,6 @@ make_EHelper(cmp) {
 
 make_EHelper(inc) {
   // TODO();
-  printf("%d\n",decoding.opcode);
   switch(decoding.opcode){
     case 0x40:
       cpu.eax+=1;
@@ -109,14 +108,8 @@ make_EHelper(inc) {
       print_asm("inc edi");
       break;
     
-    case 0xff:{
-      printf("%x\n",id_dest->addr);
-      uint32_t data=vaddr_read(id_dest->val,4);
-      data++;
-      vaddr_write(id_dest->val,data,4);
-      print_asm("inc %x",id_dest->val);
+    case 0xff:
       break;
-    }
   }
 }
 
