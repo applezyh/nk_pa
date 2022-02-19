@@ -156,6 +156,7 @@ void difftest_step(uint32_t eip) {
   }
   diff&=(r.array[8]!=cpu.eip);
   diff&=(r.array[9]!=cpu.eflag);
+  printf("aaaaaaa\n");
 
   if (diff) {
     nemu_state = NEMU_END;
