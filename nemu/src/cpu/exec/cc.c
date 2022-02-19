@@ -27,7 +27,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_L:
     case CC_LE:
       rtl_get_SF(dest);
-      printf("%d %d flag : %d\n",cpu.ecx,cpu.edx,*dest);
+      printf("%d %d flag : %d  invert : \n",cpu.ecx,cpu.edx,*dest,invert);
       break;
     default: panic("should not reach here");
     case CC_P: panic("n86 does not have PF");
