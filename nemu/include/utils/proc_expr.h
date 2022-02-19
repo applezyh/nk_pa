@@ -160,6 +160,7 @@ bool real_expr(const char** expr,int* val){
         real_expr(expr, &re);
         *val=vaddr_read(re, 4);
     } else if((re=next(*expr,&size))>=1000){
+        printf("%d\n",re);
         *val=re-1000;
         *expr+=size;
     } else if((re=next(*expr, &size))>=REG){
