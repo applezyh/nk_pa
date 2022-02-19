@@ -160,6 +160,7 @@ int cmd_w(char* args){
   }
   WP->data=cal_expr(args);
   WP->expr=args;
+  WP->type==WATCHPOINT;
   printf("set watch point in %x success",(uint32_t)loc);
   return 0;
 }
@@ -172,6 +173,26 @@ int cmd_d(char* args){
   }
   free_wp(no);
   return 0;
+}
+
+int cmd_b(char* args){
+  int addr=check_si_args(args);
+  if(addr<0){
+    Log("ERROR! bad NO of watchpoint!");
+    return 0;
+  }
+  struct watchpoint* WP=new_wp();
+  long long loc=cal_expr(args);
+  if(loc<0){
+    Log("ERROR! bad addr!");
+    return 0;
+  }
+  WP->data=addr;
+  WP->expr=args;
+  WP->type==BREAKPOINT;
+  printf("set break point in %x success",(uint32_t)loc);
+  return 0;
+
 }
 
 static int cmd_help(char *args);
@@ -189,7 +210,8 @@ static struct {
   { "p", "calculate expression", cmd_p},
   { "x", "scan mem", cmd_x},
   { "w", "use \"w addr\" set watch point in address addr", cmd_w},
-  { "d", "use \"d N\" delete watch point which NO==N", cmd_d}
+  { "d", "use \"d N\" delete watch point which NO==N", cmd_d},
+  { "b", "set break point", cmd_b}
   /* TODO: Add more commands */
 
 };
