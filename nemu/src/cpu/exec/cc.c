@@ -29,6 +29,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_SF(&sf);
       rtl_get_ZF(&zf);
       rtl_get_OF(&of);
+      printf("SF : %d ZF : %d OF : %d\n",sf,zf,of);
       *dest=(!sf&&!of)||(of&&sf)||zf;
       break;
     }
