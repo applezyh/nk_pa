@@ -97,6 +97,11 @@ make_EHelper(dec) {
       cpu.ebx--;
       print_asm("dec ebx");
       return;
+
+    case 0x48:
+      cpu.eax--;
+      print_asm("dec eax");
+      return;
   }
   uint32_t sub_num=1;
   rtl_sub(&t2, &id_dest->val, &sub_num);
