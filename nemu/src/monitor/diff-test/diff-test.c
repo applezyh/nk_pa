@@ -149,7 +149,13 @@ void difftest_step(uint32_t eip) {
 
   // TODO: Check the registers state with QEMU.
   // Set `diff` as `true` if they are not the same.
-  TODO();
+  // TODO();
+  diff=0;
+  for(int i=R_EAX;i<R_EDI;i++){
+    diff&=(r.array[i]!=reg_w(i));
+  }
+  diff&=(r.array[8]!=cpu.eip);
+  diff&=(r.array[9]!=cpu.eflag);
 
   if (diff) {
     nemu_state = NEMU_END;
