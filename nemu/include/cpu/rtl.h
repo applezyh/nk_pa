@@ -193,9 +193,11 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // TODO();
   uint32_t zf_flag = (*result==0);
   rtl_set_ZF(&zf_flag);
+  if(!zf_flag) {
     uint32_t a=1;
     rtl_get_ZF(&a);
     printf("%d\n",a);
+  }
 }
 
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
