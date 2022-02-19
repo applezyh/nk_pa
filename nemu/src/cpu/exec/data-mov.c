@@ -61,7 +61,52 @@ make_EHelper(push) {
 }
 
 make_EHelper(pop) { 
-  TODO();
+  switch (decoding.opcode)
+  {
+  case 0x58:
+    rtl_pop(&(cpu.eax));
+    print_asm("pop %s","eax");
+    break;
+
+  case 0x59:
+    rtl_pop(&(cpu.ecx));
+    print_asm("pop %s","ecx");
+    break;
+
+  case 0x5a:
+    rtl_pop(&(cpu.edx));
+    print_asm("pop %s","edx");
+    break;
+
+  case 0x5b:
+    rtl_pop(&(cpu.ebx));
+    print_asm("pop %s","ebx");
+    break;
+
+  case 0x5c:
+    rtl_pop(&(cpu.esp));
+    print_asm("pushw %s","esp");
+    break;
+
+  case 0x5d:
+    rtl_pop(&(cpu.ebp));
+    print_asm("pop %s","ebp");
+    break;
+
+  case 0x5e:
+    rtl_pop(&(cpu.esi));
+    print_asm("pop %s","esi");
+    break;
+
+  case 0x5f:
+    rtl_pop(&(cpu.edi));
+    print_asm("pop %s","edi");
+    break;
+
+  default:
+    TODO();
+    break;
+  }
 
   print_asm_template1(pop);
 }
