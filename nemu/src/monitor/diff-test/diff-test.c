@@ -151,11 +151,12 @@ void difftest_step(uint32_t eip) {
   // Set `diff` as `true` if they are not the same.
   // TODO();
   diff=0;
-  for(int i=R_EAX;i<R_EDI;i++){
+  for(int i=R_EAX;i<=R_EDI;i++){
+    printf("%x %x\n",r.array[i],reg_l(i));
     diff|=(r.array[i]!=reg_l(i));
   }
-  diff|=(r.array[7]!=cpu.eip);
-  diff|=(r.array[8]!=cpu.eflag);
+  diff|=(r.array[8]!=cpu.eip);
+  diff|=(r.array[9]!=cpu.eflag);
   if (diff) {
     nemu_state = NEMU_END;
   }
