@@ -92,7 +92,6 @@ make_EHelper(inc) {
 
 make_EHelper(dec) {
   // TODO();
-  printf("%d\n",decoding.opcode);
   switch(decoding.opcode){
     case 0x4b:
       cpu.ebx--;
