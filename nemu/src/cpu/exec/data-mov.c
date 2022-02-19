@@ -61,7 +61,6 @@ make_EHelper(push) {
 }
 
 make_EHelper(pop) { 
-  printf("%d\n",decoding.opcode);
   switch (decoding.opcode)
   {
   case 0x58:
