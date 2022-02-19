@@ -161,7 +161,7 @@ int cmd_w(char* args){
   WP->data=cal_expr(args);
   WP->expr=args;
   WP->type=WATCHPOINT;
-  printf("set watch point:%d in success:%s",WP->NO, args);
+  printf("set watch point:%d in success:%s\n",WP->NO, args);
   return 0;
 }
 
@@ -176,7 +176,7 @@ int cmd_d(char* args){
 }
 
 int cmd_b(char* args){
-  int addr=check_si_args(args);
+  long long addr=cal_expr(args);
   if(addr<0){
     Log("ERROR! bad NO of watchpoint!");
     return 0;
