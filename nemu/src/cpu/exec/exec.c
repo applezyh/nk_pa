@@ -90,7 +90,7 @@ opcode_entry opcode_table [512] = {
   /* 0x3c */	IDEXW(I, cmp, 1), IDEXW(I2a, cmp, 4), EMPTY, EMPTY,
   /* 0x40 */	EX(inc), EMPTY, EMPTY, EX(inc),
   /* 0x44 */	EMPTY, EMPTY, EX(inc), EX(inc),
-  /* 0x48 */	EMPTY, EMPTY, EMPTY, EMPTY,
+  /* 0x48 */	EMPTY, EMPTY, EMPTY, EX(inc),
   /* 0x4c */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x50 */	EX(push), EX(push), EX(push), EX(push),
   /* 0x54 */	EX(push), EX(push), EX(push), EX(push),

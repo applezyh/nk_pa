@@ -87,14 +87,17 @@ make_EHelper(inc) {
       cpu.edi+=1;
       print_asm("inc edi");
       break;
-
-    default:
-      TODO();
   }
 }
 
 make_EHelper(dec) {
   // TODO();
+  switch(decoding.opcode){
+    case 0x4b:
+      cpu.eax-=1;
+      print_asm("dec ebx");
+      return;
+  }
   uint32_t sub_num=1;
   rtl_sub(&t2, &id_dest->val, &sub_num);
   rtl_sltu(&t3, &id_dest->val, &t2);
