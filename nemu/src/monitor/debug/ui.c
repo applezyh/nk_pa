@@ -161,7 +161,7 @@ int cmd_w(char* args){
   WP->data=cal_expr(args);
   WP->expr=args;
   WP->type=WATCHPOINT;
-  printf("set watch point in success:%s",args);
+  printf("set watch point:%d in success:%s",WP->NO, args);
   return 0;
 }
 
@@ -185,9 +185,8 @@ int cmd_b(char* args){
   WP->data=addr;
   WP->expr=args;
   WP->type=BREAKPOINT;
-  printf("set break point in %x success\n",(uint32_t)addr);
+  printf("set break point:%d in %x success\n",WP->NO,(uint32_t)addr);
   return 0;
-
 }
 
 static int cmd_help(char *args);
