@@ -156,7 +156,7 @@ void difftest_step(uint32_t eip) {
     
     flag=(r.array[i]!=reg_l(i));
     diff|=flag;
-    if (diff) {
+    if (flag) {
       printf("diff %s true:%x but %x in %x\n",reg_name(i,4),r.array[i],reg_l(i),cpu.eip);
     }
   }
@@ -164,7 +164,7 @@ void difftest_step(uint32_t eip) {
   // printf("%x %x\n",r.array[9],cpu.eflag);
   flag=(r.array[8]!=cpu.eip);
   diff|=flag;
-  if (diff) {
+  if (flag) {
       printf("diff eip true:%x but %x\n",r.array[8],cpu.eip);
     }
   if (diff) {
