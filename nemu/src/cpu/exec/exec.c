@@ -23,6 +23,7 @@ static inline void set_width(int width) {
 /* Instruction Decode and EXecute */
 static inline void idex(vaddr_t *eip, opcode_entry *e) {
   /* eip is pointing to the byte next to opcode */
+  if(e->decode) printf("%x\n",decoding.opcode);
   if (e->decode)
     e->decode(eip);
   e->execute(eip);
@@ -184,7 +185,7 @@ opcode_entry opcode_table [512] = {
   /* 0xa8 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xac */	EMPTY, EMPTY, EMPTY, IDEXW(E2G,imul2, 4),
   /* 0xb0 */	EMPTY, EMPTY, EMPTY, EMPTY,
-  /* 0xb4 */	EMPTY, EMPTY, IDEXW(E, mov, 4), IDEXW(E2G, mov, 4),
+  /* 0xb4 */	EMPTY, EMPTY, IDEXW(r, mov, 4), IDEXW(E2G, mov, 4),
   /* 0xb8 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xbc */	EMPTY, EMPTY, IDEXW(E2G, mov, 4), IDEXW(E2G, mov, 4),
   /* 0xc0 */	EMPTY, EMPTY, EMPTY, EMPTY,
