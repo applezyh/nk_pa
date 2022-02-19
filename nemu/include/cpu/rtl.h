@@ -192,8 +192,12 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // eflags.ZF <- is_zero(result[width * 8 - 1 .. 0])
   // TODO();
   uint32_t zf_flag = (*result==0);
-  if(zf_flag) printf("%d\n",*result);
-  cpu.eflag&=((zf_flag<<6)|0xffffffbf);
+  rtl_set_ZF(&zf_flag);
+  if(*result==0) {
+    uint32_t a;
+    rtl_get_ZF(&a);
+    printf("%d\n",a);
+  }
 }
 
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
