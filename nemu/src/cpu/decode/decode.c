@@ -252,6 +252,12 @@ make_DHelper(Ib_G2E) {
   decode_op_I(eip, id_src, true);
 }
 
+make_DHelper(a2A) {
+  decode_op_r(eip,id_dest,true);
+  id_src->width = 1;
+  decode_op_r(eip, id_src, true);
+}
+
 make_DHelper(O2a) {
   decode_op_O(eip, id_src, true);
   decode_op_a(eip, id_dest, false);
