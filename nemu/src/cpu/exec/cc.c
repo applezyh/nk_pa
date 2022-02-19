@@ -37,7 +37,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       TODO();
       break;
     case CC_L:{
-      uint32_t sf,of,cf;  
+      uint32_t sf,of;  
       rtl_get_SF(&sf);
       rtl_get_OF(&of);
       *dest=(sf&&!of)||(of&&!sf);
