@@ -48,6 +48,9 @@ make_EHelper(cmp) {
   rtl_sltu(&t3, &id_dest->val, &t2);
 
   rtl_update_ZFSF(&t2, id_dest->width);
+  if(t2==0){
+    printf("afdfwsfd\n");
+  }
 
   rtl_sltu(&t0, &id_dest->val, &t2);
   
