@@ -22,6 +22,7 @@ make_EHelper(jcc) {
 
 
   print_asm("j%s %x", get_cc_name(subcode), decoding.jmp_eip);
+  cpu.eip=decoding.jmp_eip;
 }
 
 make_EHelper(jmp_rm) {
