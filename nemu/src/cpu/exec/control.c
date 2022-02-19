@@ -33,8 +33,10 @@ make_EHelper(call) {
 
 make_EHelper(ret) {
   // TODO();
+  printf("b %d\n",cpu.eip);
   rtl_pop(eip);
   print_asm("ret");
+  printf("a %d\n",cpu.eip);
 }
 
 make_EHelper(call_rm) {
