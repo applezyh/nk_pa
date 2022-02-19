@@ -161,7 +161,7 @@ int cmd_w(char* args){
   WP->data=cal_expr(args);
   WP->expr=args;
   WP->type=WATCHPOINT;
-  printf("set watch point in %x success",(uint32_t)loc);
+  printf("set watch point in success:%s",args);
   return 0;
 }
 
@@ -182,15 +182,10 @@ int cmd_b(char* args){
     return 0;
   }
   struct watchpoint* WP=new_wp();
-  long long loc=cal_expr(args);
-  if(loc<0){
-    Log("ERROR! bad addr!");
-    return 0;
-  }
   WP->data=addr;
   WP->expr=args;
   WP->type=BREAKPOINT;
-  printf("set break point in %x success",(uint32_t)loc);
+  printf("set break point in %x success",(uint32_t)addr);
   return 0;
 
 }
