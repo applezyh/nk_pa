@@ -72,10 +72,30 @@ make_EHelper(inc) {
       cpu.eax+=1;
       print_asm("inc eax");
       break;
+
+    case 0x41:
+      cpu.ecx+=1;
+      print_asm("inc ecx");
+      break;
+
+    case 0x42:
+      cpu.edx+=1;
+      print_asm("inc edx");
+      break;
     
     case 0x43:
       cpu.ebx+=1;
       print_asm("inc ebx");
+      break;
+
+    case 0x44:
+      cpu.esp+=1;
+      print_asm("inc esp");
+      break;
+
+    case 0x45:
+      cpu.ebp+=1;
+      print_asm("inc ebp");
       break;
 
     case 0x46:
