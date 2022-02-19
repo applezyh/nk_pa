@@ -35,7 +35,7 @@ make_EHelper(and) {
         break;
       }
       case 2:{
-        bool flag = (id_src->val)>>(id_src->width-1);
+        bool flag = (id_src->val)>>(8*id_src->width-1);
         if(flag){
           id_src->val|=0xffffff00;
         }
