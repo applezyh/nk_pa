@@ -199,14 +199,8 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
   // eflags.SF <- is_sign(result[width * 8 - 1 .. 0])
   // TODO();
-  int zero_um=0;
-  uint32_t re=*result;
-  for(int i=0;i<width;i++){
-    zero_um+=(re&0x1);
-    re>>=1;
-  }
-  uint32_t zf_flag = (zero_um%2);
-  cpu.eflag&=((zf_flag<<7)|0xffffff7f);
+  uint32_t sf_flag = (*result<<31)>>31;
+  rtl_set_ZF(sf_flag);
   
 }
 
