@@ -54,6 +54,11 @@ make_EHelper(push) {
     print_asm_template1(push);
     break;
 
+  case 0x6a:
+    rtl_push(&(id_dest->val));
+    print_asm_template1(push);
+    break;
+
   default:
     TODO();
     break;
