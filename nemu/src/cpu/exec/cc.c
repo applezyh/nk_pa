@@ -18,7 +18,6 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_B:
     case CC_E:
       rtl_get_CF(dest);
-      printf("%u\n", *dest);
       break;
     case CC_BE:
     case CC_S:
