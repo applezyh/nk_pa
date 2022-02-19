@@ -31,7 +31,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_OF(&of);
       rtl_get_CF(&cf);
       *dest=(!sf&&!of)||(of&&sf)||zf||cf;
-      printf("%x : %d %d %d\n",cpu.eip,sf,zf,of);
+      printf("%x : %d %d %d %d isjmp = %d\n",cpu.eip,sf,zf,of,cf,*dest);
       break;
     }
     case CC_S:
