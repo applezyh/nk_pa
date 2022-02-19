@@ -104,6 +104,7 @@ make_DHelper(O2a);
 make_DHelper(a2O);
 
 make_DHelper(J);
+make_DHelper(EJ);
 
 make_DHelper(push_SI);
 
