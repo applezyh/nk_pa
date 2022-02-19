@@ -10,7 +10,7 @@ make_EHelper(jcc) {
   // the target address is calculated at the decode stage
   uint8_t subcode = decoding.opcode & 0xf;
   rtl_setcc(&t2, subcode);
-  if(cpu.eip==0x1000c3) printf("flag %d\n",t2);
+  if(cpu.eip==0x1000c3) printf("flag %d dest : %x\n",t2,decoding.jmp_eip);
   decoding.is_jmp = t2;
 
 
