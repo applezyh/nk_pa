@@ -199,9 +199,7 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
   // eflags.SF <- is_sign(result[width * 8 - 1 .. 0])
   // TODO();
-  if(cpu.eip==0x1000cb){
-    printf("%x  ", *result);
-  }
+  
   uint32_t sf_flag = (*result<<31)>>31;
   rtl_set_SF(&sf_flag);
   
