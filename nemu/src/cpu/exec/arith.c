@@ -68,8 +68,10 @@ make_EHelper(inc) {
   switch(decoding.opcode){
     case 0x0:
       cpu.eax+=1;
+      print_asm("inc eax");
+    default:
+      TODO();
   }
-  print_asm_template1(inc);
 }
 
 make_EHelper(dec) {
