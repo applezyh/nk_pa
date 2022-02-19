@@ -16,9 +16,9 @@ int cal_dec_number(const char* expr, int size){
     int result=0;
     for(int i=0;i<size;i++){
         int n=(*expr++-'0');
+        printf("%d\n",n);
         result+=result*10+n;
     }
-    printf("%d\n",result);
     return result;
 }
 
