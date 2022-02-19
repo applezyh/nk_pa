@@ -95,8 +95,8 @@ make_EHelper(inc) {
 
 make_EHelper(dec) {
   // TODO();
-  uint32_t sub=1;
-  rtl_sub(&id_dest->val, id_dest->val, &sub);
+  uint32_t sub_num=1;
+  rtl_sub(&id_dest->val, id_dest->val, &sub_num);
   operand_write(id_dest,&id_dest->val);
 
   print_asm_template1(dec);
