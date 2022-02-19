@@ -24,6 +24,7 @@ int cal_dec_number(const char* expr, int size){
 bool spot_dec_number(const char *expr, int* value, int *number_size){
     int state=0;
     int size=0;
+    printf("xxxxxxxx\n");
     while(*expr!='\0'&&('0'<=*expr&&*expr<='9')){
         int ca;
         if(*expr=='0') ca=0;
@@ -160,7 +161,6 @@ bool real_expr(const char** expr,int* val){
         real_expr(expr, &re);
         *val=vaddr_read(re, 4);
     } else if((re=next(*expr,&size))>=1000){
-        printf("%d\n",re);
         *val=re-1000;
         *expr+=size;
     } else if((re=next(*expr, &size))>=REG){
