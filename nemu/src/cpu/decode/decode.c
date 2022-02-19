@@ -307,6 +307,7 @@ make_DHelper(out_a2dx) {
 }
 
 make_DHelper(r2A){
+  printf("%d\n",decoding.opcode);
   decode_op_r(eip,id_src,true);
   id_dest->type=OP_TYPE_REG;
   id_dest->reg=R_EAX;
