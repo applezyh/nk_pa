@@ -149,7 +149,7 @@ static inline void rtl_sext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // TODO();
   if(width==2)
     *dest=(uint32_t)((int16_t)(*src1));
-  else
+  else if(width==1)
     *dest=(uint32_t)((int8_t)(*src1));
 }
 
