@@ -29,7 +29,6 @@ make_EHelper(sub) {
   operand_write(id_dest, &t2);
 
   rtl_update_ZFSF(&t2, id_dest->width);
-  printf("%d %d\n", id_dest->val, t2);
   rtl_sltu(&t0, &id_dest->val, &t2);
   rtl_or(&t0, &t3, &t0);
   rtl_set_CF(&t0);
@@ -51,8 +50,8 @@ make_EHelper(cmp) {
   rtl_update_ZFSF(&t2, id_dest->width);
 
   rtl_sltu(&t0, &id_dest->val, &t2);
+  printf("%d %d\n", id_dest->val, t2);
   rtl_or(&t0, &t3, &t0);
-  printf("%d\n",t0);
   rtl_set_CF(&t0);
 
   rtl_xor(&t0, &id_dest->val, &id_src->val);
