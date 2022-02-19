@@ -25,7 +25,11 @@ make_EHelper(jmp_rm) {
 }
 
 make_EHelper(call) {
-  decoding.jmp_eip = id_dest->val+*eip;
+  if(decoding.opcode!=0xff) decoding.jmp_eip = id_dest->val+*eip;
+  else {
+    printf("%x %x\n",id_dest->val,id_dest->addr);
+    decoding.jmp_eip = id_dest->val;
+    }
   rtl_push(eip);
   decoding.is_jmp = 1;
   // TODO();
