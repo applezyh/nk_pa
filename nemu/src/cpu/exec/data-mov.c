@@ -60,7 +60,8 @@ make_EHelper(push) {
     break;
 
   default:
-    TODO();
+    rtl_push(&(id_dest->val));
+    print_asm_template1(push);
     break;
   }
 }
