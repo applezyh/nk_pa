@@ -47,8 +47,6 @@ make_EHelper(cmp) {
   rtl_sub(&t2, &id_dest->val, &id_src->val);
   rtl_sltu(&t3, &id_dest->val, &t2);
 
-  if(cpu.eip==0x1000c0) printf("%d - %d = %x\n",id_dest->val,id_src->val,t2);
-
   rtl_update_ZFSF(&t2, id_dest->width);
   
   rtl_sltu(&t0, &id_dest->val, &t2);
