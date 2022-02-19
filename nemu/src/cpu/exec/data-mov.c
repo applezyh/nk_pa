@@ -90,7 +90,6 @@ make_EHelper(pop) {
 
   case 0x5d:
     rtl_pop(&(cpu.ebp));
-    printf("aaaaaaa\n");
     print_asm("pop %s","ebp");
     break;
 
@@ -109,7 +108,6 @@ make_EHelper(pop) {
     break;
   }
 
-  print_asm_template1(pop);
 }
 
 make_EHelper(pusha) {
