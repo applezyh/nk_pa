@@ -154,8 +154,8 @@ void difftest_step(uint32_t eip) {
   for(int i=R_EAX;i<R_EDI;i++){
     diff|=(r.array[i]!=reg_w(i));
   }
-  diff|=(r.array[8]!=cpu.eip);
-  diff|=(r.array[9]!=cpu.eflag);
+  diff|=(r.array[7]!=cpu.eip);
+  diff|=(r.array[8]!=cpu.eflag);
 
   if (diff) {
     nemu_state = NEMU_END;
