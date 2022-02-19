@@ -7,7 +7,6 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   //TODO();
-  printf("push\n");
   switch (decoding.opcode)
   {
   case 0x50:
@@ -56,6 +55,7 @@ make_EHelper(push) {
     break;
 
   default:
+    TODO();
     break;
   }
 }
