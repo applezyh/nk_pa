@@ -239,7 +239,7 @@ void exec_wrapper(bool print_flag) {
 
 #ifdef DEBUG
   int instr_len = decoding.seq_eip - cpu.eip;
-  printf("%d\n",50 - (12 + 3 * instr_len));
+  if(instr_len>50||instr_len<0) instr_len=32;
   sprintf(decoding.p, "%*.s", 50 - (12 + 3 * instr_len), "");
   memset(decoding.asm_buf+(128-80),0,80);
   my_strcat(decoding.asm_buf, decoding.assembly);
