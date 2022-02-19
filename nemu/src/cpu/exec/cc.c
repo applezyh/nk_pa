@@ -17,7 +17,11 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
   
   switch (subcode & 0xe) {
     case CC_O:
+      TODO();
+      break;
     case CC_B:
+      TODO();
+      break;
     case CC_E:
       rtl_get_ZF(dest);
       break;
@@ -29,7 +33,11 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       break;
     }
     case CC_S:
+      TODO();
+      break;
     case CC_L:
+      TODO();
+      break;
     case CC_LE:{
       uint32_t sf,zf; 
       rtl_get_SF(&sf);
