@@ -174,7 +174,6 @@ bool real_expr(const char** expr,int* val){
         } else {
             if(re-REG==R_EIP) *val=cpu.eip;
             else *val=reg_l((re-1*REG));
-            printf("ss %d\n",*val);
         }
         *expr+=size;
     }  else{
