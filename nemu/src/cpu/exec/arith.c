@@ -48,11 +48,6 @@ make_EHelper(cmp) {
   rtl_sltu(&t3, &id_dest->val, &t2);
 
   rtl_update_ZFSF(&t2, id_dest->width);
-  if(t2==0){
-    uint32_t a;
-    rtl_get_ZF(&a);
-    printf("ZF=%d\n",a);
-  }
 
   rtl_sltu(&t0, &id_dest->val, &t2);
   
@@ -64,6 +59,12 @@ make_EHelper(cmp) {
   rtl_and(&t0, &t0, &t1);
   rtl_msb(&t0, &t0, id_dest->width);
   rtl_set_OF(&t0);
+
+  uint32_t a;
+  rtl_get_ZF(&a);
+  if(a){
+    printf("ZF = %d\n",a);
+  }
 
   print_asm_template2(cmp);
 }
