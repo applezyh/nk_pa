@@ -107,6 +107,15 @@ make_EHelper(inc) {
       cpu.edi+=1;
       print_asm("inc edi");
       break;
+    
+    case 0xff:{
+      uint32_t data;
+      rtl_lr(&data,id_dest->val,4);
+      data++;
+      rtl_sm(id_dest->val,4,&data);
+      print_asm("inc %x",id_dest->val);
+      break;
+    }
   }
 }
 
