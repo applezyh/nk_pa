@@ -151,16 +151,19 @@ void difftest_step(uint32_t eip) {
   // Set `diff` as `true` if they are not the same.
   // TODO();
   diff=0;
+  int flag=0;
   for(int i=R_EAX;i<=R_EDI;i++){
     
-    diff|=(r.array[i]!=reg_l(i));
-      if (diff) {
+    flag=(r.array[i]!=reg_l(i));
+    diff|=flag;
+    if (diff) {
       printf("diff %s true:%x but %x\n",reg_name(i,4),r.array[i],reg_l(i));
     }
   }
   // printf("%x %x\n",r.array[8],cpu.eip);
   // printf("%x %x\n",r.array[9],cpu.eflag);
-  diff|=(r.array[8]!=cpu.eip);
+  flag=(r.array[8]!=cpu.eip);
+  diff|=flag;
   if (diff) {
       printf("diff eip true:%x but %x\n",r.array[8],cpu.eip);
     }
