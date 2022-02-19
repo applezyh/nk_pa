@@ -95,7 +95,7 @@ make_EHelper(inc) {
 
 make_EHelper(dec) {
   // TODO();
-  int sub=1;
+  uint32_t sub=1;
   rtl_sub(&id_dest->val, id_dest->val, &sub);
   operand_write(id_dest,&id_dest->val);
 
