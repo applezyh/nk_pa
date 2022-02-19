@@ -65,7 +65,7 @@ bool check_watchpoint(){
       return true;
     }
     if(h->type==BREAKPOINT&&h->data==cpu.eip){
-      printf("breakpoint NO:%d trigger in %x\n", h->NO, cpu.eip);
+      printf("breakpoint NO:%d trigger before %x\n", h->NO, cpu.eip);
       return true;
     }
     h=h->next;
