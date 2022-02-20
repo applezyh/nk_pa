@@ -108,11 +108,12 @@ bool update_keypress() {
       min = it->y;
       target = it;
     }
+    printf("looping\n");
   }
   if(target != NULL){
     release_key(target->text);
     target->v = -3;
-    printf("return\n");
+    
     return true;
   }
   return false;
