@@ -82,7 +82,7 @@ opcode_entry opcode_table [512] = {
   /* 0x18 */	EMPTY, EMPTY, EMPTY, IDEXW(E2G, sbb, 4),
   /* 0x1c */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x20 */	EMPTY, EMPTY, IDEXW(E2G, and, 1), EMPTY,
-  /* 0x24 */	EMPTY, EMPTY, EMPTY, EMPTY,
+  /* 0x24 */	EMPTY, IDEXW(I2a, and, 4), EMPTY, EMPTY,
   /* 0x28 */	EMPTY, IDEXW(G2E, sub, 4), EMPTY, IDEXW(E2G, sub, 4),
   /* 0x2c */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x30 */	EMPTY, IDEX(G2E, xor), EMPTY, EMPTY,
