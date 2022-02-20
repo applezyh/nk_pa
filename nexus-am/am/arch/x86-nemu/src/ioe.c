@@ -9,9 +9,10 @@ void _ioe_init() {
 }
 
 unsigned long _uptime() {
-  return 0;
+  unsigned long now=inl(RTC_PORT);
+  long msseconds = now - boot_time;
+  return msseconds;
 }
-
 uint32_t* const fb = (uint32_t *)0x40000;
 
 _Screen _screen = {
