@@ -27,6 +27,7 @@ void update_screen() {
 }
 
 void init_vga() {
+  Assert(0,"s");
   SDL_Init(SDL_INIT_VIDEO);
   SDL_CreateWindowAndRenderer(SCREEN_W * 2, SCREEN_H * 2, 0, &window, &renderer);
   SDL_SetWindowTitle(window, "NEMU");
