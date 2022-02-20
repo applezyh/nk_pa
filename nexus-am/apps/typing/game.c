@@ -31,6 +31,7 @@ int main (){
 
     while (keyboard_event());
     while (update_keypress());
+    printf("upa\n");
      
     if (frames % (HZ / CHARACTER_PER_SECOND) == 0) {
       create_new_letter();

@@ -43,7 +43,6 @@ bool keyboard_event() {
   if((keycode & KEYDOWN_MASK) != 0){
     key_code = keycode & ~KEYDOWN_MASK;
     press_key(key_code);
-    printf("return true\n");
     return true;
   }
   else{
@@ -52,7 +51,6 @@ bool keyboard_event() {
         release_key(i);
       }
     }
-    printf("return true\n");
     return true;
   }
 }
