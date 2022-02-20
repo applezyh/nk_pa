@@ -17,7 +17,6 @@ static SDL_Texture *texture;
 static uint32_t (*vmem) [SCREEN_W];
 
 void vga_vmem_io_handler(paddr_t addr, int len, bool is_write) {
-  Assert(0,"a%x\n",addr);
 }
 
 void update_screen() {
