@@ -1,6 +1,6 @@
 #include "common.h"
 
-#ifdef HAS_IOE
+//#ifdef HAS_IOE
 
 #include <sys/time.h>
 #include <signal.h>
@@ -90,9 +90,10 @@ void init_device() {
   ret = setitimer(ITIMER_VIRTUAL, &it, NULL);
   Assert(ret == 0, "Can not set timer");
 }
-#else
+//#else
 
-void init_device() {
-}
+// void init_device() {
+//   
+// }
 
-#endif	/* HAS_IOE */
+//#endif	/* HAS_IOE */
