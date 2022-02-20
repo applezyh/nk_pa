@@ -73,8 +73,8 @@ make_group(gp7,
 /* TODO: Add more instructions!!! */
 
 opcode_entry opcode_table [512] = {
-  /* 0x00 */	IDEXW(G2E, add, 2), IDEXW(G2E, add, 4), EMPTY, IDEXW(E2G, add, 4),
-  /* 0x04 */	IDEXW(I2a, add, 2), IDEXW(I2a, add, 4), EMPTY, EMPTY,
+  /* 0x00 */	IDEXW(G2E, add, 1), IDEXW(G2E, add, 4), EMPTY, IDEXW(E2G, add, 4),
+  /* 0x04 */	IDEXW(I2a, add, 1), IDEXW(I2a, add, 4), EMPTY, EMPTY,
   /* 0x08 */	IDEXW(G2E, or, 1), IDEXW(G2E, or, 4), IDEXW(E2G, or, 1), IDEXW(E2G, or, 4),
   /* 0x0c */	EMPTY, EMPTY, EMPTY, EX(2byte_esc),
   /* 0x10 */	EMPTY, EMPTY, EMPTY, IDEXW(E2G, adc, 4),
