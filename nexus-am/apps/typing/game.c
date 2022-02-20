@@ -30,6 +30,7 @@ int main (){
     next_frame += 1000 / HZ;
 
     while (keyboard_event());
+    printf("looping\n");
     while (update_keypress());
      
     if (frames % (HZ / CHARACTER_PER_SECOND) == 0) {
@@ -108,7 +109,6 @@ bool update_keypress() {
       min = it->y;
       target = it;
     }
-    printf("looping\n");
   }
   if(target != NULL){
     release_key(target->text);
