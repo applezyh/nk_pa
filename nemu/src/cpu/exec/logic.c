@@ -9,7 +9,7 @@ make_EHelper(test) {
   rtl_set_CF(&t0);
   rtl_get_OF(&t1);
   rtl_get_CF(&t3);
-  printf("set  %d   of %d  cf  %d\n",t2,t1,t3);
+  printf("set  %d   of %d  cf  %d in eip%x\n",t2,t1,t3,cpu.eip);
   print_asm_template2(test);
 }
 
