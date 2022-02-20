@@ -7,6 +7,7 @@ make_EHelper(test) {
   t0=0;
   rtl_set_OF(&t0);
   rtl_set_CF(&t0);
+  printf("aaaaa\n");
   print_asm_template2(and);
 }
 
