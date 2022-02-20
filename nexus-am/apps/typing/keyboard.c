@@ -40,7 +40,7 @@ bool keyboard_event() {
   int keycode = _read_key();
   printf("%d\n",key_code);
   if (keycode == _KEY_NONE) return false;
-  printf("return true");
+  printf("return true\n");
   if((keycode & KEYDOWN_MASK) != 0){
     key_code = keycode & ~KEYDOWN_MASK;
     press_key(key_code);

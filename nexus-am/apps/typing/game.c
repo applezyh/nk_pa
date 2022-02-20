@@ -42,6 +42,7 @@ int main (){
     if(redraw) {
       num_draw ++;
       set_fps(num_draw * 1000 / time);
+      printf("aaxxxxxxx\n");
       redraw_screen();
     }
   }
