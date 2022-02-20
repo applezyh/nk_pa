@@ -47,8 +47,8 @@ void pio_write(ioaddr_t, int, uint32_t);
 make_EHelper(in) {
   // TODO();
   
-  pio_read(id_src->val,id_dest->width);
-  operand_write(id_dest,&id_dest->val);
+  uint32_t data = pio_read(id_src->val,id_dest->width);
+  operand_write(id_dest,&data);
   print_asm_template2(in);
 
 #ifdef DIFF_TEST
@@ -58,7 +58,6 @@ make_EHelper(in) {
 
 make_EHelper(out) {
   // TODO();
-  printf("%d %d\n",id_src->reg,id_dest->reg);
   pio_write(id_dest->val,id_src->width,id_src->val);
   print_asm_template2(out);
 
