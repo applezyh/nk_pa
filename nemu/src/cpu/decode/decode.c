@@ -29,7 +29,7 @@ static inline make_DopHelper(I) {
  */
 /* sign immediate */
 static inline make_DopHelper(SI) {
-  assert(op->width == 1 || op->width == 4);
+  assert(op->width == 1 || op->width == 2 || op->width == 4);
 
   op->type = OP_TYPE_IMM;
 
@@ -40,6 +40,7 @@ static inline make_DopHelper(SI) {
    op->simm = ???
    */
   if(op->width==1) op->simm = ((int8_t)instr_fetch(eip, op->width));
+  else if(op->width==2) op->simm = ((int16_t)instr_fetch(eip, op->width));
   else op->simm = ((int32_t)instr_fetch(eip, op->width));
   //TODO();
 
