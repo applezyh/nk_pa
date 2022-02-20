@@ -74,7 +74,6 @@ void sdl_clear_event_queue() {
 }
 
 void init_device() {
-  Assert(0,"a");
   init_serial();
   init_timer();
   init_vga();
