@@ -4,6 +4,6 @@
 
 uintptr_t loader(_Protect *as, const char *filename) {
   // TODO();
-  ramdisk_read(DEFAULT_ENTRY,0,as->area.start-as->area.end);
+  ramdisk_read(DEFAULT_ENTRY,0,as->area.end-as->area.start);
   return (uintptr_t)DEFAULT_ENTRY;
 }
