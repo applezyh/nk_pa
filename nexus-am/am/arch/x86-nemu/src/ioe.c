@@ -24,8 +24,8 @@ extern void* memcpy(void *, const void *, int);
 
 void _draw_rect(const uint32_t *pixels, int x, int y, int w, int h) {
   uint32_t seq=0;
-  for(int i=y;i<y+h;i++){
-    for(int j=x;j<x+w;j++){
+  for(int i=x;i<x+h;i++){
+    for(int j=y;j<y+w;j++){
       fb[i*_screen.width+j]=pixels[seq++];
     }
   }
