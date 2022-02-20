@@ -43,3 +43,6 @@ make_EHelper(imul1);
 make_EHelper(div);
 make_EHelper(dec);
 make_EHelper(sbb);
+
+make_EHelper(in);
+make_EHelper(out);
