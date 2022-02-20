@@ -34,10 +34,10 @@ void _draw_sync() {
 
 int _read_key() {
   int key=_KEY_NONE;
-  // int status=0;
-  // while(!status){
-  //   status=inl(0x64);
-  // }
+  uint8_t status=0;
+  while(!status){
+    status=inb(0x64);
+  }
   key = inl(0x60);
   return key;
 }
