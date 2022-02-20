@@ -23,7 +23,7 @@ int main (){
       if (time >= next_frame) break;
     }
     frames ++;
-    printf("%ld %ld\n",time,next_refresh);
+    printf("%u %u\n",time,next_refresh);
     if (time > next_refresh) {
       redraw = true;
       next_refresh += 1000 / FPS;
