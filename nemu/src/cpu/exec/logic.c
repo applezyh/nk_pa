@@ -7,10 +7,7 @@ make_EHelper(test) {
   t0=0;
   rtl_set_OF(&t0);
   rtl_set_CF(&t0);
-  rtl_get_OF(&t1);
-  rtl_get_CF(&t3);
-  printf("of %d  cf  %d\n",t1,t3);
-  print_asm_template2(and);
+  print_asm_template2(test);
 }
 
 make_EHelper(and) {
