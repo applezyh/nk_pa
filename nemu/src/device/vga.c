@@ -17,6 +17,7 @@ static SDL_Texture *texture;
 static uint32_t (*vmem) [SCREEN_W];
 
 void vga_vmem_io_handler(paddr_t addr, int len, bool is_write) {
+  Assert("%x\n",addr);
 }
 
 void update_screen() {
@@ -27,7 +28,6 @@ void update_screen() {
 }
 
 void init_vga() {
-  Assert(0,"s");
   SDL_Init(SDL_INIT_VIDEO);
   SDL_CreateWindowAndRenderer(SCREEN_W * 2, SCREEN_H * 2, 0, &window, &renderer);
   SDL_SetWindowTitle(window, "NEMU");
