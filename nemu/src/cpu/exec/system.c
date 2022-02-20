@@ -56,6 +56,7 @@ make_EHelper(in) {
 
 make_EHelper(out) {
   // TODO();
+  printf("%d %d\n",id_src->width,id_dest->width);
   pio_write(id_dest->val,id_src->val,id_src->width);
   print_asm_template2(out);
 
