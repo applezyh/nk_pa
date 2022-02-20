@@ -30,7 +30,6 @@ int main (){
     next_frame += 1000 / HZ;
 
     while (keyboard_event());
-    printf("looping\n");
     while (update_keypress());
      
     if (frames % (HZ / CHARACTER_PER_SECOND) == 0) {
