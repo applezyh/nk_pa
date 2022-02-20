@@ -2,7 +2,9 @@
  * translate the address `buf' from the user process to
  * a physical one, which is necessary for a microkernel.
  */
-
+extern uint8_t ramdisk_start;
+extern uint8_t ramdisk_end;
+#define RAMDISK_SIZE ((&ramdisk_end) - (&ramdisk_start))
 /* read `len' bytes starting from `offset' of ramdisk into `buf' */
 void ramdisk_read(void *buf, off_t offset, size_t len);
 
