@@ -38,12 +38,12 @@ int last_key_code(void) {
 #define KEYDOWN_MASK 0x8000
 bool keyboard_event() {
   int keycode = _read_key();
-  printf("%d\n",key_code);
   if (keycode == _KEY_NONE) return false;
-  printf("return true\n");
+
   if((keycode & KEYDOWN_MASK) != 0){
     key_code = keycode & ~KEYDOWN_MASK;
     press_key(key_code);
+    printf("return true\n");
     return true;
   }
   else{
@@ -52,6 +52,7 @@ bool keyboard_event() {
         release_key(i);
       }
     }
+    printf("return true\n");
     return true;
   }
 }
