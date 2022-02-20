@@ -25,32 +25,27 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_ZF(dest);
       break;
     case CC_BE:{
-      uint32_t sf,zf,of,cf; 
-      rtl_get_SF(&sf);
+      uint32_t zf,cf; 
       rtl_get_ZF(&zf);
-      rtl_get_OF(&of);
       rtl_get_CF(&cf);
       *dest=zf||cf;
-      printf("%x : %d %d %d %d isjmp = %d\n",cpu.eip,sf,zf,of,cf,*dest);
       break;
     }
     case CC_S:
       TODO();
       break;
     case CC_L:{
-      uint32_t sf,of,cf;  
+      uint32_t sf,of;  
       rtl_get_SF(&sf);
       rtl_get_OF(&of);
-      rtl_get_CF(&cf);
-      *dest=sf!=of;
+      *dest=(sf!=of);
       break;
     }
     case CC_LE:{
-      uint32_t sf,zf,of,cf; 
+      uint32_t sf,zf,of; 
       rtl_get_SF(&sf);
       rtl_get_ZF(&zf);
       rtl_get_OF(&of);
-      rtl_get_CF(&cf);
       *dest=(zf==1)||(sf!=of);
       break;
     }
