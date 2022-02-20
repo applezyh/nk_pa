@@ -33,8 +33,9 @@ void _draw_sync() {
 }
 
 int _read_key() {
+
   int key = inl(0x60);
-  outl(0x64,1);
+  _putc(key);
 
   return key;
 }
