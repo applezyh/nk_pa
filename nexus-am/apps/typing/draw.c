@@ -40,6 +40,7 @@ static inline void draw_string(const char *str, int x, int y, int color) {
 void redraw_screen() {
   fly_t it;
   const char *hit, *miss;
+  printf("begin draw\n");
 
   /* 绘制每个字符 */
   for (it = characters(); it != NULL; it = it->_next) {

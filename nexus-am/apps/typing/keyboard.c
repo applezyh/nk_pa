@@ -39,7 +39,7 @@ int last_key_code(void) {
 bool keyboard_event() {
   int keycode = _read_key();
   if (keycode == _KEY_NONE) return false;
-  printf("%d\n",keycode);
+
   if((keycode & KEYDOWN_MASK) != 0){
     key_code = keycode & ~KEYDOWN_MASK;
     press_key(key_code);
