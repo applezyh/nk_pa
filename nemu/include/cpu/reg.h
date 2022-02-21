@@ -39,6 +39,14 @@ typedef struct {
     rtlreg_t eflag;
 
     rtlreg_t cs, ss, ds, es, fs, gs;
+
+    struct
+    {
+      /* data */
+      rtlreg_t IDTentry;
+      uint16_t IDTlen;
+    };
+    
     
 
 } CPU_state;

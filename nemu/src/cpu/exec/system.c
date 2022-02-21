@@ -6,7 +6,12 @@ void diff_test_skip_nemu();
 
 
 make_EHelper(lidt) {
-  TODO();  
+  // TODO();
+  rtlreg_t idt_entry=instr_fetch(eip, 4);  
+  uint16_t idt_len=instr_fetch(eip, 2);  
+  cpu.IDTentry=idt_entry;
+  cpu.IDTlen=idt_len;
+
   print_asm_template1(lidt);
 }
 
@@ -27,7 +32,8 @@ make_EHelper(mov_cr2r) {
 }
 
 make_EHelper(int) {
-  TODO();
+  //TODO();
+  
   print_asm("int %s", id_dest->str);
 
 #ifdef DIFF_TEST
