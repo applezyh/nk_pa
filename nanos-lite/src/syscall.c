@@ -11,7 +11,9 @@ _RegSet* do_syscall(_RegSet *r) {
   printf("call %d\n",a[0]);
   switch (a[0]) {
     case SYS_none: SYSCALL_ARG1(r)=sys_nano(); break;
-    default: panic("Unhandled syscall ID = %d", a[0]);
+    default: 
+    // panic("Unhandled syscall ID = %d", a[0]);
+      break;
   }
 
   return NULL;
