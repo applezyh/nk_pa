@@ -11,6 +11,7 @@ make_EHelper(lidt) {
   data = (uint16_t*)(id_dest->val);
   rtlreg_t idt_entry=data[1]+(data[2]>>16); 
   uint16_t idt_len=data[0];
+  printf("%x %d\n",idt_entry,idt_len);
   cpu.IDTentry=idt_entry;
   cpu.IDTlen=idt_len;
 

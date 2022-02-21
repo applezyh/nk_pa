@@ -11,7 +11,6 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_push(&ret_addr);
   rtl_push(&cpu.cs);
   vaddr_t entry=vaddr_read(cpu.IDTentry+NO,4);
-  printf("%x\n",entry);
   cpu.eip=entry;
 }
 
