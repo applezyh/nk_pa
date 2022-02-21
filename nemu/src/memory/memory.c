@@ -27,6 +27,6 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 }
 
 void vaddr_write(vaddr_t addr, int len, uint32_t data) {
-  printf("%p %d\n",addr,len);
+  printf("%x %d\n",addr,len);
   paddr_write(addr, len, data);
 }
