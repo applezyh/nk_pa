@@ -7,8 +7,10 @@ void diff_test_skip_nemu();
 
 make_EHelper(lidt) {
   // TODO();
-  rtlreg_t idt_entry=instr_fetch(eip, 4);  
-  uint16_t idt_len=instr_fetch(eip, 2);  
+  uint16_t* data;
+  data = (uint16_t*)(id_dest->val);
+  rtlreg_t idt_entry=(data[1]+data[2]>>16); 
+  uint16_t idt_len=data[0];
   cpu.IDTentry=idt_entry;
   cpu.IDTlen=idt_len;
 
