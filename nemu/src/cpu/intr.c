@@ -15,6 +15,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   gate[1] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc)+4,4);
   GateDesc g = *((GateDesc*)gate);
   cpu.eip= g.offset_15_0+(g.offset_31_16<<16);
+  printf("%x\n",cpu.eip);
   //TODO();
 }
 
