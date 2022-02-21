@@ -10,7 +10,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_push(&cpu.eflag);
   rtl_push(&ret_addr);
   rtl_push(&cpu.cs);
-  printf("%x\n",cpu.IDTentry+NO*sizeof(GateDesc));
+  printf("%lx\n",cpu.IDTentry+NO*sizeof(GateDesc));
   vaddr_t entry=vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc),sizeof(GateDesc));
   printf("%x\n",entry);
   cpu.eip=entry;
