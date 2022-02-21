@@ -11,9 +11,9 @@ make_EHelper(lidt) {
   data0 = vaddr_read(id_dest->addr+0,2);
   data1 = vaddr_read(id_dest->addr+1,2);
   data2 = vaddr_read(id_dest->addr+2,2);
+  printf("%x %x\n",data2,data1);
   rtlreg_t idt_entry=data1+(data2<<16); 
   uint16_t idt_len=data0;
-  printf("%x %d\n",idt_entry,idt_len);
   cpu.IDTentry=idt_entry;
   cpu.IDTlen=idt_len;
 
