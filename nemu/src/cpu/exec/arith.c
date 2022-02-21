@@ -110,7 +110,7 @@ make_EHelper(dec) {
 
 make_EHelper(neg) {
   //TODO();
-  uint32_t t0=0;
+  t1=0;
   rtl_sub(&t2,&t1,&id_dest->val);
   operand_write(id_dest,&t2);
 
