@@ -37,8 +37,8 @@ make_EHelper(mov_cr2r) {
 
 make_EHelper(int) {
   //TODO();
-  decoding.jmp_eip=raise_intr(id_dest->val,*eip);
-  decoding.is_jmp=1;
+  printf("%x\n",*eip);
+  *eip=raise_intr(id_dest->val,*eip);
   
   print_asm("int %s", id_dest->str);
 
@@ -50,9 +50,9 @@ make_EHelper(int) {
 make_EHelper(iret) {
   //TODO();
   rtl_pop(&cpu.cs);
-  rtl_pop(&(decoding.jmp_eip));
+  rtl_pop(eip);
   rtl_pop(&cpu.eflag);
-  decoding.is_jmp=1;
+  printf("%x\n",*eip);
   print_asm("iret");
 }
 
