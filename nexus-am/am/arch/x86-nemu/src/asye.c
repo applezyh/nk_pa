@@ -35,9 +35,7 @@ void _asye_init(_RegSet*(*h)(_Event, _RegSet*)) {
 
   // -------------------- system call --------------------------
   idt[0x80] = GATE(STS_TG32, KSEL(SEG_KCODE), vecsys, DPL_USER);
-  printf("%x\n",idt);
-  void* p=set_idt(idt, sizeof(idt));
-  printf("%p\n",p);
+  set_idt(idt, sizeof(idt));
 
   // register event handler
   H = h;
