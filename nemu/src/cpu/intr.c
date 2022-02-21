@@ -11,15 +11,10 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_push(&ret_addr);
   rtl_push(&cpu.cs);
   uint32_t gate[2];
-  for(int i=cpu.IDTentry;i<cpu.IDTentry+cpu.IDTlen;i+=4){
-        uint32_t mem = vaddr_read(i, 4);
-        printf("%x   :   %#010x\n",i,mem);
-      }
   gate[0] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc),4);
   gate[1] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc)+4,4);
   GateDesc g = *((GateDesc*)gate);
   cpu.eip= g.offset_15_0+(g.offset_31_16<<16);
-  printf("%x\n",cpu.eip);
   //TODO();
 }
 
