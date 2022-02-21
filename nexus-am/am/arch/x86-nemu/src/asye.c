@@ -12,8 +12,8 @@ _RegSet* irq_handle(_RegSet *tf) {
   if (H) {
     _Event ev;
     printf("%d\n",tf->eflags);
-    printf("%d\n",tf->cs);
     printf("%d\n",tf->eip);
+    printf("%d\n",tf->cs);
     printf("%d\n",tf->error_code);
     printf("%d\n",tf->irq);
     printf("%d\n",tf->eax);
