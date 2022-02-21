@@ -31,6 +31,7 @@ void sys_exit(int status){
 
 int sys_write(int fd, uint8_t* start,uint32_t len){
   for(uint8_t* i=start;i<start+len;i++){
+    printf("%c",*i);
     _putc(*i);
   }
   return 0;
@@ -42,7 +43,6 @@ _RegSet* do_syscall(_RegSet *r) {
   a[1] = SYSCALL_ARG2(r);
   a[2] = SYSCALL_ARG3(r);
   a[3] = SYSCALL_ARG4(r);
-  printf("call %d %d %d %d\n",a[0],a[1],a[2],a[3]);
   switch (a[0]) {
     case SYS_none: SYSCALL_ARG1(r)=sys_nano(); break;
     case SYS_write: SYSCALL_ARG1(r)=sys_write(a[1],(uint8_t*)a[2],a[3]); break;
