@@ -9,7 +9,7 @@ make_EHelper(lidt) {
   // TODO();
   uint16_t* data;
   data = (uint16_t*)(id_dest->val);
-  rtlreg_t idt_entry=(data[1]+data[2]>>16); 
+  rtlreg_t idt_entry=data[1]+(data[2]>>16); 
   uint16_t idt_len=data[0];
   cpu.IDTentry=idt_entry;
   cpu.IDTlen=idt_len;
