@@ -21,22 +21,6 @@ static inline uint32_t instr_fetch(vaddr_t *eip, int len) {
   return instr;
 }
 
-typedef struct idt
-{
-  /* data */
-  vaddr_t entry_point;
-  uint32_t len;
-}idt;
-
-idt idt_table;
-
-
-void raise_intr(uint8_t NO, vaddr_t ret_addr);
-void set_idt(vaddr_t entry_point,uint32_t len){
-  idt_table.entry_point=entry_point;
-  idt_table.len=len;
-}
-
 void rtl_setcc(rtlreg_t*, uint8_t);
 
 static inline const char* get_cc_name(int subcode) {
