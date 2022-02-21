@@ -124,7 +124,7 @@ make_EHelper(pop) {
 make_EHelper(pusha) {
   //TODO();
   if(decoding.is_operand_size_16){
-    int ax;
+    uint32_t ax;
     rtl_lr_l(&ax,0);
     rtl_push(&ax);
   } else {
