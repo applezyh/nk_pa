@@ -8,12 +8,10 @@ int sys_nano(){
 _RegSet* do_syscall(_RegSet *r) {
   uintptr_t a[4];
   a[0] = SYSCALL_ARG1(r);
-  printf("call %d\n",a[0]);
+
   switch (a[0]) {
     case SYS_none: SYSCALL_ARG1(r)=sys_nano(); break;
-    default: 
-    // panic("Unhandled syscall ID = %d", a[0]);
-      break;
+    default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
   return NULL;

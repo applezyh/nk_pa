@@ -39,6 +39,7 @@ make_EHelper(int) {
   //TODO();
   decoding.jmp_eip=raise_intr(id_dest->val,cpu.eip);
   decoding.is_jmp=1;
+  
   print_asm("int %s", id_dest->str);
 
 #ifdef DIFF_TEST
@@ -51,6 +52,7 @@ make_EHelper(iret) {
   rtl_pop(&cpu.cs);
   rtl_pop(&(decoding.jmp_eip));
   rtl_pop(&cpu.eflag);
+  printf("%x\n",decoding.jmp_eip);
   decoding.is_jmp=1;
   print_asm("iret");
 }
