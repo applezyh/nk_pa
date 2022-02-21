@@ -12,14 +12,6 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_push(&cpu.cs);
   uint32_t gate[2];
 
-  for(int i=0;i<256;i++){
-    gate[0] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc)+i,4);
-    gate[1] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc)+i+4,4);
-
-    uint64_t g = *((uint64_t*)gate);
-    printf("%d %x\n",i,g);
-  }
-
   gate[0] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc),4);
   gate[1] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc)+4,4);
 
