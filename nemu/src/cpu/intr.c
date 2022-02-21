@@ -10,8 +10,8 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_push(&cpu.eflag);
   rtl_push(&ret_addr);
   rtl_push(&cpu.cs);
-  vaddr_t* entry=(vaddr_t*)vaddr_read(cpu.IDTentry,4);
-  cpu.eip=entry[NO];
+  vaddr_t entry=vaddr_read(cpu.IDTentry+NO,4);
+  cpu.eip=entry;
 }
 
 void dev_raise_intr() {
