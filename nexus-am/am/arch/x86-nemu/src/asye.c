@@ -1,5 +1,6 @@
 #include <am.h>
 #include <x86.h>
+#include <klib.h>
 
 static _RegSet* (*H)(_Event, _RegSet*) = NULL;
 
@@ -34,7 +35,7 @@ void _asye_init(_RegSet*(*h)(_Event, _RegSet*)) {
 
   // -------------------- system call --------------------------
   idt[0x80] = GATE(STS_TG32, KSEL(SEG_KCODE), vecsys, DPL_USER);
-
+  printf("%x\n",idt);
   set_idt(idt, sizeof(idt));
 
   // register event handler
