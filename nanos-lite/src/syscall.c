@@ -1,5 +1,4 @@
 #include "syscall.h"
-
 int sys_nano(){
   return 1;
 }
