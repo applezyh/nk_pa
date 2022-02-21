@@ -30,9 +30,8 @@ void sys_exit(int status){
 }
 
 int sys_write(int fd, uint8_t* start,uint32_t len){
-  
-  for(uint8_t* i=start;i<start+len;i++){
-    _putc(*i);
+  for(uint32_t i=0;i<len;i++){
+    _putc(start[i]);
   }
   return 0;
 }
