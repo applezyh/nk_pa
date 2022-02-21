@@ -1,6 +1,6 @@
 #include "common.h"
 #include "syscall.h"
-#include "klib.h"
+#include "am.h"
 
 int sys_nano(){
   return 1;
