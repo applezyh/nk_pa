@@ -32,7 +32,6 @@ void sys_exit(int status){
 int sys_write(int fd, uint8_t* start,uint32_t len){
   
   for(uint8_t* i=start;i<start+len;i++){
-    printf("%d %x %x\n",*i,start,len);
     _putc(*i);
   }
   return 0;
@@ -46,7 +45,7 @@ _RegSet* do_syscall(_RegSet *r) {
   a[3] = SYSCALL_ARG4(r);
   switch (a[0]) {
     case SYS_none: SYSCALL_ARG1(r)=sys_nano(); break;
-    case SYS_write: SYSCALL_ARG1(r)=sys_write(a[1],(uint8_t*)a[2],a[3]); break;
+    case SYS_write: SYSCALL_ARG1(r)=sys_write(a[1],(uint8_t*)(a[2]),a[3]); break;
     case SYS_exit: sys_exit(SYSCALL_ARG2(r)); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
