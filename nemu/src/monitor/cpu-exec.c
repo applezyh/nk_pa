@@ -27,11 +27,11 @@ void cpu_exec(uint64_t n) {
   for (; n > 0; n --) {
     /* Execute one instruction, including instruction fetch,
      * instruction decode, and the actual execution. */
-    uint32_t eip=cpu.eip;
     exec_wrapper(print_flag);
 
 #ifdef DEBUG
     /* TODO: check watchpoints here. */
+    uint32_t eip=cpu.eip;
     if(check_watchpoint(eip)){
       nemu_state=NEMU_STOP;
     }
