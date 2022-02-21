@@ -24,7 +24,7 @@ void cpu_exec(uint64_t n) {
 
 
   for (; n > 0; n --) {
-    if(cpu.eip==0x100b3c){
+    if(cpu.eip>=0x100b3c){
       p=1;
     }
     if(p){
