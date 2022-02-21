@@ -97,14 +97,15 @@ static inline void set_cr0(uint32_t cr0) {
   asm volatile("movl %0, %%cr0" : : "r"(cr0));
 }
 
-
-static inline void set_idt(GateDesc *idt, int size) {
+static inline void* set_idt(GateDesc *idt, int size) {
   volatile static uint16_t data[3];
   data[0] = size - 1;
   data[1] = (uint32_t)idt;
   data[2] = (uint32_t)idt >> 16;
 
   asm volatile("lidt (%0)" : : "r"(data));
+  void* p=(void*)data;
+  return p;
 }
 
 static inline void set_cr3(void *pdir) {
