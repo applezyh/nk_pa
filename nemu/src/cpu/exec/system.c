@@ -9,8 +9,8 @@ make_EHelper(lidt) {
   // TODO();
   uint16_t data0,data1,data2;
   data0 = vaddr_read(id_dest->addr+0,2);
-  data1 = vaddr_read(id_dest->addr+1,2);
-  data2 = vaddr_read(id_dest->addr+2,2);
+  data1 = vaddr_read(id_dest->addr+2,2);
+  data2 = vaddr_read(id_dest->addr+4,2);
   printf("%x %x\n",data2,data1);
   rtlreg_t idt_entry=data1+(data2<<16); 
   uint16_t idt_len=data0;
