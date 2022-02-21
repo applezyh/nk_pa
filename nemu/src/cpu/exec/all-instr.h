@@ -13,6 +13,7 @@ make_EHelper(nemu_trap);
 make_EHelper(inc);
 make_EHelper(cltd);
 make_EHelper(nop);
+make_EHelper(int);
 
 make_EHelper(call);
 make_EHelper(call_rm);
