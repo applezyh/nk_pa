@@ -1,6 +1,9 @@
 #include "cpu/exec.h"
 
 make_EHelper(mov) {
+  if(cpu.eip==0x4000308){
+    printf("%d\n",decoding.is_operand_size_16);
+  }
   operand_write(id_dest, &id_src->val);
   print_asm_template2(mov);
 }
