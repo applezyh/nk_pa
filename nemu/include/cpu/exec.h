@@ -21,7 +21,7 @@ static inline uint32_t instr_fetch(vaddr_t *eip, int len) {
   return instr;
 }
 
-void raise_intr(uint8_t NO, vaddr_t ret_addr);
+uint32_t raise_intr(uint8_t NO, vaddr_t ret_addr);
 
 void rtl_setcc(rtlreg_t*, uint8_t);
 

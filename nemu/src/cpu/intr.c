@@ -1,7 +1,7 @@
 #include "cpu/exec.h"
 #include "memory/mmu.h"
 
-void raise_intr(uint8_t NO, vaddr_t ret_addr) {
+uint32_t raise_intr(uint8_t NO, vaddr_t ret_addr) {
   /* TODO: Trigger an interrupt/exception with ``NO''.
    * That is, use ``NO'' to index the IDT.
    */
@@ -14,8 +14,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   gate[0] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc),4);
   gate[1] = vaddr_read(cpu.IDTentry+NO*sizeof(GateDesc)+4,4);
   GateDesc g = *((GateDesc*)gate);
-  cpu.eip= g.offset_15_0+(g.offset_31_16<<16);
-  printf("%x\n",cpu.eip);
+  return g.offset_15_0+(g.offset_31_16<<16);
   //TODO();
 }
 
