@@ -11,6 +11,11 @@ _RegSet* irq_handle(_RegSet *tf) {
   _RegSet *next = tf;
   if (H) {
     _Event ev;
+    printf("%d\n",tf->eflags);
+    printf("%d\n",tf->cs);
+    printf("%d\n",tf->eip);
+    printf("%d\n",tf->error_code);
+    printf("%d\n",tf->irq);
     printf("%d\n",tf->eax);
     printf("%d\n",tf->ecx);
     printf("%d\n",tf->edx);
@@ -19,11 +24,7 @@ _RegSet* irq_handle(_RegSet *tf) {
     printf("%d\n",tf->ebp);
     printf("%d\n",tf->esi);
     printf("%d\n",tf->edi);
-    printf("%d\n",tf->eflags);
-    printf("%d\n",tf->eip);
-    printf("%d\n",tf->cs);
-    printf("%d\n",tf->error_code);
-    printf("%d\n",tf->irq);
+    
     switch (tf->irq) {
       case 0x80: ev.event = _EVENT_SYSCALL; break;
       default: ev.event = _EVENT_ERROR; break;
