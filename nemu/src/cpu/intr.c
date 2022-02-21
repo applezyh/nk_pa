@@ -7,9 +7,9 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
    */
 
   //TODO();
-  rtl_push(cpu.eflag);
-  rtl_push(ret_addr);
-  rtl_push(cpu.cs);
+  rtl_push(&cpu.eflag);
+  rtl_push(&ret_addr);
+  rtl_push(&cpu.cs);
   cpu.eip=((vaddr_t*)(cpu.IDTentry))[NO];
 }
 
