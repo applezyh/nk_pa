@@ -59,6 +59,11 @@ make_EHelper(push) {
     print_asm_template1(push);
     break;
 
+  case 0x06:
+    rtl_push(&(cpu.es));
+    print_asm_template1(push);
+    break;
+
   default:
     rtl_push(&(id_dest->val));
     print_asm_template1(push);
