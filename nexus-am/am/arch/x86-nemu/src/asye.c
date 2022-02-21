@@ -11,6 +11,10 @@ _RegSet* irq_handle(_RegSet *tf) {
   _RegSet *next = tf;
   if (H) {
     _Event ev;
+    uint32_t* d=(uint32_t*)&ev;
+    for(int i=0;i<13;i++){
+      printf("%d\n",d[i]);
+    }
     switch (tf->irq) {
       case 0x80: ev.event = _EVENT_SYSCALL; break;
       default: ev.event = _EVENT_ERROR; break;
