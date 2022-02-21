@@ -94,10 +94,12 @@ make_EHelper(pop) {
     print_asm("pop %s","ebx");
     break;
 
-  case 0x5c:
-    rtl_pop(&(cpu.esp));
+  case 0x5c:{
+    uint32_t temp = cpu.esp;
+    rtl_pop(&(temp));
     print_asm("pushw %s","esp");
     break;
+  }
 
   case 0x5d:
     rtl_pop(&(cpu.ebp));
@@ -126,13 +128,13 @@ make_EHelper(pusha) {
   if(decoding.is_operand_size_16){
     uint32_t sp,ax,cx,dx,bx,bp,si,di;
     rtl_lr_l(&ax,0);
-    rtl_lr_l(&cx,0);
-    rtl_lr_l(&dx,0);
-    rtl_lr_l(&bx,0);
-    rtl_lr_l(&sp,0);
-    rtl_lr_l(&bp,0);
-    rtl_lr_l(&si,0);
-    rtl_lr_l(&di,0);
+    rtl_lr_l(&cx,1);
+    rtl_lr_l(&dx,2);
+    rtl_lr_l(&bx,3);
+    rtl_lr_l(&sp,4);
+    rtl_lr_l(&bp,5);
+    rtl_lr_l(&si,6);
+    rtl_lr_l(&di,7);
     rtl_push(&ax);
     rtl_push(&cx);
     rtl_push(&dx);
