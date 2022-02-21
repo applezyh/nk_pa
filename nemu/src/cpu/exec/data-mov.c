@@ -29,10 +29,12 @@ make_EHelper(push) {
     print_asm("pushw %s","ebx");
     break;
 
-  case 0x54:
-    rtl_push(&(cpu.esp));
+  case 0x54:{
+    uint32_t temp = cpu.esp;
+    rtl_push(&(temp));
     print_asm("pushw %s","esp");
     break;
+  }
 
   case 0x55:
     rtl_push(&(cpu.ebp));
@@ -94,12 +96,10 @@ make_EHelper(pop) {
     print_asm("pop %s","ebx");
     break;
 
-  case 0x5c:{
-    uint32_t temp = cpu.esp;
-    rtl_pop(&(temp));
+  case 0x5c:
+    rtl_pop(&(cpu.esp));
     print_asm("pushw %s","esp");
     break;
-  }
 
   case 0x5d:
     rtl_pop(&(cpu.ebp));
