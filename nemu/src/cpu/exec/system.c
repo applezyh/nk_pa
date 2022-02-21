@@ -7,6 +7,7 @@ void diff_test_skip_nemu();
 
 make_EHelper(lidt) {
   // TODO();
+  printf("%x\n",id_dest->addr);
   uint16_t data0,data1,data2;
   data0 = vaddr_read(id_dest->addr+0,2);
   data1 = vaddr_read(id_dest->addr+2,2);
