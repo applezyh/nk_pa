@@ -37,7 +37,6 @@ make_EHelper(mov_cr2r) {
 
 make_EHelper(int) {
   //TODO();
-  printf("%x\n",cpu.eip);
   decoding.jmp_eip=raise_intr(id_dest->val,cpu.eip);
   decoding.is_jmp=1;
   
