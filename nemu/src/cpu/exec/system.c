@@ -37,7 +37,6 @@ make_EHelper(mov_cr2r) {
 
 make_EHelper(int) {
   //TODO();
-  printf("%x\n",*eip);
   *eip=raise_intr(id_dest->val,*eip);
   
   print_asm("int %s", id_dest->str);
@@ -52,7 +51,6 @@ make_EHelper(iret) {
   rtl_pop(&cpu.cs);
   rtl_pop(eip);
   rtl_pop(&cpu.eflag);
-  printf("%x\n",*eip);
   print_asm("iret");
 }
 
