@@ -122,7 +122,14 @@ make_EHelper(pop) {
 }
 
 make_EHelper(pusha) {
-  TODO();
+  //TODO();
+  if(decoding.is_operand_size_16){
+    int ax;
+    rtl_lr_l(&ax,0);
+    rtl_push(&ax);
+  } else {
+    rtl_push(&(cpu.eax));
+  }
 
   print_asm("pusha");
 }
