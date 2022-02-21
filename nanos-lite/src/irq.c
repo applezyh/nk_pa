@@ -1,4 +1,6 @@
-#include "syscall.h"
+#include "common.h"
+#define _EVENT_SYSCALL 8
+extern _RegSet* do_syscall(_RegSet *r);
 static _RegSet* do_event(_Event e, _RegSet* r) {
   switch (e.event) {
     case _EVENT_SYSCALL: do_syscall(r); break; 

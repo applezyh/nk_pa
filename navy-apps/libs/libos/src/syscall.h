@@ -1,8 +1,5 @@
 #ifndef __SYSCALL_H__
 #define __SYSCALL_H__
-#include "am.h"
-#include "common.h"
-#define _EVENT_SYSCALL 8
 enum {
   SYS_none,
   SYS_open,
@@ -25,5 +22,4 @@ enum {
   SYS_times,
   SYS_gettimeofday
 };
-_RegSet* do_syscall(_RegSet *r);
 #endif
