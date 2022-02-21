@@ -1,6 +1,7 @@
 #ifndef __SYSCALL_H__
 #define __SYSCALL_H__
 #include "common.h"
+#define _EVENT_SYSCALL 8
 enum {
   SYS_none,
   SYS_open,
