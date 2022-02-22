@@ -214,8 +214,8 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	{
 	  while (*format && *format != '%')
 	    {
-	      if (fputc(*format++, stream)){
-			return -1;
+	      if (fputc(*format++, stream) == EOF){
+			//return -1;
 		}
 	      count++;
 	    }
