@@ -25,7 +25,7 @@ _RegSet* irq_handle(_RegSet *tf) {
   return next;
 }
 
-static GateDesc idt[NR_IRQ];
+GateDesc idt[NR_IRQ];
 
 void _asye_init(_RegSet*(*h)(_Event, _RegSet*)) {
   // initialize IDT
