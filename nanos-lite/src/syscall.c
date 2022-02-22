@@ -43,6 +43,7 @@ int sys_write(int fd,const char* start,uint32_t len){
 }
 extern uintptr_t _end;
 int sys_brk(uintptr_t inc){
+  Log("brk %x\n",inc);
   _end=inc;
   return 0;
 }
