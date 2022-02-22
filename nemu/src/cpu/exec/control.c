@@ -18,7 +18,7 @@ make_EHelper(jcc) {
 }
 
 make_EHelper(jmp_rm) {
-  if(cpu.eip==0x4000304){
+  if(cpu.eip==0x4000339){
     printf("%x\n",decoding.seq_eip);
   }
   decoding.jmp_eip = id_dest->val;
