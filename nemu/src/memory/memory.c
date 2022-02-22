@@ -17,6 +17,9 @@ uint32_t paddr_read(paddr_t addr, int len) {
 }
 
 void paddr_write(paddr_t addr, int len, uint32_t data) {
+  if(addr>=0xc000000){
+    printf("write to %x\n",addr);
+  }
   int NO = is_mmio(addr);
   if(NO==-1) memcpy(guest_to_host(addr), &data, len);
   else mmio_write(addr,len,data,NO);
