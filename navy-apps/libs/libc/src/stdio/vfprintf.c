@@ -189,6 +189,8 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	_CONST char *format _AND
 	va_list args)
 {
+	write(1,format,20);
+	write(1,"\n",20);
   char buffer[CVT_BUF_SIZE];
   int count = 0;
   int flags = 0;
