@@ -29,13 +29,13 @@ int _write(int fd, void *buf, size_t count){
   return _syscall_(SYS_write, fd, (uintptr_t)buf, count);
 }
 
-extern uintptr_t _end;
+extern void* _end;
 
 void* _sbrk(intptr_t increment){
-  //uintptr_t old=_end;
-  //if(0==_syscall_(SYS_brk, _end+increment, 0, 0)){
-  //  return (void*)old;
-  //}
+  uintptr_t old=_end;
+  if(0==_syscall_(SYS_brk, _end+increment, 0, 0)){
+    return (void*)old;
+  }
   return (void*)-1;
 }
 
