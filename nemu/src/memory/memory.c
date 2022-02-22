@@ -17,7 +17,7 @@ uint32_t paddr_read(paddr_t addr, int len) {
 }
 
 void paddr_write(paddr_t addr, int len, uint32_t data) {
-  if(addr>=0xc000000){
+  if(addr>=0x4000000){
     printf("eip : %x write to %x\n",cpu.eip,addr);
   }
   int NO = is_mmio(addr);
