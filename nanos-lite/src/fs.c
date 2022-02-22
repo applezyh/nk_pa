@@ -26,7 +26,7 @@ size_t fs_filesz(int fd){
 
 int fs_open(const char *pathname, int flags, int mode){
   for(size_t i=0;i<NR_FILES;i++){
-    printf("%d\n",file_table[i].name);
+    printf("%s\n",file_table[i].name);
     if(strcmp(pathname,file_table[i].name)){
       return i;
     }
