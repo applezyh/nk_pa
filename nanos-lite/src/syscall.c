@@ -1,4 +1,5 @@
 #include "common.h"
+#include "fs.h"
 enum {
   SYS_none,
   SYS_open,
@@ -30,13 +31,34 @@ void sys_exit(int status){
 }
 
 int sys_write(int fd, uint8_t* start,uint32_t len){
-  for(uint32_t i=0;i<len;i++){
-    _putc(start[i]);
+  if(fd==0||fd==1||fd==2){
+    for(uint32_t i=0;i<len;i++){
+      _putc(start[i]);
+    }
+  } else if(fd>6){
+    fs_write(fd,(void*)start,len);
   }
   return 0;
 }
 
 int sys_brk(uintptr_t inc){
+  return 0;
+}
+
+int sys_read(int fd, void *buf, size_t count){
+  return fs_read(fd,(void*)buf,count);
+}
+
+int sys_lseek(int fd, off_t offset, int whence){
+  return fs_lseek(fd,offset,whence);
+}
+
+int sys_open(const char *path, int flags, uint32_t mode){
+ return fs_open(path,flags,mode);
+}
+
+int sys_close(int fd){
+  fs_close(fd);
   return 0;
 }
 
@@ -51,6 +73,10 @@ _RegSet* do_syscall(_RegSet *r) {
     case SYS_write: SYSCALL_ARG1(r)=sys_write(a[1],(uint8_t*)(a[2]),a[3]); break;
     case SYS_exit: sys_exit(SYSCALL_ARG2(r)); break;
     case SYS_brk: SYSCALL_ARG1(r)=sys_brk(a[1]); break;
+    case SYS_read: SYSCALL_ARG1(r)=sys_read(a[1],(void*)a[2],a[3]); break;
+    case SYS_lseek: SYSCALL_ARG1(r)=sys_lseek(a[1],a[2],a[3]); break;
+    case SYS_close: SYSCALL_ARG1(r)=sys_close(a[1]); break;
+    case SYS_open: SYSCALL_ARG1(r)=sys_open((const char*)a[1],a[2],a[3]); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
