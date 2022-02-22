@@ -32,11 +32,6 @@ int main() {
 
   uint32_t entry = loader(NULL, "/bin/text");
 
-  for(int i=0;i<100;i++){
-    printf("%x\n",((uint32_t*)(entry))[i]);
-  }
-  return 0;
-
   ((void (*)(void))entry)();
 
   panic("Should not reach here");
