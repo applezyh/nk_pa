@@ -40,9 +40,9 @@ int sys_write(int fd, uint8_t* start,uint32_t len){
   }
   return 0;
 }
-extern uintptr_t _end;
+extern uintptr_t end;
 int sys_brk(uintptr_t inc){
-  _end+=inc;
+  end+=inc;
   return 0;
 }
 
