@@ -225,7 +225,11 @@ make_EHelper(real) {
 }
 
 static inline void update_eip(void) {
+  if(cpu.eip>=0x4000000){
+    printf("eip : %x  next : %x\n",cpu.eip,decoding.seq_eip);
+  }
   cpu.eip = (decoding.is_jmp ? (decoding.is_jmp = 0, decoding.jmp_eip) : decoding.seq_eip);
+  
 }
 
 static inline void my_strcat(char* dst, const char* src){

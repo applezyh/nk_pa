@@ -40,7 +40,6 @@ make_EHelper(int) {
   *eip=raise_intr(id_dest->val,*eip);
   
   print_asm("int %s", id_dest->str);
-  printf("%x\n",cpu.eip);
 #ifdef DIFF_TEST
   diff_test_skip_nemu();
 #endif
