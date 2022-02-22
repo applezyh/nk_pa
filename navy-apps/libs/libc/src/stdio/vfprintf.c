@@ -214,8 +214,9 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	{
 	  while (*format && *format != '%')
 	    {
-			char a;
-	      if ((a=fputc (*format++, stream)) == EOF){
+			int x;
+	      if ((x=fputc (*format++, stream)) == EOF){
+			  char a=x;
 			_write(1,&a,1);
 			_write(1," end\n",1);
 			return -1;
