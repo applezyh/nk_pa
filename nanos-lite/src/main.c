@@ -29,7 +29,7 @@ int main() {
 #endif
 
   init_fs();
-  uint32_t entry = loader(NULL, "/bin/dummy");
+  uint32_t entry = loader(NULL, "/bin/hello");
 
   ((void (*)(void))entry)();
 
