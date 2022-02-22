@@ -214,10 +214,12 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	{
 	  while (*format && *format != '%')
 	    {
-	      if (fputc (*format++, stream) == EOF)
+			int x;
+			char buf[10];
+	      if ((x=fputc (*format++, stream)) == EOF)
 			return -1;
-		_write(1,format,10);
-		_write(1,"\n",1);
+		int len=sprintf(buf,"%d",x);
+		_write(buf,len);
 	      count++;
 	    }
 
