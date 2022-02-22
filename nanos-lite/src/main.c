@@ -12,7 +12,6 @@ void init_fs(void);
 uint32_t loader(_Protect *, const char *);
 
 int main() {
-  printf("a");
 #ifdef HAS_PTE
   init_mm();
 #endif
