@@ -130,7 +130,6 @@ out_string (s, n_chars, flags, n_zero, n_pad, prefix, stream)
      FILE *stream;
 {
   int i;
-	_write("1234\n",5);
   if (n_pad && !(flags & FMINUS))
     {
       if (prefix && (flags & FZERO))
@@ -215,6 +214,7 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	{
 	  while (*format && *format != '%')
 	    {
+			_write(1,format++,1);
 	      if (fputc (*format++, stream) == EOF)
 		return -1;
 	      count++;
