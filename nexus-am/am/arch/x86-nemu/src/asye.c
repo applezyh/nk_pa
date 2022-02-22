@@ -2,7 +2,7 @@
 #include <x86.h>
 #include <klib.h>
 
-static _RegSet* (*H)(_Event, _RegSet*) = NULL;
+_RegSet* (*H)(_Event, _RegSet*) = NULL;
 
 void vecsys();
 void vecnull();
@@ -25,7 +25,7 @@ _RegSet* irq_handle(_RegSet *tf) {
   return next;
 }
 
-GateDesc idt[NR_IRQ];
+GateDesc idt[NR_IRQ]={};
 
 void _asye_init(_RegSet*(*h)(_Event, _RegSet*)) {
   // initialize IDT
