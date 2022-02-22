@@ -36,6 +36,10 @@ int sys_write(int fd, uint8_t* start,uint32_t len){
   return 0;
 }
 
+int sys_brk(uintptr_t inc){
+  return 0;
+}
+
 _RegSet* do_syscall(_RegSet *r) {
   uintptr_t a[4];
   a[0] = SYSCALL_ARG1(r);
@@ -46,6 +50,7 @@ _RegSet* do_syscall(_RegSet *r) {
     case SYS_none: SYSCALL_ARG1(r)=sys_nano(); break;
     case SYS_write: SYSCALL_ARG1(r)=sys_write(a[1],(uint8_t*)(a[2]),a[3]); break;
     case SYS_exit: sys_exit(SYSCALL_ARG2(r)); break;
+    case SYS_brk: SYSCALL_ARG1(r)=sys_brk(a[1]); break;
     default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
