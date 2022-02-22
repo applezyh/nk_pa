@@ -13,9 +13,6 @@ const rtlreg_t tzero = 0;
 /* Ib, Iv */
 static inline make_DopHelper(I) {
   /* eip here is pointing to the immediate */
-  if(cpu.eip>=0x4000000){
-    printf("eip : %x\n",cpu.eip);
-  }
   op->type = OP_TYPE_IMM;
   op->imm = instr_fetch(eip, op->width);
 
