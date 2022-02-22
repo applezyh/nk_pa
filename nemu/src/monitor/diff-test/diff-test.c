@@ -165,7 +165,7 @@ void difftest_step(uint32_t eip) {
   flag=(r.eip!=cpu.eip);
   diff|=flag;
   if (flag) {
-      printf("diff eip true:%x but %x\n",r.eip,eip);
+      printf("diff eip true:%x but %x in %x\n",r.eip,cpu.eip,eip);
     }
   if (diff) {
     nemu_state = NEMU_STOP;
