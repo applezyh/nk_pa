@@ -218,8 +218,9 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 			char buf[10];
 	      if ((x=fputc (*format++, stream)) == EOF)
 			return -1;
-		int len=sprintf(buf,"%d",x);
-		_write(buf,len);
+			char a=x;
+		_write(1,&a,1);
+		_write(1,"\n",1);
 	      count++;
 	    }
 
