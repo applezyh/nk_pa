@@ -8,6 +8,7 @@ uintptr_t loader(_Protect *as, const char *filename) {
   // TODO();
   printf("%s\n",filename);
   int fd=fs_open(filename,0,0);
+  printf("%d\n",fd);
   fs_read(fd,DEFAULT_ENTRY,RAMDISK_SIZE);
   return (uintptr_t)DEFAULT_ENTRY;
 }
