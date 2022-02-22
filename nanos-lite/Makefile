@@ -9,7 +9,7 @@ RAMDISK_FILE = build/ramdisk.img
 OBJCOPY_FLAG = -S --remove-section .note.gnu.property --set-section-flags .bss=alloc,contents -O binary
 OBJCOPY_FILE = $(NAVY_HOME)/tests/hello/build/hello-x86
 
-.PHONY: update update-ramdisk-objcopy update-ramdisk-fsimg update-fsimg
+.PHONY: update update-ramdisk-fsimg update-ramdisk-fsimg update-fsimg
 
 update-ramdisk-objcopy:
 	$(OBJCOPY) $(OBJCOPY_FLAG) $(OBJCOPY_FILE) $(RAMDISK_FILE)
