@@ -154,11 +154,6 @@ static int cmd_x(char* args){
 int cmd_w(char* args){
   struct watchpoint* WP=new_wp();
   long long loc=cal_expr(args);
-  printf("%s = %x\n",args,loc);
-  if(loc<0){
-    Log("ERROR! bad addr!");
-    return 0;
-  }
   WP->data=cal_expr(args);
   WP->expr=malloc(strlen(args)+1);
   memset(WP->expr,0,strlen(args)+1);
