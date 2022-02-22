@@ -34,7 +34,7 @@ int sys_write(int fd,const char* start,uint32_t len){
   //Log("%x\n",start);
   if(fd==0||fd==1||fd==2){
     for(uint32_t i=0;i<len;i++){
-      _putc(*(start+i));
+      //_putc(*(start+i));
     }
   } else if(fd>6){
     fs_write(fd,(void*)start,len);
