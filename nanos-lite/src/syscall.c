@@ -38,7 +38,7 @@ int sys_write(int fd,const char* start,uint32_t len){
   } else if(fd>6){
     fs_write(fd,(void*)start,len);
   }
-  return 0;
+  return len;
 }
 extern void* _end;
 int sys_brk(uintptr_t inc){
