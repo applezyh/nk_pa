@@ -30,10 +30,11 @@ void sys_exit(int status){
   _halt(status);
 }
 
-int sys_write(int fd, uint8_t* start,uint32_t len){
+int sys_write(int fd,const char* start,uint32_t len){
+  Log("%d\n",len);
   if(fd==0||fd==1||fd==2){
     for(uint32_t i=0;i<len;i++){
-      _putc(start[i]);
+      //_putc(*(start+i));
     }
   } else if(fd>6){
     fs_write(fd,(void*)start,len);
@@ -42,7 +43,7 @@ int sys_write(int fd, uint8_t* start,uint32_t len){
 }
 extern uintptr_t _end;
 int sys_brk(uintptr_t inc){
-  _end+=inc;
+  _end=inc;
   return 0;
 }
 
@@ -71,7 +72,7 @@ _RegSet* do_syscall(_RegSet *r) {
   a[3] = SYSCALL_ARG4(r);
   switch (a[0]) {
     case SYS_none: SYSCALL_ARG1(r)=sys_nano(); break;
-    case SYS_write: SYSCALL_ARG1(r)=sys_write(a[1],(uint8_t*)(a[2]),a[3]); break;
+    case SYS_write: SYSCALL_ARG1(r)=sys_write(a[1],(const char*)(a[2]),a[3]); break;
     case SYS_exit: sys_exit(SYSCALL_ARG2(r)); break;
     case SYS_brk: SYSCALL_ARG1(r)=sys_brk(a[1]); break;
     case SYS_read: SYSCALL_ARG1(r)=sys_read(a[1],(void*)a[2],a[3]); break;
