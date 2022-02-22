@@ -217,9 +217,6 @@ make_EHelper(real) {
   
   uint32_t opcode = instr_fetch(eip, 1);
   decoding.opcode = opcode;
-  if(cpu.eip>=0xc000000){
-    printf("eip : %x  op : %x\n",cpu.eip,opcode);
-  }
   set_width(opcode_table[opcode].width);
   idex(eip, &opcode_table[opcode]);
 }
