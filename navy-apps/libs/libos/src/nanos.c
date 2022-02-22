@@ -33,7 +33,6 @@ int _write(int fd, void *buf, size_t count){
 extern uintptr_t _end;
 
 void* _sbrk(intptr_t increment){
-  printf("%d\n",increment);
   uintptr_t old=_end;
   if(0==_syscall_(SYS_brk, increment, 0, 0)){
     return (void*)old;
