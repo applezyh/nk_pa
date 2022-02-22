@@ -30,7 +30,7 @@ int main() {
 
   init_fs();
 
-  uint32_t entry = loader(NULL, "/bin/test");
+  uint32_t entry = loader(NULL, "/bin/text");
 
   for(int i=0;i<100;i++){
     printf("%x\n",((uint32_t*)(entry))[i]);
