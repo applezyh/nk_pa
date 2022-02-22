@@ -7,6 +7,6 @@ extern uint8_t ramdisk_end;
 uintptr_t loader(_Protect *as, const char *filename) {
   // TODO();
   int fd=fs_open(filename,0,0);
-  fs_read(fd,DEFAULT_ENTRY,RAMDISK_SIZE);
+  fs_read(fd,DEFAULT_ENTRY,fs_filesz(fd));
   return (uintptr_t)DEFAULT_ENTRY;
 }
