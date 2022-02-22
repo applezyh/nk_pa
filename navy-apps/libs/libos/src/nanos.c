@@ -34,7 +34,7 @@ int _write(int fd, void *buf, size_t count){
 extern uintptr_t end;
 
 void *_sbrk(intptr_t increment){
-  if(_syscall_(SYS_brk, increment, 0, 0)){
+  if(!_syscall_(SYS_brk, increment, 0, 0)){
     intptr_t old=end;
     end+=increment;
     return (void*)old;
