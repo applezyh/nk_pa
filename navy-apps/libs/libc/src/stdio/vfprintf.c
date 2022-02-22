@@ -216,9 +216,8 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	    {
 			char a;
 	      if ((a=fputc (*format++, stream)) == EOF){
-			  _write(1,"end",3);
 			_write(1,&a,1);
-			_write(1,"\n",1);
+			_write(1," end\n",1);
 			return -1;
 		}
 	      count++;
