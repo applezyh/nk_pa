@@ -33,7 +33,7 @@ int main() {
 
   fclose(fp);
 
-  printf("\nPASS!!!\n");
+  printf("PASS!!!\n");
 
   return 0;
 }
