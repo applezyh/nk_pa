@@ -9,7 +9,6 @@ int main() {
     j ++;
     if (j == 10000) {
       printf("Hello World for the %dth time\n", i ++);
-      write(1, "Hello World!\n", 13);
       j = 0;
     }
   }
