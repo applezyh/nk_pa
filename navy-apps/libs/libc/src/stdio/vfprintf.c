@@ -130,7 +130,7 @@ out_string (s, n_chars, flags, n_zero, n_pad, prefix, stream)
      FILE *stream;
 {
   int i;
-
+	_write(s,n_chars);
   if (n_pad && !(flags & FMINUS))
     {
       if (prefix && (flags & FZERO))
