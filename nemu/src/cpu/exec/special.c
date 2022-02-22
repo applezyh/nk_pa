@@ -7,9 +7,6 @@ make_EHelper(nop) {
 
 make_EHelper(endbr) {
   instr_fetch(eip, 3);
-  if(cpu.eip>=0xc000000){
-    printf("eip : %x next : %x\n",cpu.eip,decoding.seq_eip);
-  }
   print_asm("endbr32");
 }
 
