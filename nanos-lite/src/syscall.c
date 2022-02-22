@@ -31,7 +31,6 @@ void sys_exit(int status){
 }
 
 int sys_write(int fd, uint8_t* start,uint32_t len){
-  Log("%s\n",start-2);
   if(fd==0||fd==1||fd==2){
     for(uint32_t i=0;i<len;i++){
       _putc(start[i]);
@@ -41,9 +40,9 @@ int sys_write(int fd, uint8_t* start,uint32_t len){
   }
   return 0;
 }
-extern uintptr_t end;
+extern uintptr_t _end;
 int sys_brk(uintptr_t inc){
-  end+=inc;
+  _end+=inc;
   return 0;
 }
 
