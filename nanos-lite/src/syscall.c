@@ -46,7 +46,6 @@ int sys_brk(uintptr_t inc){
 }
 
 int sys_read(int fd, void *buf, size_t count){
-  printf("%d\n",fd);
   return fs_read(fd,(void*)buf,count);
 }
 
