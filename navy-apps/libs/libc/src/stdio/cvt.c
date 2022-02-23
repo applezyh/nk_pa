@@ -147,7 +147,7 @@ _DEFUN (_icvt, (buffer, value, type),
 	    value = -value;
 	}
 
-      while (i >= 0)
+      while (i >= 0&&value!=0)
 	{
 		char a=value+'0';
 		write(1,&a,1);
