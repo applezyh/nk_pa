@@ -26,8 +26,8 @@ void fb_write(const void *buf, off_t offset, size_t len) {
     uint32_t y = offset % (_screen.width);
     uint32_t h = (offset + len) / (_screen.width) - x;
     uint32_t w = (offset + len) % (_screen.width) - y;
-    printf("offet: %d %d %d %d %d\n",offset,x,y,x+h,y+w);
-    _draw_rect(buf,x,y,w,h);
+    //printf("offet: %d %d %d %d %d\n",offset,x,y,x+h,y+w);
+    _draw_rect(buf,offset,len/4,w,h,1);
 }
 
 void init_device() {
