@@ -41,12 +41,7 @@ int sys_write(int fd,const char* start,uint32_t len){
   return len;
 }
 
-extern char _end;
-extern char _etext;
 int sys_brk(uintptr_t inc){
-  printf("_end = %p\n",&_end);
-  printf("_edata = %p\n",&_etext);
-  //_end=(void*)inc;
   return 0;
 }
 
