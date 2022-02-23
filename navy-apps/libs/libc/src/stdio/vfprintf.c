@@ -332,8 +332,6 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	    precision = 1;
 
 	  f_type = *(format - 1);
-	  write(1,&f_type,1);
-	  write(1,"\n",1);
 	  if (precision || sign)
 	    {
 	      if (flags & FSHORT)
@@ -348,6 +346,8 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 #endif
 	      else
 		fld = _icvt (buffer, (int) i, f_type);
+		write(1,buffer,1);
+		write(1,"\n",1);
 	    }
 	  else
 	    {
