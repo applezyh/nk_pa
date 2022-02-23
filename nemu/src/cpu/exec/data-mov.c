@@ -225,7 +225,6 @@ make_EHelper(movzx) {
 }
 
 make_EHelper(movsb) {
-  printf("%x to %x in %p\n",cpu.ds+cpu.esi,cpu.es+cpu.edi,cpu.eip);
   rtl_get_ZF(&t0);
   uint8_t data=vaddr_read(cpu.ds+cpu.esi,1);
   vaddr_write(cpu.es+cpu.edi,1,data);

@@ -41,9 +41,10 @@ _DEFUN (memcpy, (out, in, length),
 	_CONST _PTR in _AND
 	size_t length)
 {
+	
   char *dst = (char *) out;
   char *src = (char *) in;
-
+	printf("%p to %p\n",src,dst);
   _PTR save = out;
 
   while (length--)
