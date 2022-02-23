@@ -83,7 +83,6 @@ PAL_GameMain(
    //
    // Initialize game data and set the flags to load the game resources.
    //
-   printf("aa\n");
    PAL_InitGameData(gpGlobals->bCurrentSaveSlot);
 
    //
