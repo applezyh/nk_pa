@@ -224,6 +224,12 @@ make_EHelper(movzx) {
   print_asm_template2(movzx);
 }
 
+make_EHelper(movsb) {
+  uint32_t data=vaddr_read((cpu.ds<<16)+cpu.esi,4);
+  vaddr_write((cpu.es<<16)+cpu.edi,4,data);
+  print_asm_template2(movzx);
+}
+
 make_EHelper(lea) {
   rtl_li(&t2, id_src->addr);
   operand_write(id_dest, &t2);
