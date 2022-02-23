@@ -334,7 +334,7 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	  f_type = *(format - 1);
 	  if (precision || sign)
 	    {
-			if(i==0){
+			if(i==1){
 				write(1,"aaaa\n",5);
 			}
 	      if (flags & FSHORT)
