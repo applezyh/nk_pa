@@ -40,10 +40,10 @@ int sys_write(int fd,const char* start,uint32_t len){
   }
   return len;
 }
-extern void* end;
+extern void* _end;
 int sys_brk(uintptr_t inc){
-  printf("%p\n",end);
-  end=(void*)inc;
+  printf("%u\n",inc);
+  _end=(void*)inc;
   return 0;
 }
 
