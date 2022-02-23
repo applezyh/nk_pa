@@ -20,8 +20,8 @@ void dispinfo_read(void *buf, off_t offset, size_t len) {
 
 
 void fb_write(const void *buf, off_t offset, size_t len) {
-    //offset/=4;
-    //len/=4;
+    offset/=4;
+    len/=4;
     uint32_t x = offset / (_screen.width);
     uint32_t y = offset % (_screen.width);
     uint32_t h = (offset + len) / (_screen.width) - x;
