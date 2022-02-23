@@ -20,10 +20,10 @@ void dispinfo_read(void *buf, off_t offset, size_t len) {
 
 
 void fb_write(const void *buf, off_t offset, size_t len) {
-    uint32_t x = offset / (_screen.width*3);
-    uint32_t y = offset % (_screen.width*3);
-    uint32_t h = (offset + len) / (3*_screen.width) - x;
-    uint32_t w = (offset + len) % (3*_screen.width);
+    uint32_t x = offset / (_screen.width*4);
+    uint32_t y = offset % (_screen.width*4);
+    uint32_t h = (offset + len) / (4*_screen.width) - x;
+    uint32_t w = (offset + len) % (4*_screen.width);
     printf("offet: %d %d %d %d %d\n",offset,x,y,x+h,y+w);
     _draw_rect(buf,x,y,h,w);
 }
