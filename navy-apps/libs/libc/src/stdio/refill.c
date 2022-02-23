@@ -106,5 +106,6 @@ _DEFUN (__srefill, (fp),
           }
         return EOF;
   }
+  printf("%d\n",fp->_r);
   return 0;
 }

@@ -91,7 +91,6 @@ _DEFUN (fgets, (buf, n, fp),
 	    {
 	      /* EOF: stop with partial or no line */
 	      if (s == buf){
-			  printf("ret 0\n");
 			return 0;
 		}
 	      break;
