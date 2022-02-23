@@ -88,6 +88,7 @@ PAL_GameMain(
    //
    // Run the main game loop.
    //
+   printf("aa\n");
    dwTime = SDL_GetTicks();
 
    while (TRUE)
@@ -117,7 +118,6 @@ PAL_GameMain(
       //
 
       PAL_ProcessEvent();
-      printf("%d\n",dwTime);
       while (SDL_GetTicks() <= dwTime)
       {
          PAL_ProcessEvent();
