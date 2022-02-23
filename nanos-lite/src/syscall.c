@@ -43,6 +43,7 @@ int sys_write(int fd,const char* start,uint32_t len){
 
 extern void* _end;
 int sys_brk(uintptr_t inc){
+  printf("_end = %p\n",_end);
   _end=(void*)inc;
   return 0;
 }
