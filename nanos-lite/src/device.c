@@ -15,7 +15,6 @@ size_t events_read(void *buf, size_t len) {
 static char dispinfo[128] __attribute__((used));
 
 void dispinfo_read(void *buf, off_t offset, size_t len) {
-  printf("%d\n",offset);
   memcpy(buf,dispinfo+offset,len);
 }
 

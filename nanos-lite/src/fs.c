@@ -59,7 +59,7 @@ ssize_t fs_read(int fd, void *buf, size_t len){
   }
   }
 
-  file_table[fd].open_offset+=len;
+  //file_table[fd].open_offset+=len;
   return len;
 }
 
@@ -86,7 +86,7 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
     break;
   }
   }
-  file_table[fd].open_offset+=len;
+  //file_table[fd].open_offset+=len;
   return len;
 }
 off_t fs_lseek(int fd, off_t offset, int whence){
