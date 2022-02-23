@@ -150,7 +150,6 @@ void difftest_step(uint32_t eip, uint8_t op) {
   // TODO: Check the registers state with QEMU.
   // Set `diff` as `true` if they are not the same.
   // TODO();
-  if(op==0x6a) return;
   diff=0;
   int flag=0;
   for(int i=R_EAX;i<=R_EDI;i++){
