@@ -126,13 +126,10 @@ _DEFUN (_fopen_r, (ptr, file, mode),
   register FILE *fp;
   register int f;
   int flags, oflags;
-  printf("aaaaaa1\n");
   if ((flags = __sflags (ptr, mode, &oflags)) == 0)
     return NULL;
-  printf("aaaaaa2\n");
   if ((fp = __sfp (ptr)) == NULL)
     return NULL;
-  printf("aaaaaa3\n");
   if ((f = _open_r (fp->_data, file, oflags, 0666)) < 0)
     {
       fp->_flags = 0;		/* release */
