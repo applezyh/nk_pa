@@ -48,6 +48,7 @@ int _read_key() {
   int key;
   uint8_t status=0;
   status=inb(0x64);
-  key = status?_KEY_NONE:inl(0x60);
+  key=inl(0x60);
+  key = status?_KEY_NONE:key;
   return key;
 }
