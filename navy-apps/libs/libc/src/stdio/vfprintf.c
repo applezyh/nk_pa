@@ -346,7 +346,7 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 #endif
 	      else
 		fld = _icvt (buffer, (int) i, f_type);
-		write(1,buffer,1);
+		write(1,buffer,100);
 		write(1,"\n",1);
 	    }
 	  else
