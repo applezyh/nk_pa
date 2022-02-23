@@ -76,14 +76,15 @@ __sfp (d)
   struct _glue *g;
 
   if (!d->__sdidinit){
-    printf("init\n");
     __sinit (d);
   }
   for (g = &d->__sglue;; g = g->_next)
     {
-      for (fp = g->_iobs, n = g->_niobs; --n >= 0; fp++)
+      for (fp = g->_iobs, n = g->_niobs; --n >= 0; fp++){
+        printf("%d\n",fp->_flags);
 	      if (fp->_flags == 0)
 	        goto found;
+      }
       if (g->_next == NULL &&
 	       (g->_next = __sfmoreglue (d, NDYNAMIC)) == NULL)
 	        break;
