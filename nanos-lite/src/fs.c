@@ -20,6 +20,7 @@ static Finfo file_table[] __attribute__((used)) = {
 #include "files.h"
 };
 size_t fs_filesz(int fd){
+  printf("%d\n",file_table[fd].size);
   return file_table[fd].size;
 }
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
