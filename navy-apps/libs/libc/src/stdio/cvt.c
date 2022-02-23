@@ -147,10 +147,11 @@ _DEFUN (_icvt, (buffer, value, type),
 	    value = -value;
 	}
 
-      while (i >= 0&&value!=0)
+      while (i >= 0)
 	{
 	  buffer[i--] = lcset[value % base];
-	  value /= base;
+	  if ((value /= base) == 0)
+	    break;
 	}
       break;
 
