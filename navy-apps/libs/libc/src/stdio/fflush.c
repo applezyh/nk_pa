@@ -65,7 +65,7 @@ _DEFUN (fflush, (fp),
 
 
 
-
+  printf("%p\n",fp);
   if (fp == NULL)
     return _fwalk (_REENT, fflush);
 

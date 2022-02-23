@@ -90,7 +90,6 @@ _DEFUN (__srefill, (fp),
    * flush all line buffered output files, per the ANSI C
    * standard.
    */
-  printf("begin fill\n");
   if (fp->_flags & (__SLBF | __SNBF))
     (void) _fwalk (fp->_data, lflush);
   fp->_p = fp->_bf._base;
@@ -105,9 +104,7 @@ _DEFUN (__srefill, (fp),
             fp->_r = 0;
             fp->_flags |= __SERR;
           }
-        printf("fill ret\n");
         return EOF;
   }
-    printf("fill ret\n");
   return 0;
 }
