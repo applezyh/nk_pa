@@ -21,15 +21,17 @@ void _exit(int status) {
   _syscall_(SYS_exit, status, 0, 0);
 }
 
+
+
+int _write(int fd, void *buf, size_t count){
+  return _syscall_(SYS_write, fd, (uintptr_t)buf, count);
+}
+
 int _open(const char *path, int flags, mode_t mode) {
   int t=_syscall_(SYS_open,(uintptr_t)path,flags,mode);
   _write(1,"aaaaaaa\n",8);
   printf("%d\n",t);
   return _syscall_(SYS_open,(uintptr_t)path,flags,mode);
-}
-
-int _write(int fd, void *buf, size_t count){
-  return _syscall_(SYS_write, fd, (uintptr_t)buf, count);
 }
 
 extern void* _end;
