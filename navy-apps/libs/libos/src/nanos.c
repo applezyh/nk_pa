@@ -31,7 +31,7 @@ int _open(const char *path, int flags, mode_t mode) {
   return _syscall_(SYS_open,(uintptr_t)path,flags,mode);
 }
 
-static void* _end;
+extern void* _end;
 
 void* _sbrk(intptr_t increment){
   void* old=_end;
