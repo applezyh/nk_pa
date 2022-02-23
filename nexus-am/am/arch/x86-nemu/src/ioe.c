@@ -36,8 +36,9 @@ void _draw_rect_p(const uint32_t *pixels, int x, int y, int w, int h) {
 }
 
 void _draw_rect_s(const uint32_t *pixels, int start,size_t len) {
-  for(int i=start;i<start+len;i++){
-    fb[i]=pixels[i-start];
+  size_t seq=0;
+  for(size_t i=start;i<start+len;i++){
+    fb[i]=pixels[seq++];
   }
 }
 
