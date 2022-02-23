@@ -126,7 +126,7 @@ void init_qemu_reg() {
   assert(ok == 1);
 }
 
-void difftest_step(uint32_t eip) {
+void difftest_step(uint32_t eip, uint8_t op) {
   union gdb_regs r;
   bool diff = false;
 
@@ -150,6 +150,7 @@ void difftest_step(uint32_t eip) {
   // TODO: Check the registers state with QEMU.
   // Set `diff` as `true` if they are not the same.
   // TODO();
+  if(op==0xcd) return;
   diff=0;
   int flag=0;
   for(int i=R_EAX;i<=R_EDI;i++){
