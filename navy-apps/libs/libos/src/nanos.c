@@ -43,6 +43,7 @@ void* _sbrk(intptr_t increment){
 }
 
 int _read(int fd, void *buf, size_t count) {
+  printf("%d\n",fd);
   return _syscall_(SYS_read,fd,(uintptr_t)buf,count);
 }
 
