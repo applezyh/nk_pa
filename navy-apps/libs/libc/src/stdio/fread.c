@@ -88,12 +88,12 @@ _DEFUN (fread, (buf, size, count, fp),
       if (__srefill (fp))
 	{
 	  /* no more input: return partial result */
+    printf("ret\n");
 	  return (total - resid) / size;
 	}
     } 
   (void) memcpy ((void *) p, (void *) fp->_p, resid);
   fp->_r -= resid;
   fp->_p += resid;
-  printf("%d\n",count);
   return count;
 }
