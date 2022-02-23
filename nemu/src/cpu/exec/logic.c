@@ -13,30 +13,6 @@ make_EHelper(test) {
 
 make_EHelper(and) {
   // TODO();
-  if(id_src->width<id_dest->width){
-    switch(id_dest->width){
-      case 4:{
-        bool flag = (id_src->val)>>(8*id_src->width-1);
-        if(flag){
-          if(id_src->width==1){
-            id_src->val|=0xffffff00;
-          } else {
-            id_src->val|=0xffff0000;
-          }
-        }
-        break;
-      }
-      case 2:{
-        bool flag = (id_src->val)>>(8*id_src->width-1);
-        if(flag){
-          id_src->val|=0xffffff00;
-        }
-        break;
-      }
-      default:
-        break;
-    }
-  }
   rtl_and(&t2, &id_dest->val, &id_src->val);
   rtl_sltu(&t3, &id_dest->val, &t2);
   operand_write(id_dest, &t2);
