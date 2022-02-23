@@ -32,19 +32,61 @@ int fs_open(const char *pathname, int flags, int mode){
   }
   return -1;
 }
+
+extern void fb_write(const void *buf, off_t offset, size_t len);
+extern void dispinfo_read(void *buf, off_t offset, size_t len);
+
 ssize_t fs_read(int fd, void *buf, size_t len){
-  off_t disk_off = file_table[fd].disk_offset;
-  off_t open_off = file_table[fd].open_offset;
-  ramdisk_read(buf,disk_off+open_off,len);
+  switch (fd)
+  {
+  case FD_FB:
+    /* code */
+    fb_write(buf, file_table[fd].open_offset,len);
+    break;
+
+  case FD_EVENTS:
+    /* code */
+    break;
+  case FD_DISPINFO:
+    /* code */
+    dispinfo_read(buf,file_table[fd].open_offset,28);
+    break;
+
+  default:{
+    off_t disk_off = file_table[fd].disk_offset;
+    off_t open_off = file_table[fd].open_offset;
+    ramdisk_read(buf,disk_off+open_off,len);
+    break;
+  }
+  }
+
   file_table[fd].open_offset+=len;
   return len;
 }
+
 ssize_t fs_write(int fd, const void *buf, size_t len){
-  
-  off_t disk_off = file_table[fd].disk_offset;
-  off_t open_off = file_table[fd].open_offset;
-  assert(open_off+len<file_table[fd].size);
-  ramdisk_write(buf,disk_off+open_off,len);
+  switch (fd)
+  {
+  case FD_FB:
+    /* code */
+    fb_write(buf, file_table[fd].open_offset,len);
+    break;
+
+  case FD_EVENTS:
+    /* code */
+    break;
+  case FD_DISPINFO:
+    /* code */
+    break;
+
+  default:{
+    off_t disk_off = file_table[fd].disk_offset;
+    off_t open_off = file_table[fd].open_offset;
+    assert(open_off+len<file_table[fd].size);
+    ramdisk_write(buf,disk_off+open_off,len);
+    break;
+  }
+  }
   file_table[fd].open_offset+=len;
   return len;
 }
@@ -67,4 +109,5 @@ int fs_close(int fd){
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
+  file_table[3].size=get_screen_size();
 }

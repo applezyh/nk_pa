@@ -87,6 +87,7 @@ int _read_key();
 void _draw_rect(const uint32_t *pixels, int x, int y, int w, int h);
 void _draw_sync();
 extern _Screen _screen;
+extern size_t get_screen_size();
 
 // =======================================================================
 // [2] Asynchronous Extension (ASYE)
