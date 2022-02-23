@@ -76,6 +76,7 @@ __sfp (d)
   struct _glue *g;
 
   if (!d->__sdidinit){
+    printf("init\n");
     __sinit (d);
   }
   for (g = &d->__sglue;; g = g->_next)
