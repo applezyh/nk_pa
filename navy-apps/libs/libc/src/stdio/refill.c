@@ -93,6 +93,7 @@ _DEFUN (__srefill, (fp),
   if (fp->_flags & (__SLBF | __SNBF))
     (void) _fwalk (fp->_data, lflush);
   fp->_p = fp->_bf._base;
+  printf("%d\n",fp->_cookie);
   fp->_r = (*fp->_read) (fp->_cookie, (char *) fp->_p, fp->_bf._size);
   fp->_flags &= ~__SMOD;	/* buffer contents are again pristine */
   if (fp->_r <= 0)
