@@ -50,8 +50,8 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       *dest=(zf==1)||(sf!=of);
       break;
     }
-    default: panic("should not reach here");
-    case CC_P: panic("n86 does not have PF");
+    default: panic("should not reach here"); break;
+    case CC_P: panic("n86 does not have PF"); break;
   }
 
   if (invert) {
