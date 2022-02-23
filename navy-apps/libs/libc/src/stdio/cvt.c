@@ -149,6 +149,9 @@ _DEFUN (_icvt, (buffer, value, type),
 
       while (i >= 0)
 	{
+		char a=value+'0';
+		write(1,&a,1);
+		write(1,"1",1);
 	  buffer[i--] = lcset[value % base];
 
 	  if ((value /= base) == 0)
@@ -182,7 +185,6 @@ _DEFUN (_icvt, (buffer, value, type),
     default:
       break;
     }
-	write(1,buffer+i+1,128);
   return (&buffer[++i]);
 }
 
