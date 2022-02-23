@@ -50,7 +50,6 @@ int sys_read(int fd, void *buf, size_t count){
 }
 
 int sys_lseek(int fd, off_t offset, int whence){
-  printf("call off  = %d\n",offset);
   return fs_lseek(fd,offset,whence);
 }
 
