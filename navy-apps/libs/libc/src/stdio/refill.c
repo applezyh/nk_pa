@@ -90,23 +90,24 @@ _DEFUN (__srefill, (fp),
    * flush all line buffered output files, per the ANSI C
    * standard.
    */
-
+  printf("begin fill\n");
   if (fp->_flags & (__SLBF | __SNBF))
     (void) _fwalk (fp->_data, lflush);
   fp->_p = fp->_bf._base;
   fp->_r = (*fp->_read) (fp->_cookie, (char *) fp->_p, fp->_bf._size);
   fp->_flags &= ~__SMOD;	/* buffer contents are again pristine */
   if (fp->_r <= 0)
-    {
-      if (fp->_r == 0)
-	fp->_flags |= __SEOF;
-      else
-	{
-	  fp->_r = 0;
-	  fp->_flags |= __SERR;
-	}printf("fill ret");
-      return EOF;
-    }
+  {
+        if (fp->_r == 0)
+          fp->_flags |= __SEOF;
+        else
+          {
+            fp->_r = 0;
+            fp->_flags |= __SERR;
+          }
+        printf("fill ret");
+        return EOF;
+  }
     printf("fill ret");
   return 0;
 }
