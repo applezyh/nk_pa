@@ -86,6 +86,7 @@ _DEFUN (__srefill, (fp),
 
   if (fp->_bf._base == NULL)
     __smakebuf (fp);
+  printf("aa\n");
 
   /*
    * Before reading from a line buffered or unbuffered file,
