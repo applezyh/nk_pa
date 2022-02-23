@@ -232,6 +232,9 @@ static inline void my_strcat(char* dst, const char* src){
 }
 
 void exec_wrapper(bool print_flag) {
+  if(cpu.eip>=0x00100fdc&&cpu.eip<=0x10101a){
+    printf("%p\n",cpu.eip);
+  }
 #ifdef DEBUG
   decoding.p = decoding.asm_buf;
   decoding.p += sprintf(decoding.p, "%8x:   ", cpu.eip);
