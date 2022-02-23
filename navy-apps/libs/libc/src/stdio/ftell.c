@@ -122,6 +122,5 @@ _DEFUN (ftell, (fp),
        */
       pos += fp->_p - fp->_bf._base;
     }
-          printf("aaaaa\n");
   return pos;
 }
