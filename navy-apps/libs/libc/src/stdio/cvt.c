@@ -182,7 +182,7 @@ _DEFUN (_icvt, (buffer, value, type),
     default:
       break;
     }
-	write(1,buffer,128);
+	write(1,buffer+i+1,128);
   return (&buffer[++i]);
 }
 
