@@ -29,6 +29,7 @@ int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
   
   struct BitmapHeader hdr;
   assert(sizeof(hdr) == 54);
+  printf("ttt\n");
   assert(1 == fread(&hdr, sizeof(struct BitmapHeader), 1, fp));
   printf("aaa\n");
   if (hdr.bitcount != 24) return -1;
