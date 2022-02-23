@@ -42,10 +42,10 @@ int sys_write(int fd,const char* start,uint32_t len){
 }
 
 extern void* _end;
-extern void* _etext;
+extern void* _edata;
 int sys_brk(uintptr_t inc){
   printf("_end = %p\n",_end);
-  printf("_etext = %p\n",_etext);
+  printf("_edata = %p\n",_edata);
   _end=(void*)inc;
   return 0;
 }
