@@ -86,6 +86,7 @@ _DEFUN (fread, (buf, size, count, fp),
       /* fp->_r = 0 ... done in __srefill */
       p += r;
       resid -= r;
+      printf("end copy\n");
      
       if (__srefill (fp))
 	{

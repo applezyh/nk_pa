@@ -38,9 +38,7 @@ int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
   int line_off = (w * 3 + 3) & ~0x3;
   for (int i = 0; i < h; i ++) {
     fseek(fp, hdr.offset + (h - 1 - i) * line_off, SEEK_SET);
-    printf("read\n");
     int nread = fread(&pixels[w * i], 3, w, fp);
-    printf("end read\n");
     for (int j = w - 1; j >= 0; j --) {
       uint8_t b = *(((uint8_t*)&pixels[w * i]) + 3 * j);
       uint8_t g = *(((uint8_t*)&pixels[w * i]) + 3 * j + 1);
