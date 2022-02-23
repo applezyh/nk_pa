@@ -9,10 +9,11 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 size_t events_read(void *buf, size_t len) {
-  int k =_read_key();
-  const char* k_name=keyname[k];
-  memcpy(buf,k_name,strlen(k_name));
-  return 0;
+  unsigned long time =  _uptime();
+  char tbuf[100];
+  size_t n = sprintf(tbuf,"t %u\n",time);
+  memcpy(buf,tbuf,n>len?len:n);
+  return n>len?len:n;
 }
 
 static char dispinfo[128] __attribute__((used));

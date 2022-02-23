@@ -35,6 +35,7 @@ int fs_open(const char *pathname, int flags, int mode){
 
 extern void fb_write(const void *buf, off_t offset, size_t len);
 extern void dispinfo_read(void *buf, off_t offset, size_t len);
+extern size_t events_read(void *buf,size_t len);
 
 ssize_t fs_read(int fd, void *buf, size_t len){
   switch (fd)
@@ -44,6 +45,7 @@ ssize_t fs_read(int fd, void *buf, size_t len){
     break;
 
   case FD_EVENTS:
+    return events_read(buf, len);
     /* code */
     break;
   case FD_DISPINFO:
