@@ -116,12 +116,12 @@ PAL_GameMain(
       // Wait for the time of one frame. Accept input here.
       //
 
-      PAL_ProcessEvent();
-      while (SDL_GetTicks() <= dwTime)
-      {
-         PAL_ProcessEvent();
-         SDL_Delay(1);
-      }
+      //PAL_ProcessEvent();
+      //while (SDL_GetTicks() <= dwTime)
+      //{
+      //   PAL_ProcessEvent();
+      //   SDL_Delay(1);
+      //}
 
       //
       // Set the time of the next frame.
@@ -131,7 +131,6 @@ PAL_GameMain(
       //
       // Run the main frame routine.
       //
-      printf("a\n");
       PAL_StartFrame();
 
    }
