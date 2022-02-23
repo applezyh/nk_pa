@@ -36,9 +36,7 @@ extern void* _end;
 void* _sbrk(intptr_t increment){
   void* old=_end;
   if(0 == _syscall_(SYS_brk, (uintptr_t)(_end+increment), 0, 0)){
-    char a[100];
-    int s=sprintf(a,"%p\n",old);
-    _write(1,a,s);
+    _write(1,"aaa\n",4);
     return old;
   }
   return (void*)-1;
