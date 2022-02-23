@@ -166,6 +166,7 @@ void difftest_step(uint32_t eip, uint8_t op) {
   flag=(r.eip!=cpu.eip);
   diff|=flag;
   if (flag) {
+    printf("%d\n",op);
       printf("diff eip true:%x but %x in %x\n",r.eip,cpu.eip,eip);
   }
   if (diff) {
