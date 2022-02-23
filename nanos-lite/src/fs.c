@@ -48,7 +48,8 @@ ssize_t fs_read(int fd, void *buf, size_t len){
     break;
   case FD_DISPINFO:
     /* code */
-    dispinfo_read(buf,file_table[fd].open_offset,28);
+    dispinfo_read(buf,file_table[fd].open_offset,len);
+    printf("%s\n",buf);
     break;
 
   default:{
