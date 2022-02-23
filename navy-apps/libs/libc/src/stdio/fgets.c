@@ -90,8 +90,10 @@ _DEFUN (fgets, (buf, n, fp),
 	  if (__srefill (fp))
 	    {
 	      /* EOF: stop with partial or no line */
-	      if (s == buf)
-		return 0;
+	      if (s == buf){
+			  printf("ret 0\n");
+			return 0;
+		}
 	      break;
 	    }
 	  len = fp->_r;
