@@ -49,7 +49,6 @@ ssize_t fs_read(int fd, void *buf, size_t len){
   case FD_DISPINFO:
     /* code */
     dispinfo_read(buf,file_table[fd].open_offset,len);
-    printf("%s\b",buf);
     break;
 
   default:{
@@ -61,7 +60,7 @@ ssize_t fs_read(int fd, void *buf, size_t len){
   }
 
   //file_table[fd].open_offset+=len;
-  return len;
+  return len+file_table[fd].open_offset<=file_table[fd].size?len:file_table[fd].size-file_table[fd].open_offset;
 }
 
 ssize_t fs_write(int fd, const void *buf, size_t len){
@@ -88,7 +87,7 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
   }
   }
   //file_table[fd].open_offset+=len;
-  return len;
+  return len+file_table[fd].open_offset<=file_table[fd].size?len:file_table[fd].size-file_table[fd].open_offset;
 }
 off_t fs_lseek(int fd, off_t offset, int whence){
   switch (whence)
@@ -109,5 +108,6 @@ int fs_close(int fd){
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
-  file_table[3].size=get_screen_size();
+  file_table[FD_FB].size=get_screen_size();
+  file_table[FD_DISPINFO].size=21;
 }
