@@ -45,7 +45,6 @@ ssize_t fs_read(int fd, void *buf, size_t len){
     break;
 
   case FD_EVENTS:
-  printf("%d\n",len);
     return events_read(buf, len);
     /* code */
     break;
