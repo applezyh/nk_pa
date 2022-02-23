@@ -80,11 +80,11 @@ __sfp (d)
   for (g = &d->__sglue;; g = g->_next)
     {
       for (fp = g->_iobs, n = g->_niobs; --n >= 0; fp++)
-	if (fp->_flags == 0)
-	  goto found;
+	      if (fp->_flags == 0)
+	        goto found;
       if (g->_next == NULL &&
-	  (g->_next = __sfmoreglue (d, NDYNAMIC)) == NULL)
-	break;
+	       (g->_next = __sfmoreglue (d, NDYNAMIC)) == NULL)
+	        break;
     }
   d->_errno = ENOMEM;
   return NULL;
