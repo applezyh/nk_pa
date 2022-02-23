@@ -10,6 +10,7 @@ static const char *keyname[256] __attribute__((used)) = {
 
 size_t events_read(void *buf, size_t len) {
   int k=_read_key();
+  printf("%s",keyname[k&0x8000?k^0x8000:k]);
   char tbuf[100];
   if(k!=_KEY_NONE){
     bool down = false;
@@ -19,7 +20,7 @@ size_t events_read(void *buf, size_t len) {
     }
     size_t n = sprintf(tbuf,"k%c %s\n",down?'d':'u',keyname[k]);
     memcpy(buf,tbuf,n>len?len:n);
-    printf("%s",buf);
+    
     return n-1>len?len:n-1;
   }
   unsigned long time =  _uptime();
