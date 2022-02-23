@@ -94,5 +94,6 @@ _DEFUN (fread, (buf, size, count, fp),
   (void) memcpy ((void *) p, (void *) fp->_p, resid);
   fp->_r -= resid;
   fp->_p += resid;
+  printf("%d\n",count);
   return count;
 }
