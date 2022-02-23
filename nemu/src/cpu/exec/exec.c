@@ -107,7 +107,7 @@ opcode_entry opcode_table [512] = {
   /* 0x7c */	IDEXW(J, jcc, 1), IDEXW(J, jcc, 1), IDEXW(J, jcc, 1), IDEXW(J, jcc, 1),
   /* 0x80 */	IDEXW(I2E, gp1, 1), IDEX(I2E, gp1), EMPTY, IDEX(SI2E, gp1),
   /* 0x84 */	IDEXW(G2E, test, 1), IDEX(G2E, test), EMPTY, EMPTY,
-  /* 0x88 */	IDEXW(mov_G2E, mov, 1), IDEX(mov_G2E, mov), IDEXW(mov_E2G, mov, 1), IDEX(E2G, mov),
+  /* 0x88 */	IDEXW(mov_G2E, mov, 1), IDEX(mov_G2E, mov), IDEXW(mov_E2G, mov, 1), IDEX(mov_E2G, mov),
   /* 0x8c */	EMPTY, IDEX(lea_M2G, lea), EMPTY, EMPTY,
   /* 0x90 */	EX(nop), EMPTY, EMPTY, EMPTY,
   /* 0x94 */	EMPTY, EMPTY, EMPTY, EMPTY,
@@ -218,6 +218,9 @@ make_EHelper(real) {
   uint32_t opcode = instr_fetch(eip, 1);
   decoding.opcode = opcode;
   set_width(opcode_table[opcode].width);
+    if(cpu.eip>=0x00100fdc&&cpu.eip<=0x10101a){
+    printf("%p %d\n",cpu.eip,decoding.is_operand_size_16);
+  }
   idex(eip, &opcode_table[opcode]);
 }
 
@@ -232,9 +235,6 @@ static inline void my_strcat(char* dst, const char* src){
 }
 
 void exec_wrapper(bool print_flag) {
-  if(cpu.eip>=0x00100fdc&&cpu.eip<=0x10101a){
-    printf("%p\n",cpu.eip);
-  }
 #ifdef DEBUG
   decoding.p = decoding.asm_buf;
   decoding.p += sprintf(decoding.p, "%8x:   ", cpu.eip);
