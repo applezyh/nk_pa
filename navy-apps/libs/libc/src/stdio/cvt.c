@@ -151,7 +151,7 @@ _DEFUN (_icvt, (buffer, value, type),
 	{
 		char a=value+'0';
 		write(1,&a,1);
-		write(1,"1",1);
+		write(1,"\n",1);
 	  buffer[i--] = lcset[value % base];
 
 	  if ((value /= base) == 0)
