@@ -20,9 +20,7 @@ int main() {
   Log("Build time: %s, %s", __TIME__, __DATE__);
 
   init_ramdisk();
-
   init_device();
-
 #ifdef HAS_ASYE
   Log("Initializing interrupt/exception handler...");
   init_irq();
@@ -30,6 +28,8 @@ int main() {
 
   init_fs();
   uint32_t entry = loader(NULL, "/bin/bmptest");
+
+  Log("begin\n");
 
   ((void (*)(void))entry)();
 

@@ -41,7 +41,6 @@ ssize_t fs_read(int fd, void *buf, size_t len){
   {
   case FD_FB:
     /* code */
-    printf("write to fb\n");
     fb_write(buf, file_table[fd].open_offset,len);
     break;
 
