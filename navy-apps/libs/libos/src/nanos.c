@@ -34,9 +34,9 @@ int _open(const char *path, int flags, mode_t mode) {
 extern void* _end;
 
 void* _sbrk(intptr_t increment){
-  uintptr_t old=_end;
-  if(0==_syscall_(SYS_brk, _end+increment, 0, 0)){
-    return (void*)old;
+  void* old=_end;
+  if(0==_syscall_(SYS_brk, (uintptr_t)(_end+increment), 0, 0)){
+    return old;
   }
   return (void*)-1;
 }
