@@ -84,13 +84,11 @@ _DEFUN (fread, (buf, size, count, fp),
       /* fp->_r = 0 ... done in __srefill */
       p += r;
       resid -= r;
-     printf("begin fill\n");
       if (__srefill (fp))
 	{
 	  /* no more input: return partial result */
 	  return (total - resid) / size;
 	}
-  printf("end fill\n");
   } 
   (void) memcpy ((void *) p, (void *) fp->_p, resid);
   fp->_r -= resid;
