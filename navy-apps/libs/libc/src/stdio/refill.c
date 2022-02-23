@@ -83,10 +83,8 @@ _DEFUN (__srefill, (fp),
 	    }
 	}
     }
-  printf("fill\n");
   if (fp->_bf._base == NULL)
     __smakebuf (fp);
-printf("end fill\n");
   /*
    * Before reading from a line buffered or unbuffered file,
    * flush all line buffered output files, per the ANSI C
@@ -109,5 +107,6 @@ printf("end fill\n");
 	}
       return EOF;
     }
+    printf("fill ret");
   return 0;
 }
