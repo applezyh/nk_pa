@@ -225,8 +225,8 @@ make_EHelper(movzx) {
 }
 
 make_EHelper(movsb) {
-  uint8_t data=vaddr_read((cpu.ds<<16)+cpu.esi,1);
-  vaddr_write((cpu.es<<16)+cpu.edi,1,data);
+  uint8_t data=vaddr_read(cpu.ds+cpu.esi,1);
+  vaddr_write(cpu.es+cpu.edi,1,data);
   print_asm_template2(movsb);
 }
 
