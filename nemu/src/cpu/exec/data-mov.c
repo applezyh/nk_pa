@@ -227,7 +227,6 @@ make_EHelper(movzx) {
 make_EHelper(movsb) {
   uint32_t data=vaddr_read((cpu.ds<<16)+cpu.esi,4);
   vaddr_write((cpu.es<<16)+cpu.edi,4,data);
-  TODO();
   print_asm_template2(movsb);
 }
 
