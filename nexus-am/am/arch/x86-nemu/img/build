@@ -9,4 +9,4 @@ make -C $DIR/boot -s
 ld -melf_i386 --gc-sections -T $DIR/loader.ld -e _start -o $DEST $DIR/boot/start.o --start-group $@ --end-group
 objdump -d $DEST > $DEST.txt
 
-objcopy -S --remove-section .note.gnu.property --set-section-flags .bss=alloc,contents -O binary $DEST $DEST.bin
+objcopy -S --set-section-flags .bss=alloc,contents -O binary $DEST $DEST.bin
