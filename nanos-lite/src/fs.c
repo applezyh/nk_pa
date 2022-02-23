@@ -54,13 +54,12 @@ ssize_t fs_read(int fd, void *buf, size_t len){
   default:{
     off_t disk_off = file_table[fd].disk_offset;
     off_t open_off = file_table[fd].open_offset;
-    printf("%d %d %d\n",disk_off,open_off,len);
     ramdisk_read(buf,disk_off+open_off,len);
     break;
   }
   }
 
-  //file_table[fd].open_offset+=len;
+  file_table[fd].open_offset+=len;
   return len;
 }
 
@@ -87,7 +86,7 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
     break;
   }
   }
-  //file_table[fd].open_offset+=len;
+  file_table[fd].open_offset+=len;
   return len;
 }
 off_t fs_lseek(int fd, off_t offset, int whence){
