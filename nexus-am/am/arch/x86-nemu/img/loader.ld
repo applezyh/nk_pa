@@ -17,8 +17,8 @@ SECTIONS {
   .bss : {
     *(.bss*)
   }
-  end = .;
-  _end = .;
+  end;
+  _end;
   _heap_start = ALIGN(4096);
   _stack_pointer = 0x7c00;
   _heap_end = 0x8000000;
