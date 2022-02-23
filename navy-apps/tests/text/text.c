@@ -7,7 +7,7 @@ int main() {
   fseek(fp, 0, SEEK_END);
   long size = ftell(fp);
   int a=size;
-  printf("%ld\n",a);
+  printf("%u\n",a);
   assert(size == 5000);
 
   fseek(fp, 500 * 5, SEEK_SET);
