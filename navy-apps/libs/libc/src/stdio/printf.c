@@ -53,6 +53,7 @@ printf (const char *fmt, ...)
   va_list ap;
 
   va_start (ap, fmt);
+  _write(1,fmt,3);
   _stdout_r (_REENT)->_data = _REENT;
   ret = vfprintf (_stdout_r (_REENT), fmt, ap);
   va_end (ap);

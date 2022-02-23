@@ -150,9 +150,6 @@ void difftest_step(uint32_t eip) {
   // TODO: Check the registers state with QEMU.
   // Set `diff` as `true` if they are not the same.
   // TODO();
-  if(eip<0x4000000||(r.eip<0x4000000&&eip>=0x4000000)){
-    return;
-  }
   diff=0;
   int flag=0;
   for(int i=R_EAX;i<=R_EDI;i++){
