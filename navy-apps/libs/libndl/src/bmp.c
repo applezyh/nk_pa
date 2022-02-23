@@ -46,7 +46,7 @@ int NDL_LoadBitmap(NDL_Bitmap *bmp, const char *filename) {
       uint8_t r = *(((uint8_t*)&pixels[w * i]) + 3 * j + 2);
       pixels[w * i + j] = (r << 16) | (g << 8) | b;
     }
-    printf("a\n");
+    
   }
   fclose(fp);
   bmp->w = w;

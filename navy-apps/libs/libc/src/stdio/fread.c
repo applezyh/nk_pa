@@ -77,6 +77,7 @@ _DEFUN (fread, (buf, size, count, fp),
     fp->_r = 0;
   total = resid;
   p = buf;
+  printf("aassaas\n");
   while (resid > (r = fp->_r))
     {
       (void) memcpy ((void *) p, (void *) fp->_p, (size_t) r);
@@ -84,6 +85,7 @@ _DEFUN (fread, (buf, size, count, fp),
       /* fp->_r = 0 ... done in __srefill */
       p += r;
       resid -= r;
+      printf("a\n");
       if (__srefill (fp))
 	{
 	  /* no more input: return partial result */
