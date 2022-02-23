@@ -26,19 +26,12 @@ size_t get_screen_size(){
 
 extern void* memcpy(void *, const void *, int);
 
-void _draw_rect_p(const uint32_t *pixels, int x, int y, int w, int h) {
+void _draw_rect(const uint32_t *pixels, int x, int y, int w, int h) {
   uint32_t seq=0;
   for(int i=y;i<y+h;i++){
     for(int j=x;j<x+w;j++){
       fb[i*_screen.width+j]=pixels[seq++];
     }
-  }
-}
-
-void _draw_rect_s(const uint32_t *pixels, int start,size_t len) {
-  size_t seq=0;
-  for(size_t i=start;i<start+len;i++){
-    fb[i]=pixels[seq++];
   }
 }
 
