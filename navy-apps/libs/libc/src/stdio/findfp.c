@@ -81,7 +81,6 @@ __sfp (d)
   for (g = &d->__sglue;; g = g->_next)
     {
       for (fp = g->_iobs, n = g->_niobs; --n >= 0; fp++){
-        printf("%d\n",fp->_flags);
 	      if (fp->_flags == 0)
 	        goto found;
       }
@@ -145,7 +144,7 @@ __sinit (s)
   /* make sure we clean up on exit */
   s->__cleanup = _cleanup_r;	/* conservative */
   s->__sdidinit = 1;
-
+  printf("%d %d %d\n",__SRD,__SWR | __SLBF,__SWR | __SNBF);
   std (s->__sf + 0, __SRD, 0, s);
   std (s->__sf + 1, __SWR | __SLBF, 1, s);
   std (s->__sf + 2, __SWR | __SNBF, 2, s);
