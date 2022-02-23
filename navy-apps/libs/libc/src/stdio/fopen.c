@@ -131,9 +131,9 @@ _DEFUN (_fopen_r, (ptr, file, mode),
     return NULL;
   if ((fp = __sfp (ptr)) == NULL)
     return NULL;
+  printf("aaaaaa\n");
   if ((f = _open_r (fp->_data, file, oflags, 0666)) < 0)
     {
-      printf("%d\n",fp->_flags);
       fp->_flags = 0;		/* release */
       return NULL;
     }
