@@ -144,6 +144,7 @@ __sinit (s)
   /* make sure we clean up on exit */
   s->__cleanup = _cleanup_r;	/* conservative */
   s->__sdidinit = 1;
+  printf("aaaaaaaa\n");
   printf("%d %d %d\n",__SRD,__SWR | __SLBF,__SWR | __SNBF);
   std (s->__sf + 0, __SRD, 0, s);
   std (s->__sf + 1, __SWR | __SLBF, 1, s);
