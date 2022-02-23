@@ -64,8 +64,9 @@ _DEFUN (fflush, (fp),
   register int n, t;
 
 
-
-  printf("%p\n",fp);
+  char a=fp+'0';
+  _write(1,&a,1);
+  _write(1,"\n",1);
   if (fp == NULL)
     return _fwalk (_REENT, fflush);
 
