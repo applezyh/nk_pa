@@ -9,8 +9,20 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 size_t events_read(void *buf, size_t len) {
-  unsigned long time =  _uptime();
+  int k=_read_key();
   char tbuf[100];
+  if(k!=_KEY_NONE){
+    bool down = false;
+    if (k & 0x8000) {
+      k ^= 0x8000;
+      down = true;
+    }
+    size_t n = sprintf(tbuf,"k%c %s %s\n",down?'d':'u',"RETURN",keyname[k]);
+    memcpy(buf,tbuf,n>len?len:n);
+    return n-1>len?len:n-1;
+  }
+  unsigned long time =  _uptime();
+  
   size_t n = sprintf(tbuf,"t %u\n",time);
   memcpy(buf,tbuf,n>len?len:n);
   return n-1>len?len:n-1;
