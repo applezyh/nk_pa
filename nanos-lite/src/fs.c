@@ -69,7 +69,6 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
   {
   case FD_FB:
     /* code */
-    printf("write fb\n");
     fb_write(buf, file_table[fd].open_offset,len);
     break;
 
