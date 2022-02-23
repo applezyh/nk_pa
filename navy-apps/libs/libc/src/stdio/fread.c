@@ -93,6 +93,7 @@ _DEFUN (fread, (buf, size, count, fp),
 	}
     } printf("a\n");
   (void) memcpy ((void *) p, (void *) fp->_p, resid);
+  printf("assaasddasdasdaadsadsadsasda\n");
   fp->_r -= resid;
   fp->_p += resid;
   return count;
