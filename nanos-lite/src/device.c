@@ -11,7 +11,7 @@ static const char *keyname[256] __attribute__((used)) = {
 size_t events_read(void *buf, size_t len) {
   unsigned long time =  _uptime();
   char tbuf[100];
-  size_t n = sprintf(tbuf,"t %lu\n",time);
+  size_t n = sprintf(tbuf,"t %u\n",time);
   memcpy(buf,tbuf,n>len?len:n);
   printf("%s",buf);
   return n>len?len:n;
