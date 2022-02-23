@@ -75,8 +75,10 @@ __sfp (d)
   int n;
   struct _glue *g;
 
-  if (!d->__sdidinit)
+  if (!d->__sdidinit){
+    printf("init\n");
     __sinit (d);
+  }
   for (g = &d->__sglue;; g = g->_next)
     {
       for (fp = g->_iobs, n = g->_niobs; --n >= 0; fp++)
