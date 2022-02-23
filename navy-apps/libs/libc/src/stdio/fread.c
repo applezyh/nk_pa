@@ -80,7 +80,7 @@ _DEFUN (fread, (buf, size, count, fp),
   printf("begin copy\n");
   while (resid > (r = fp->_r))
     {
-      printf("%p to %p\n",fp->_p,p);
+      printf("%p to %p len : %d\n",fp->_p,p,r);
       (void) memcpy ((void *) p, (void *) fp->_p, (size_t) r);
       fp->_p += r;
       /* fp->_r = 0 ... done in __srefill */
