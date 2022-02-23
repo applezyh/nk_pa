@@ -99,7 +99,6 @@ _DEFUN (ftell, (fp),
     {
       pos = (*fp->_seek) (fp->_cookie, (fpos_t) 0, SEEK_CUR);
       if (pos == -1L){
-        printf("aaaaa\n");
 	      return pos;
       }
     }
@@ -123,6 +122,6 @@ _DEFUN (ftell, (fp),
        */
       pos += fp->_p - fp->_bf._base;
     }
-
+          printf("aaaaa\n");
   return pos;
 }
