@@ -150,23 +150,25 @@ void difftest_step(uint32_t eip) {
   // TODO: Check the registers state with QEMU.
   // Set `diff` as `true` if they are not the same.
   // TODO();
-  diff=0;
-  int flag=0;
-  for(int i=R_EAX;i<=R_EDI;i++){
-    
-    flag=(r.array[i]!=reg_l(i));
+  if(eip>=0xc000000){
+    diff=0;
+    int flag=0;
+    for(int i=R_EAX;i<=R_EDI;i++){
+      
+      flag=(r.array[i]!=reg_l(i));
+      diff|=flag;
+      if (flag) {
+        printf("diff %s true:%x but %x in %x\n",reg_name(i,4),r.array[i],reg_l(i),eip);
+      }
+    }
+    // printf("%x %x\n",r.array[8],cpu.eip);
+    // printf("%x %x\n",r.array[9],cpu.eflag);
+    flag=(r.eip!=cpu.eip);
     diff|=flag;
     if (flag) {
-      printf("diff %s true:%x but %x in %x\n",reg_name(i,4),r.array[i],reg_l(i),eip);
+        printf("diff eip true:%x but %x in %x\n",r.eip,cpu.eip,eip);
     }
   }
-  // printf("%x %x\n",r.array[8],cpu.eip);
-  // printf("%x %x\n",r.array[9],cpu.eflag);
-  flag=(r.eip!=cpu.eip);
-  diff|=flag;
-  if (flag) {
-      printf("diff eip true:%x but %x in %x\n",r.eip,cpu.eip,eip);
-    }
   if (diff) {
     nemu_state = NEMU_STOP;
   }
