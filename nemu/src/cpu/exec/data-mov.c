@@ -225,8 +225,16 @@ make_EHelper(movzx) {
 }
 
 make_EHelper(movsb) {
+  rtl_get_ZF(&t0);
   uint8_t data=vaddr_read(cpu.ds+cpu.esi,1);
   vaddr_write(cpu.es+cpu.edi,1,data);
+  if(t0){
+    cpu.esi+=1;
+    cpu.edi+=1;
+  } else {
+    cpu.esi-=1;
+    cpu.edi-=1;
+  }
   print_asm_template2(movsb);
 }
 
