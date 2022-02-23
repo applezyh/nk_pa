@@ -19,7 +19,7 @@ void dispinfo_read(void *buf, off_t offset, size_t len) {
 }
 
 
-void fb_write(const void *buf, off_t offset, size_t len) {
+void fb_write(const void *buf, int offset, int len) {
     int x = offset / _screen.height;
     int y = offset % _screen.height;
     int h = (offset + len) / _screen.height - x;
