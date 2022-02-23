@@ -111,6 +111,6 @@ int fs_close(int fd){
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
-  file_table[FD_FB].size=get_screen_size();
+  file_table[FD_FB].size=get_screen_size()*3;
   file_table[FD_DISPINFO].size=128;
 }
