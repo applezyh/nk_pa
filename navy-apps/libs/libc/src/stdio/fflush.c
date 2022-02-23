@@ -63,10 +63,7 @@ _DEFUN (fflush, (fp),
   register unsigned char *p;
   register int n, t;
 
-
-  char a=fp+'0';
-  _write(1,&a,1);
-  _write(1,"\n",1);
+  _write(1,"aaaaa\n",6);
   if (fp == NULL)
     return _fwalk (_REENT, fflush);
 
