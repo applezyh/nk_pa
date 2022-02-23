@@ -25,6 +25,7 @@ void dispinfo_read(void *buf, off_t offset, size_t len) {
 void fb_write(const void *buf, off_t offset, size_t len) {
     offset/=4;
     len/=4;
+    printf("draw %d %d\n",offset,len);
     _draw_rect(buf,offset,len,0,0,1);
 }
 
