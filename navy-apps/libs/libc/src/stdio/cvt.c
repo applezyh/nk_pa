@@ -153,8 +153,7 @@ _DEFUN (_icvt, (buffer, value, type),
 		write(1,&a,1);
 		write(1,"\n",1);
 	  buffer[i--] = lcset[value % base];
-		value = value / base;
-	  if (value == 0)
+	  if ((value /= base) == 0)
 	    break;
 	}
       break;
