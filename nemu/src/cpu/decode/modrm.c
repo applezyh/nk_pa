@@ -31,9 +31,6 @@ void load_addr(vaddr_t *eip, ModR_M *m, Operand *rm) {
   if (disp_size != 0) {
     /* has disp */
     disp = instr_fetch(eip, disp_size);
-    if(cpu.eip>=0x00100fdc&&cpu.eip<=0x10101a){
-    printf("%p %d\n",cpu.eip,disp_size);
-  }
     if (disp_size == 1) { disp = (int8_t)disp; }
 
     rtl_addi(&rm->addr, &rm->addr, disp);
