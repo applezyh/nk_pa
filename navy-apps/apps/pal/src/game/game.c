@@ -131,6 +131,7 @@ PAL_GameMain(
       //
       // Run the main frame routine.
       //
+      printf("a\n");
       PAL_StartFrame();
 
    }
