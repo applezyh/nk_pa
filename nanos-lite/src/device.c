@@ -27,7 +27,7 @@ void fb_write(const void *buf, off_t offset, size_t len) {
 }
 
 void init_device() {
-  memcpy(dispinfo,"screen width:400 height 300",28);
+  memcpy(dispinfo,"WIDTH:400 HEIGHT:300",28);
   _ioe_init();
 
   // TODO: print the string to array `dispinfo` with the format
