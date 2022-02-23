@@ -52,7 +52,7 @@ ssize_t fs_read(int fd, void *buf, size_t len){
     break;
 
   default:{
-    printf("default read\n");
+    printf("default read %d len = %d\n",fd,len);
     off_t disk_off = file_table[fd].disk_offset;
     off_t open_off = file_table[fd].open_offset;
     ramdisk_read(buf,disk_off+open_off,len);
