@@ -185,13 +185,21 @@ make_EHelper(leave) {
 make_EHelper(cltd) {
   if (decoding.is_operand_size_16) {
     // TODO();
+    // TODO();
+    uint32_t al;
+    rtl_lr_l(&al, R_AL);
+    uint32_t flag=al>>7;
+    uint32_t re1=0xff00|al;
+    uint32_t re2=al;
+    if(flag) rtl_sr_l(R_AX,&re1);
+    else rtl_sr_l(R_AX,&re2);
   }
   else {
     // TODO();
     uint32_t ax;
     rtl_lr_l(&ax, R_AX);
     uint32_t flag=ax>>15;
-    uint32_t re1=0xffff<<16+ax;
+    uint32_t re1=0xffff0000|ax;
     uint32_t re2=ax;
     if(flag) rtl_sr_l(R_EAX,&re1);
     else rtl_sr_l(R_EAX,&re2);
