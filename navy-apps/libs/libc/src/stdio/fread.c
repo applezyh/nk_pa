@@ -79,7 +79,6 @@ _DEFUN (fread, (buf, size, count, fp),
   p = buf;
   while (resid > (r = fp->_r))
     {
-      printf("%p to %p\n",fp->_p,p);
       (void) memcpy ((void *) p, (void *) fp->_p, (size_t) r);
       fp->_p += r;
       /* fp->_r = 0 ... done in __srefill */
