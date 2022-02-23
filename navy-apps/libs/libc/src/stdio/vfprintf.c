@@ -334,9 +334,6 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	  f_type = *(format - 1);
 	  if (precision || sign)
 	    {
-			if(i==1){
-				write(1,"aaaa\n",5);
-			}
 	      if (flags & FSHORT)
 		fld = _sicvt (buffer, (short) i, f_type);
 #ifdef __GNUC__
