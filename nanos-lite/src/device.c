@@ -19,6 +19,7 @@ size_t events_read(void *buf, size_t len) {
     }
     size_t n = sprintf(tbuf,"k%c %s\n",down?'d':'u',keyname[k]);
     memcpy(buf,tbuf,n>len?len:n);
+    printf("%s",buf);
     return n-1>len?len:n-1;
   }
   unsigned long time =  _uptime();
