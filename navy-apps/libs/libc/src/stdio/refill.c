@@ -105,9 +105,9 @@ _DEFUN (__srefill, (fp),
             fp->_r = 0;
             fp->_flags |= __SERR;
           }
-        printf("fill ret");
+        printf("fill ret\n");
         return EOF;
   }
-    printf("fill ret");
+    printf("fill ret\n");
   return 0;
 }
