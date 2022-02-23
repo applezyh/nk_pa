@@ -31,7 +31,6 @@ void sys_exit(int status){
 }
 
 int sys_write(int fd,const char* start,uint32_t len){
-  printf("len %d  ",len);
   if(fd==0||fd==1||fd==2){
     for(uint32_t i=0;i<len;i++){
       _putc(*(start+i));
@@ -41,6 +40,7 @@ int sys_write(int fd,const char* start,uint32_t len){
   }
   return len;
 }
+
 extern void* _end;
 int sys_brk(uintptr_t inc){
   _end=(void*)inc;

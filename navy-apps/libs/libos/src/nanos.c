@@ -36,6 +36,7 @@ extern void* _end;
 void* _sbrk(intptr_t increment){
   void* old=_end;
   if(0 == _syscall_(SYS_brk, (uintptr_t)(_end+increment), 0, 0)){
+    printf("%p\n",old);
     return old;
   }
   return (void*)-1;
