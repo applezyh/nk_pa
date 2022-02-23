@@ -334,9 +334,9 @@ _DEFUN (_VFPRINTF_R, (data, stream, format, args),
 	  f_type = *(format - 1);
 	  if (precision || sign)
 	    {
-			char a[100];
-		int s=sprintf(a,"%d\n",i);
-		write(1,a,s);
+			if(i==0){
+				write(1,"aaaa\n",5);
+			}
 	      if (flags & FSHORT)
 		fld = _sicvt (buffer, (short) i, f_type);
 #ifdef __GNUC__
