@@ -29,8 +29,6 @@ int main() {
   init_fs();
   uint32_t entry = loader(NULL, "/bin/bmptest");
 
-  Log("begin\n");
-
   ((void (*)(void))entry)();
 
   panic("Should not reach here");
