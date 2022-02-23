@@ -95,6 +95,7 @@ _DEFUN (__srefill, (fp),
   fp->_p = fp->_bf._base;
   fp->_r = (*fp->_read) (fp->_cookie, (char *) fp->_p, fp->_bf._size);
   fp->_flags &= ~__SMOD;	/* buffer contents are again pristine */
+  printf("%d\n",fp->_r);
   if (fp->_r <= 0)
   {
         if (fp->_r == 0)
@@ -106,6 +107,6 @@ _DEFUN (__srefill, (fp),
           }
         return EOF;
   }
-  printf("%d\n",fp->_r);
+  
   return 0;
 }
