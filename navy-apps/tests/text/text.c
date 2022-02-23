@@ -2,8 +2,6 @@
 #include <assert.h>
 
 int main() {
-  int* a=malloc(4*10);
-  printf("%p\n",a);
   FILE *fp = fopen("/share/texts/num", "r+");
   assert(fp);
   fseek(fp, 0, SEEK_END);
