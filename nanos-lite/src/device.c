@@ -13,8 +13,8 @@ size_t events_read(void *buf, size_t len) {
   char tbuf[100];
   size_t n = sprintf(tbuf,"t %u\n",time);
   memcpy(buf,tbuf,n>len?len:n);
-  printf("%d\n",n);
-  return n>len?len:n;
+  printf("%d\n",n-1);
+  return n-1>len?len:n-1;
 }
 
 static char dispinfo[128] __attribute__((used));
