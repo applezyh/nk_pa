@@ -188,13 +188,13 @@ make_EHelper(cltd) {
   }
   else {
     // TODO();
-    uint32_t flag;
-    rtl_lr_l(&flag, R_AX);
-    flag>>=15;
-    uint32_t re1=0xffff;
-    uint32_t re2=0x0000;
-    if(flag) rtl_sr_l(R_DX,&re1);
-    else rtl_sr_l(R_DX,&re2);
+    uint32_t ax;
+    rtl_lr_l(&ax, R_AX);
+    uint32_t flag=ax>>15;
+    uint32_t re1=0xffff<<16+ax;
+    uint32_t re2=ax;
+    if(flag) rtl_sr_l(R_EAX,&re1);
+    else rtl_sr_l(R_EAX,&re2);
   }
 
   print_asm(decoding.is_operand_size_16 ? "cwtl" : "cltd");
