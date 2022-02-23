@@ -58,7 +58,6 @@ off_t fs_lseek(int fd, off_t offset, int whence){
   default:
     assert(0);
   }
-  printf("fd = %d off = %d o_fft = %d disk_offt = %d\n",fd,offset,file_table[fd].open_offset,file_table[fd].disk_offset);
   return file_table[fd].open_offset;
 }
 int fs_close(int fd){
