@@ -86,7 +86,6 @@ _DEFUN (ftell, (fp),
 
   if (fp->_seek == NULL)
     {
-      printf("aaaaa\n");
       fp->_data->_errno = ESPIPE;
       return -1L;
     }
@@ -99,8 +98,10 @@ _DEFUN (ftell, (fp),
   else
     {
       pos = (*fp->_seek) (fp->_cookie, (fpos_t) 0, SEEK_CUR);
-      if (pos == -1L)
-	return pos;
+      if (pos == -1L){
+        printf("aaaaa\n");
+	      return pos;
+      }
     }
   if (fp->_flags & __SRD)
     {
