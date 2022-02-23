@@ -86,6 +86,7 @@ _DEFUN (ftell, (fp),
 
   if (fp->_seek == NULL)
     {
+      printf("aaaaa\n");
       fp->_data->_errno = ESPIPE;
       return -1L;
     }
