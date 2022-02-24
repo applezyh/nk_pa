@@ -10,7 +10,6 @@ static const char *keyname[256] __attribute__((used)) = {
 
 size_t events_read(void *buf, size_t len) {
   int k=_read_key();
-  printf("%s\n",keyname[k&0x8000?k^0x8000:k]);
   char tbuf[100];
   if(k!=_KEY_NONE){
     bool down = false;
