@@ -616,7 +616,7 @@ PAL_InterpretInstruction(
    {
       iPlayerRole = gpGlobals->rgParty[0].wPlayerRole;
    }
-
+   printf("%x\n",pScript->wOperation);
    switch (pScript->wOperation)
    {
    case 0x000B:
