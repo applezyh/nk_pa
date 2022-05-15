@@ -2977,7 +2977,6 @@ PAL_InterpretInstruction(
       break;
 
    default:
-      printf("%d\n", pScript->wOperation);
       TerminateOnError("SCRIPT: Invalid Instruction at %4x: (%4x - %4x, %4x, %4x)",
          wScriptEntry, pScript->wOperation, pScript->rgwOperand[0],
          pScript->rgwOperand[1], pScript->rgwOperand[2]);
@@ -3285,6 +3284,7 @@ PAL_RunTriggerScript(
          //
          // Restore the screen
          //
+         printf("%x\n", wScriptEntry);
          PAL_ClearDialog(TRUE);
          VIDEO_RestoreScreen();
          VIDEO_UpdateScreen(NULL);
@@ -3295,6 +3295,7 @@ PAL_RunTriggerScript(
          //
          // Print dialog text
          //
+         printf("%x\n", wScriptEntry);
          PAL_ShowDialogText(PAL_GetMsg(pScript->rgwOperand[0]));
          wScriptEntry++;
          break;
