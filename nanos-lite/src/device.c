@@ -41,7 +41,8 @@ void fb_write(const void *buf, off_t offset, size_t len) {
 }
 
 void init_device() {
-  memcpy(dispinfo,"WIDTH:400\nHEIGHT:300\n",23);
+  const char info[] = "WIDTH:400\nHEIGHT:300\n";
+  memcpy(dispinfo,info,sizeof(info));
 
   _ioe_init();
 
