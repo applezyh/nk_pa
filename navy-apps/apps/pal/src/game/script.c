@@ -2973,6 +2973,7 @@ PAL_InterpretInstruction(
       //
       // backup screen
       //
+      printf("%x\n", pScript->wOperation);
       VIDEO_BackupScreen();
       break;
 
