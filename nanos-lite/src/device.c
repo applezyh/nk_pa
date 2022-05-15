@@ -37,7 +37,7 @@ void dispinfo_read(void *buf, off_t offset, size_t len) {
 
 
 void fb_write(const void *buf, off_t offset, size_t len) {
-    offset/=4;
+    //offset;
     len/=4;
     _draw_rect(buf,offset,len,0,0,1);
 }
