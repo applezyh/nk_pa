@@ -3294,13 +3294,14 @@ PAL_RunTriggerScript(
          //
          // Print dialog text
          //
+         printf("%x\n", wScriptEntry);
          PAL_ShowDialogText(PAL_GetMsg(pScript->rgwOperand[0]));
          wScriptEntry++;
          break;
 
       default:
-         printf("%x\n", wScriptEntry);
          PAL_ClearDialog(TRUE);
+         printf("%x\n", wScriptEntry);
          wScriptEntry = PAL_InterpretInstruction(wScriptEntry, wEventObjectID);
          break;
       }
