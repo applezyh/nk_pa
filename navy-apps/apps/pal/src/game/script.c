@@ -3296,6 +3296,7 @@ PAL_RunTriggerScript(
          //
          // Print dialog text
          //
+         printf("%d\n", pScript->rgwOperand[0]);
          PAL_ShowDialogText(PAL_GetMsg(pScript->rgwOperand[0]));
          wScriptEntry++;
          break;
