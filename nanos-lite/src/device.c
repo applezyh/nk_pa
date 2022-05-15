@@ -37,11 +37,13 @@ void dispinfo_read(void *buf, off_t offset, size_t len) {
 
 
 void fb_write(const void *buf, off_t offset, size_t len) {
+    offset/=4;
+    len/=4;
     _draw_rect(buf,offset,len,0,0,1);
 }
 
 void init_device() {
-  memcpy(dispinfo,"WIDTH:400\nHEIGHT:300\n",23);
+  memcpy(dispinfo,"WIDTH:300\nHEIGHT:400\n",23);
 
   _ioe_init();
 
