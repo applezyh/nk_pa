@@ -2977,9 +2977,9 @@ PAL_InterpretInstruction(
       break;
 
    default:
-      //TerminateOnError("SCRIPT: Invalid Instruction at %4x: (%4x - %4x, %4x, %4x)",
-      //   wScriptEntry, pScript->wOperation, pScript->rgwOperand[0],
-      //   pScript->rgwOperand[1], pScript->rgwOperand[2]);
+      TerminateOnError("SCRIPT: Invalid Instruction at %4x: (%4x - %4x, %4x, %4x)",
+         wScriptEntry, pScript->wOperation, pScript->rgwOperand[0],
+         pScript->rgwOperand[1], pScript->rgwOperand[2]);
       break;
    }
 
