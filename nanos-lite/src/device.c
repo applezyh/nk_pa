@@ -37,7 +37,7 @@ void dispinfo_read(void *buf, off_t offset, size_t len) {
 
 
 void fb_write(const void *buf, off_t offset, size_t len) {
-    _draw_rect(buf,offset / 4,len,0,0,1);
+    _draw_rect(buf,offset / 4,len / 4,0,0,1);
 }
 
 void init_device() {
