@@ -3284,7 +3284,6 @@ PAL_RunTriggerScript(
          //
          // Restore the screen
          //
-         printf("%x\n", wScriptEntry);
          PAL_ClearDialog(TRUE);
          VIDEO_RestoreScreen();
          VIDEO_UpdateScreen(NULL);
@@ -3301,7 +3300,6 @@ PAL_RunTriggerScript(
          break;
 
       default:
-         printf("%x\n", wScriptEntry);
          PAL_ClearDialog(TRUE);
          wScriptEntry = PAL_InterpretInstruction(wScriptEntry, wEventObjectID);
          break;
