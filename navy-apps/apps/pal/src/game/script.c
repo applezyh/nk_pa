@@ -3301,7 +3301,6 @@ PAL_RunTriggerScript(
 
       default:
          PAL_ClearDialog(TRUE);
-         printf("%x\n", wScriptEntry);
          wScriptEntry = PAL_InterpretInstruction(wScriptEntry, wEventObjectID);
          break;
       }
