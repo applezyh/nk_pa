@@ -90,8 +90,8 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
   }
   }
   ssize_t ret = len+file_table[fd].open_offset<=file_table[fd].size?len:file_table[fd].size-file_table[fd].open_offset;
-  file_table[fd].open_offset=len+file_table[fd].open_offset<=file_table[fd].size?len + file_table[fd].open_offset 
-  :file_table[fd].size;
+  //file_table[fd].open_offset=len+file_table[fd].open_offset<=file_table[fd].size?len + file_table[fd].open_offset 
+  //:file_table[fd].size;
   return ret;
 }
 off_t fs_lseek(int fd, off_t offset, int whence){
