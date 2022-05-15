@@ -90,8 +90,8 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
   }
   }
   ssize_t ret = len+file_table[fd].open_offset<=file_table[fd].size?len:file_table[fd].size-file_table[fd].open_offset;
-  //file_table[fd].open_offset=len+file_table[fd].open_offset<=file_table[fd].size?len + file_table[fd].open_offset 
-  //:file_table[fd].size;
+  file_table[fd].open_offset=len+file_table[fd].open_offset<=file_table[fd].size?len + file_table[fd].open_offset 
+  :file_table[fd].size;
   return ret;
 }
 off_t fs_lseek(int fd, off_t offset, int whence){
@@ -113,6 +113,6 @@ int fs_close(int fd){
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
-  file_table[FD_FB].size=get_screen_size()*3;
+  file_table[FD_FB].size=get_screen_size()*4;
   file_table[FD_DISPINFO].size=128;
 }
