@@ -38,7 +38,6 @@ extern void dispinfo_read(void *buf, off_t offset, size_t len);
 extern size_t events_read(void *buf,size_t len);
 
 ssize_t fs_read(int fd, void *buf, size_t len){
-  len = len > file_table[fd].size - file_table[fd].open_offset ? file_table[fd].size - file_table[fd].open_offset : len;
   switch (fd)
   {
   case FD_FB:
@@ -51,10 +50,12 @@ ssize_t fs_read(int fd, void *buf, size_t len){
     break;
   case FD_DISPINFO:
     /* code */
+    len = len > file_table[fd].size - file_table[fd].open_offset ? file_table[fd].size - file_table[fd].open_offset : len;
     dispinfo_read(buf,file_table[fd].open_offset,len);
     break;
 
   default:{
+    len = len > file_table[fd].size - file_table[fd].open_offset ? file_table[fd].size - file_table[fd].open_offset : len;
     off_t disk_off = file_table[fd].disk_offset;
     off_t open_off = file_table[fd].open_offset;
     ramdisk_read(buf,disk_off+open_off,len);
