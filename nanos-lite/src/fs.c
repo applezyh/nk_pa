@@ -68,11 +68,12 @@ ssize_t fs_read(int fd, void *buf, size_t len){
 }
 
 ssize_t fs_write(int fd, const void *buf, size_t len){
+  len = len > file_table[fd].size - file_table[fd].open_offset ? file_table[fd].size - file_table[fd].open_offset : len;
   switch (fd)
   {
   case FD_FB:
     /* code */
-    fb_write(buf, file_table[fd].open_offset,len);
+    fb_write(buf, file_table[fd].open_offset, len);
     break;
 
   case FD_EVENTS:
@@ -90,11 +91,8 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
     break;
   }
   }
-  ssize_t ret = len + file_table[fd].open_offset <= file_table[fd].size ? len : file_table[fd].size - file_table[fd].open_offset;
-
-  file_table[fd].open_offset = len + file_table[fd].open_offset <= file_table[fd].size ? len + file_table[fd].open_offset 
-  :file_table[fd].size;
-  return ret;
+  file_table[fd].open_offset += len;
+  return len;
 }
 off_t fs_lseek(int fd, off_t offset, int whence){
   switch (whence)
