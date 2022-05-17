@@ -84,7 +84,7 @@ extern _Area _heap;
 void _ioe_init();
 unsigned long _uptime();
 int _read_key();
-void _draw_rect(const uint32_t *pixels, int x, int y, int w, int h,int seq);
+void _draw_rect(const uint32_t *pixels, int offset, int len);
 void _draw_sync();
 extern _Screen _screen;
 extern size_t get_screen_size();
