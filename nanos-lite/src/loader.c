@@ -18,6 +18,7 @@ uintptr_t loader(_Protect *as, const char *filename) {
 		fs_read(fd, page, PGSIZE);
 		vaddr += PGSIZE;
 		filesize -= PGSIZE;
+		Log("%d", filesize);
 	}
 	fs_close(fd);
 	Log("close file: %s fd: %d size: %d byte\n", filename, fd, fs_filesz(fd));
