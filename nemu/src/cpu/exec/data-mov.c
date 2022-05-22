@@ -129,7 +129,7 @@ make_EHelper(mov_store_cr){
   {
   case 0:
     /* code */
-    Log("%x", id_src->val);
+    assert(0);
     cpu.CR0=id_src->val;
     break;
   case 3:
