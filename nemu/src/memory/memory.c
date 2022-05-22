@@ -65,7 +65,8 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		return page_address;
 	}
 	else {
-		assert(0);
+	  Log("cr0.paging: %d && cr0.protect_enable: %d", cr0.paging, cr0.protect_enable);
+    assert(0);
 	}
 }
 
