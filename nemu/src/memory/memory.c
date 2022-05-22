@@ -31,7 +31,7 @@ void paddr_write(paddr_t addr, int len, uint32_t data) {
 
 uint32_t page_translate(vaddr_t addr, bool iswrite) {
   CR0 cr0 = *((CR0*)&cpu.CR0);
-  printf("%d %d\n", cr0.paging, cr0.protect_enable);
+  printf("%x\n", cpu.CR0);
 	if (cr0.paging && cr0.protect_enable) {
 		paddr_t pde_base = cpu.CR3;
 		paddr_t pde_address = pde_base + ((addr >> 22) << 2);
