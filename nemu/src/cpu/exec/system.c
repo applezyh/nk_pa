@@ -50,7 +50,7 @@ make_EHelper(iret) {
   rtl_pop(&cpu.cs);
   rtl_pop(eip);
   rtl_pop(&cpu.eflag);
-  printf("iret\n");
+  printf("iret to: 0x%x\n", eip);
   print_asm("iret");
 }
 
