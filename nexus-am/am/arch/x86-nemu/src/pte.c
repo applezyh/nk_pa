@@ -46,6 +46,19 @@ void _pte_init(void* (*palloc)(), void (*pfree)(void*)) {
   set_cr0(get_cr0() | CR0_PG);
 }
 
+void _map(_Protect *p, void *va, void *pa) {
+	PDE *dir_base = (PDE *)(p->ptr);
+	uint32_t page = PTX(va);
+	uint32_t dir = PDX(va);
+	if (!(dir_base[dir] & 0x1)) {
+		PTE *uptab = (PTE *)(palloc_f());
+		dir_base[dir]  = (uint32_t)uptab | PTE_P;
+	}
+	PTE * page_base = (PTE *)(dir_base[dir] & 0xfffff000);
+	PTE * pte = &page_base[page];
+	*pte = (uint32_t)pa | PTE_P;
+}
+
 void _protect(_Protect *p) {
   PDE *updir = (PDE*)(palloc_f());
   p->ptr = updir;
@@ -63,9 +76,6 @@ void _release(_Protect *p) {
 
 void _switch(_Protect *p) {
   set_cr3(p->ptr);
-}
-
-void _map(_Protect *p, void *va, void *pa) {
 }
 
 void _unmap(_Protect *p, void *va) {
