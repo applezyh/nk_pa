@@ -49,7 +49,7 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		if (!(pte & 0x1)) {
 			Log("addr = 0x%x, iswrite = %d", addr, iswrite);
 			Log("pte = 0x%x", pte);
-			assert(0);
+			//assert(0);
 		}
 		paddr_t page_address = (pte & 0xfffff000) + (addr & 0xfff);
 		
