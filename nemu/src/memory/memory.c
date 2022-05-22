@@ -89,6 +89,7 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 	}
 	else {
 		paddr_t paddr = page_translate(addr, false);
+		assert(paddr < PMEM_SIZE);
 		return paddr_read(paddr, len);
 	}
   //return paddr_read(addr, len);
