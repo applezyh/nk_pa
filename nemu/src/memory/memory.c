@@ -65,6 +65,10 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		return page_address;
 	}
 	else {
+		if(addr >= 0x8048000) {
+		printf("%x\n",cpu.CR0);
+		assert(0);
+		}
 		return addr;
 	}
 }
