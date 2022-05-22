@@ -86,8 +86,12 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 		return paddr;
 	}
 	else {
+		
 		paddr_t paddr = page_translate(addr, false);
-		return paddr_read(paddr, len);
+		uint32_t instr = paddr_read(paddr, len);
+		printf("at: %x %x\n", cpu.eip, instr);
+  		if(cpu.eip>=0x8048000 && instr==0) assert(0);
+		return instr;
 	}
 }
 
