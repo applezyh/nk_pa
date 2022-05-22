@@ -37,9 +37,7 @@ make_EHelper(mov_cr2r) {
 
 make_EHelper(int) {
   //TODO();
-  printf("begin int\n");
   *eip=raise_intr(id_dest->val,*eip);
-  printf("end int\n");
   
   print_asm("int %s", id_dest->str);
 #ifdef DIFF_TEST
@@ -52,6 +50,7 @@ make_EHelper(iret) {
   rtl_pop(&cpu.cs);
   rtl_pop(eip);
   rtl_pop(&cpu.eflag);
+  printf("iret");
   print_asm("iret");
 }
 
