@@ -10,7 +10,7 @@ typedef void (*EHelper) (vaddr_t *);
 
 static inline uint32_t instr_fetch(vaddr_t *eip, int len) {
   uint32_t instr = vaddr_read(*eip, len);
-  if(instr==0) assert(0);
+  if(*eip>=0x8048000 && instr==0) assert(0);
   printf("at: %x %x\n", *eip, instr);
 #ifdef DEBUG
   uint8_t *p_instr = (void *)&instr;
