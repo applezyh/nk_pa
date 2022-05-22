@@ -46,6 +46,8 @@ typedef struct {
       rtlreg_t IDTentry;
       uint16_t IDTlen;
     };
+
+    rtlreg_t CR3, CR0;
     
     
 
