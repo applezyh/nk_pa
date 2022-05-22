@@ -30,27 +30,43 @@ void paddr_write(paddr_t addr, int len, uint32_t data) {
 }
 
 uint32_t page_translate(vaddr_t addr, bool iswrite) {
-  PDE pde, *pgdir;
-  PTE pte, *pgtab;
-  paddr_t paddr = addr;
-  CR0 cr0 = *((CR0*)&cpu.CR0);
-  CR3 cr3 = *((CR3*)&cpu.CR3);
-  if (cr0.protect_enable && cr0.paging) {
-    pgdir = (PDE *)(intptr_t)(cr3.page_directory_base << 12);
-    pde.val = paddr_read((intptr_t)&pgdir[(addr >> 22) & 0x3ff], 4);
-    Assert(pde.present, "addr: 0x%x PDE: 0x%x", addr, pde);
-    pde.accessed = 1;
+	CR0 cr0 = *((CR0*)&cpu.CR0);
+  if (cr0.paging && cr0.protect_enable) {
+		paddr_t pde_base = cpu.CR3;
+		paddr_t pde_address = pde_base + ((addr >> 22) << 2);
+		paddr_t pde = paddr_read(pde_address, 4);
+		if (!(pde & 0x1)) {
+			Log("addr = 0x%x, iswrite = %d", addr, iswrite);
+			Log("pde = 0x%x, pde_base = 0x%x, pde_address = 0x%x", pde, pde_base, pde_address);
+			assert(0);
+		}
 
-    pgtab = (PTE *)(intptr_t)(pde.page_frame << 12);
-    pte.val = paddr_read((intptr_t)&pgtab[(addr >> 12) & 0x3ff], 4);
-    Assert(pte.present, "addr: 0x%x PTE: 0x%x", addr, pte);
-    pte.accessed = 1;
-    pte.dirty = iswrite ? 1 : pte.dirty;
-
-    paddr = (pte.page_frame << 12) | (addr & PAGE_MASK);
-  }
-
-  return paddr;
+		paddr_t pte_base = pde & 0xfffff000;
+		//paddr_t pte_address = pte_base + (((addr & 0x003ff000) >> 12) << 2);
+		paddr_t pte_address = pte_base + ((addr & 0x003ff000) >> 10);
+		paddr_t pte = paddr_read(pte_address, 4);
+		if (!(pte & 0x1)) {
+			Log("addr = 0x%x, iswrite = %d", addr, iswrite);
+			Log("pte = 0x%x", pte);
+			assert(0);
+		}
+		paddr_t page_address = (pte & 0xfffff000) + (addr & 0xfff);
+		
+		// set the access and dirty
+		pde = pde | 0x20;
+		pte = pte | 0x20;
+		if (iswrite) {
+			pde = pde | 0x40;
+			pte = pte | 0x40;
+		}
+		paddr_write(pde_address, 4, pde);
+		paddr_write(pte_address, 4, pte);
+	
+		return page_address;
+	}
+	else {
+		return addr;
+	}
 }
 
 uint32_t vaddr_read(vaddr_t addr, int len) {
