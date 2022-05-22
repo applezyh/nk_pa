@@ -31,7 +31,7 @@ void paddr_write(paddr_t addr, int len, uint32_t data) {
 
 uint32_t page_translate(vaddr_t addr, bool iswrite) {
   CR0 cr0 = *((CR0*)&cpu.CR0);
-	if (cr0.protect_enable) {
+	if (cr0.paging && cr0.protect_enable) {
 		paddr_t pde_base = cpu.CR3;
 		paddr_t pde_address = pde_base + ((addr >> 22) << 2);
 		paddr_t pde = paddr_read(pde_address, 4);
@@ -66,8 +66,7 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		return page_address;
 	}
 	else {
-	  Log("cr0.protect_enable: %d", cr0.protect_enable);
-    assert(0);
+	  return addr;
 	}
 }
 
