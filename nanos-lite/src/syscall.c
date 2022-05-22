@@ -42,7 +42,8 @@ int sys_write(int fd,const char* start,uint32_t len){
 }
 
 int sys_brk(uintptr_t inc){
-  return 0;
+  extern int mm_brk(uint32_t new);
+  return mm_brk(inc);
 }
 
 int sys_read(int fd, void *buf, size_t count){
