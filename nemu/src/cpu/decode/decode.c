@@ -345,7 +345,7 @@ make_DHelper(mov_load_cr){
 }
 
 make_DHelper(mov_store_cr){
-  decode_op_rm(eip, id_src, false, id_dest, false);
+  decode_op_rm(eip, id_src, true, id_dest, false);
 #ifdef DEBUG
   sprintf(id_dest->str, 5, "%%cr%d", id_dest->reg);
 #endif
