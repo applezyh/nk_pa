@@ -66,6 +66,7 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		return page_address;
 	}
 	else {
+	  Assert(addr < PMEM_SIZE, "physical address(0x%08x) is out of bound at %x", addr, cpu.eip);
 	  return addr;
 	}
 }
