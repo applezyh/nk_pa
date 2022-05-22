@@ -72,6 +72,9 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 		
 		paddr_t paddr = page_translate(addr, false);
 		uint32_t instr = paddr_read(paddr, len);
+		if(paddr>=0x8048000 && instr==0){
+			printf("addr: %x inst: %x\n", paddr, instr);
+		}
 		return instr;
 	}
 }
