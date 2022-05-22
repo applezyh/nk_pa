@@ -69,8 +69,11 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 	}
 }
 
+
 uint32_t vaddr_read(vaddr_t addr, int len) {
 	if (((addr & 0xfff) + len) > 0x1000) {
+		//Log("in the read!!!!!!!!!!!!!!!!!!!!!!!!");
+		/* this is a special case, you can handle it later. */
 		int point;
 		paddr_t paddr, low, high;
 		// calculate the split point
@@ -85,15 +88,10 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 		return paddr;
 	}
 	else {
-		
 		paddr_t paddr = page_translate(addr, false);
-		uint32_t instr = paddr_read(paddr, len);
-		if(paddr>=0x8048000 && instr==0){
-			printf("addr: %x inst: %x\n", paddr, instr);
-			assert(0);
-		}
-		return instr;
+		return paddr_read(paddr, len);
 	}
+  //return paddr_read(addr, len);
 }
 
 void vaddr_write(vaddr_t addr, int len, uint32_t data) {
@@ -117,7 +115,9 @@ void vaddr_write(vaddr_t addr, int len, uint32_t data) {
 		paddr_write(paddr, point, high);
 	}
 	else {
+		//Log("i am here~");
 		paddr_t paddr = page_translate(addr, true);
 		paddr_write(paddr, len, data);
 	}
+	//paddr_write(addr, len, data;
 }
