@@ -125,11 +125,11 @@ make_EHelper(pop) {
 }
 
 make_EHelper(mov_store_cr){
+  Log("%x", id_dest->reg);
   switch (id_dest->reg)
   {
   case 0:
     /* code */
-    assert(0);
     cpu.CR0=id_src->val;
     break;
   case 3:
