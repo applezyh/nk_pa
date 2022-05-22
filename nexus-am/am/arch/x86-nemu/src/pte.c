@@ -47,16 +47,20 @@ void _pte_init(void* (*palloc)(), void (*pfree)(void*)) {
 }
 
 void _map(_Protect *p, void *va, void *pa) {
-	PDE *dir_base = (PDE *)(p->ptr);
-	uint32_t page = PTX(va);
-	uint32_t dir = PDX(va);
-	if (!(dir_base[dir] & 0x1)) {
-		PTE *uptab = (PTE *)(palloc_f());
-		dir_base[dir]  = (uint32_t)uptab | PTE_P;
-	}
-	PTE * page_base = (PTE *)(dir_base[dir] & 0xfffff000);
-	PTE * pte = &page_base[page];
-	*pte = (uint32_t)pa | PTE_P;
+  PDE *pde, *pgdir = p->ptr;
+  PTE *pgtab;
+
+  pde = &pgdir[PDX(va)];
+  if (*pde & PTE_P) {
+    pgtab = (PTE *)PTE_ADDR(*pde);
+  } else {
+    pgtab = (PTE *)palloc_f();
+    for (int i = 0; i < NR_PTE; i ++) {
+      pgtab[i] = 0;
+    }
+    *pde = PTE_ADDR(pgtab) | PTE_P;
+  }
+  pgtab[PTX(va)] = PTE_ADDR(pa) | PTE_P;
 }
 
 void _protect(_Protect *p) {
@@ -79,7 +83,7 @@ void _switch(_Protect *p) {
 }
 
 void _unmap(_Protect *p, void *va) {}
-extern void* memcpy(void*, const void*, int);
+extern void* memcpy(void*, void*, int);
 _RegSet *_umake(_Protect *p, _Area ustack, _Area kstack, void *entry, char *const argv[], char *const envp[]) {
   int arg1=0;
   char* arg2=NULL;
