@@ -66,6 +66,7 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		return page_address;
 	}
 	else {
+	  printf("%x %x\n", addr, cpu.eip);
 	  return addr;
 	}
 }
