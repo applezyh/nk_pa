@@ -7,7 +7,7 @@ extern uint8_t ramdisk_start;
 extern uint8_t ramdisk_end;
 uintptr_t loader(_Protect *as, const char *filename) {
   int fd = fs_open(filename, 0, 0);
-  Log("open file: %s fd: %d size: %d byte\n", filename, fd, fs_filesz(fd));
+  Log("open file: %s fd: %d size: %d byte", filename, fd, fs_filesz(fd));
 	int filesize = fs_filesz(fd);
 	void *vaddr, *page;
 	vaddr = DEFAULT_ENTRY;
