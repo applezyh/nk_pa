@@ -129,6 +129,7 @@ make_EHelper(mov_store_cr){
   {
   case 0:
     /* code */
+    Log("%x", id_src->val);
     cpu.CR0=id_src->val;
     break;
   case 3:
@@ -138,7 +139,7 @@ make_EHelper(mov_store_cr){
   default:
     assert(0);
   }
-  print_asm_template2(mov);
+  print_asm_template2(mov_store_cr);
 }
 
 make_EHelper(pusha) {
