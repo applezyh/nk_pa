@@ -38,12 +38,12 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
   if (cr0.protect_enable && cr0.paging) {
     pgdir = (PDE *)(intptr_t)(cr3.page_directory_base << 12);
     pde.val = paddr_read((intptr_t)&pgdir[(addr >> 22) & 0x3ff], 4);
-    assert(pde.present);
+    Assert(pde.present, "PDE: 0x%x", pde);
     pde.accessed = 1;
 
     pgtab = (PTE *)(intptr_t)(pde.page_frame << 12);
     pte.val = paddr_read((intptr_t)&pgtab[(addr >> 12) & 0x3ff], 4);
-    assert(pte.present);
+    Assert(pte.present, "PTE: 0x%x", pte);
     pte.accessed = 1;
     pte.dirty = iswrite ? 1 : pte.dirty;
 
