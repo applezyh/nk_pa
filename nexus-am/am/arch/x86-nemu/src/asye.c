@@ -18,12 +18,11 @@ _RegSet* irq_handle(_RegSet *tf) {
       default: ev.event = _EVENT_ERROR; break;
     }
     next = H(ev, tf);
-    printf("irq_handle\n");
     if (next == NULL) {
       next = tf;
     }
   }
-
+  printf("irq_handle\n");
   return next;
 }
 
