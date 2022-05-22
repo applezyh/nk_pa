@@ -78,9 +78,20 @@ void _switch(_Protect *p) {
   set_cr3(p->ptr);
 }
 
-void _unmap(_Protect *p, void *va) {
-}
-
+void _unmap(_Protect *p, void *va) {}
+extern void* memcpy(void*, void*, int);
 _RegSet *_umake(_Protect *p, _Area ustack, _Area kstack, void *entry, char *const argv[], char *const envp[]) {
-  return NULL;
+  int arg1=0;
+  char* arg2=NULL;
+  memcpy(ustack.end - 4, (void*)arg2, 4);
+  memcpy(ustack.end - 8, (void*)arg2, 4);
+  memcpy(ustack.end - 12, (void*)arg1, 4);
+  memcpy(ustack.end - 16, (void*)arg1, 4);
+  _RegSet tf;
+  tf.eflags = 0x02;
+  tf.cs = 8;
+  tf.eip = (uintptr_t)entry;
+  void* ptr = (void*)(ustack.end - 16 - sizeof(_RegSet));
+  memcpy(ptr, (void*)&tf, sizeof(_RegSet));
+  return (_RegSet*)ptr;
 }
