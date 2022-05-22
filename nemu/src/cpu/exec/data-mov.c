@@ -21,7 +21,7 @@ make_EHelper(pop) {
 }
 
 make_EHelper(mov_store_cr){
-  printf("%x\n", id_src->val);
+  printf("%d %x\n",id_dest->reg, id_src->val);
 	switch (id_dest->reg)
   {
   case 0:
