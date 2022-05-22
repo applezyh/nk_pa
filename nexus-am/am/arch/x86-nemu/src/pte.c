@@ -79,7 +79,7 @@ void _switch(_Protect *p) {
 }
 
 void _unmap(_Protect *p, void *va) {}
-extern void* memcpy(void*, void*, int);
+extern void* memcpy(void*, const void*, int);
 _RegSet *_umake(_Protect *p, _Area ustack, _Area kstack, void *entry, char *const argv[], char *const envp[]) {
   int arg1=0;
   char* arg2=NULL;
