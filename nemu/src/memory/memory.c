@@ -66,15 +66,12 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		return page_address;
 	}
 	else {
-	  Assert(addr < PMEM_SIZE, "physical address(0x%08x) is out of bound at %x", addr, cpu.eip);
 	  return addr;
 	}
 }
 
 uint32_t vaddr_read(vaddr_t addr, int len) {
 	if (((addr & 0xfff) + len) > 0x1000) {
-		//Log("in the read!!!!!!!!!!!!!!!!!!!!!!!!");
-		/* this is a special case, you can handle it later. */
 		int point;
 		paddr_t paddr, low, high;
 		// calculate the split point
@@ -92,7 +89,6 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 		paddr_t paddr = page_translate(addr, false);
 		return paddr_read(paddr, len);
 	}
-  //return paddr_read(addr, len);
 }
 
 void vaddr_write(vaddr_t addr, int len, uint32_t data) {
@@ -116,9 +112,7 @@ void vaddr_write(vaddr_t addr, int len, uint32_t data) {
 		paddr_write(paddr, point, high);
 	}
 	else {
-		//Log("i am here~");
 		paddr_t paddr = page_translate(addr, true);
 		paddr_write(paddr, len, data);
 	}
-	//paddr_write(addr, len, data;
 }
