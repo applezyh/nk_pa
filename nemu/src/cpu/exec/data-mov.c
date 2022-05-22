@@ -7,121 +7,17 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
-  //TODO();
-  switch (decoding.opcode)
-  {
-  case 0x50:
-    rtl_push(&(cpu.eax));
-    print_asm("pushw %s","eax");
-    break;
-
-  case 0x51:
-    rtl_push(&(cpu.ecx));
-    print_asm("pushw %s","ecx");
-    break;
-
-  case 0x52:
-    rtl_push(&(cpu.edx));
-    print_asm("pushw %s","edx");
-    break;
-
-  case 0x53:
-    rtl_push(&(cpu.ebx));
-    print_asm("pushw %s","ebx");
-    break;
-
-  case 0x54:{
-    uint32_t temp = cpu.esp;
-    rtl_push(&(temp));
-    print_asm("pushw %s","esp");
-    break;
-  }
-
-  case 0x55:
-    rtl_push(&(cpu.ebp));
-    print_asm("pushw %s","ebp");
-    break;
-
-  case 0x56:
-    rtl_push(&(cpu.esi));
-    print_asm("pushw %s","esi");
-    break;
-
-  case 0x57:
-    rtl_push(&(cpu.edi));
-    print_asm("pushw %s","edi");
-    break;
-  
-  case 0xff:
-    rtl_push(&(id_dest->val));
-    print_asm_template1(push);
-    break;
-
-  case 0x6a:
-    rtl_push(&(id_dest->val));
-    print_asm_template1(push);
-    break;
-
-  case 0x06:
-    rtl_push(&(cpu.es));
-    print_asm_template1(push);
-    break;
-
-  default:
-    rtl_push(&(id_dest->val));
-    print_asm_template1(push);
-    break;
-  }
+	if (id_dest->width == 1) {
+		id_dest->val = (int32_t)(int8_t)id_dest->val;
+	}
+	rtl_push(&id_dest->val);
+  print_asm_template1(push);
 }
 
-make_EHelper(pop) { 
-  switch (decoding.opcode)
-  {
-  case 0x58:
-    rtl_pop(&(cpu.eax));
-    print_asm("pop %s","eax");
-    break;
-
-  case 0x59:
-    rtl_pop(&(cpu.ecx));
-    print_asm("pop %s","ecx");
-    break;
-
-  case 0x5a:
-    rtl_pop(&(cpu.edx));
-    print_asm("pop %s","edx");
-    break;
-
-  case 0x5b:
-    rtl_pop(&(cpu.ebx));
-    print_asm("pop %s","ebx");
-    break;
-
-  case 0x5c:
-    rtl_pop(&(cpu.esp));
-    print_asm("pushw %s","esp");
-    break;
-
-  case 0x5d:
-    rtl_pop(&(cpu.ebp));
-    print_asm("pop %s","ebp");
-    break;
-
-  case 0x5e:
-    rtl_pop(&(cpu.esi));
-    print_asm("pop %s","esi");
-    break;
-
-  case 0x5f:
-    rtl_pop(&(cpu.edi));
-    print_asm("pop %s","edi");
-    break;
-
-  default:
-    TODO();
-    break;
-  }
-
+make_EHelper(pop) {
+	rtl_pop(&t0);
+	operand_write(id_dest, &t0);
+  print_asm_template1(pop);
 }
 
 make_EHelper(mov_store_cr){
