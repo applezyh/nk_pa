@@ -125,7 +125,6 @@ make_EHelper(pop) {
 }
 
 make_EHelper(mov_store_cr){
-  assert(0);
   switch (id_dest->reg)
   {
   case 0:
