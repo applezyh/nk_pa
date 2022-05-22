@@ -36,6 +36,7 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		paddr_t pde_address = pde_base + ((addr >> 22) << 2);
 		paddr_t pde = paddr_read(pde_address, 4);
 		if (!(pde & 0x1)) {
+      Log("CR0: %x", cpu.CR0);
 			Log("addr = 0x%x, iswrite = %d", addr, iswrite);
 			Log("pde = 0x%x, pde_base = 0x%x, pde_address = 0x%x", pde, pde_base, pde_address);
 			assert(0);
