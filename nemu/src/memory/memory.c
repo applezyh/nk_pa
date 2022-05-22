@@ -10,7 +10,7 @@
 #define OFF(va) ((uint32_t(va)) & 0xfff)
 
 #define pmem_rw(addr, type) *(type *)({\
-    Assert(addr < PMEM_SIZE, "physical address(0x%08x) is out of bound", addr); \
+    Assert(addr < PMEM_SIZE, "physical address(0x%08x) is out of bound at %x", addr, cpu.eip); \
     guest_to_host(addr); \
     })
 
