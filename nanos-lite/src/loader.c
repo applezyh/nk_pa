@@ -2,7 +2,7 @@
 #include "ramdisk.h"
 #include "fs.h"
 #include "memory.h"
-#define DEFAULT_ENTRY ((void *)0x4000000)
+#define DEFAULT_ENTRY ((void *)0x8048000)
 extern uint8_t ramdisk_start;
 extern uint8_t ramdisk_end;
 uintptr_t loader(_Protect *as, const char *filename) {
@@ -16,7 +16,7 @@ uintptr_t loader(_Protect *as, const char *filename) {
 		_map(as, vaddr, page);
 		fs_read(fd, page, PGSIZE);
 		vaddr += PGSIZE;
-		filesize = filesize - PGSIZE;
+		filesize -= PGSIZE;
 	}
 	fs_close(fd);
 
