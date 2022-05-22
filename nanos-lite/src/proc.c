@@ -18,11 +18,11 @@ void load_prog(const char *filename) {
   _switch(&pcb[i].as);
   current = &pcb[i];
   ((void (*)(void))entry)();
-
+  Log("return");
   _Area stack;
   stack.start = pcb[i].stack;
   stack.end = stack.start + sizeof(pcb[i].stack);
-
+  Log("return");
   pcb[i].tf = _umake(&pcb[i].as, stack, stack, (void *)entry, NULL, NULL);
   Log("return");
 }
