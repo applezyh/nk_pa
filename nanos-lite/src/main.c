@@ -28,7 +28,7 @@ int main() {
 
   init_fs();
   extern void load_prog(const char* filename);
-  load_prog("/bin/pal");
+  load_prog("/bin/dummy");
   Log("load prog");
   _trap();
 
