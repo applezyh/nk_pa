@@ -124,6 +124,23 @@ make_EHelper(pop) {
 
 }
 
+make_EHelper(mov_store_cr){
+  switch (id_dest->reg)
+  {
+  case 0:
+    /* code */
+    cpu.CR0=id_src->val;
+    break;
+  case 3:
+    /* code */
+    cpu.CR3=id_src->val;
+    break;
+  default:
+    break;
+  }
+  print_asm_template2(mov);
+}
+
 make_EHelper(pusha) {
   //TODO();
   if(decoding.is_operand_size_16){
