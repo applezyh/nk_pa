@@ -136,7 +136,7 @@ make_EHelper(mov_store_cr){
     cpu.CR3=id_src->val;
     break;
   default:
-    break;
+    assert(0);
   }
   print_asm_template2(mov);
 }
