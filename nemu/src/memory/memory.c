@@ -65,7 +65,7 @@ uint32_t page_translate(vaddr_t addr, bool iswrite) {
 		return page_address;
 	}
 	else {
-		return addr;
+		assert(0);
 	}
 }
 
