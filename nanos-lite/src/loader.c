@@ -20,6 +20,6 @@ uintptr_t loader(_Protect *as, const char *filename) {
 		filesize -= PGSIZE;
 	}
 	fs_close(fd);
-	Log("close file: %s fd: %d size: %d byte\n", filename, fd, fs_filesz(fd));
+	Log("close file: %s fd: %d size: %d byte", filename, fd, fs_filesz(fd));
 	return (uintptr_t)DEFAULT_ENTRY;
 }
