@@ -27,8 +27,9 @@ int main() {
 #endif
 
   init_fs();
-  extern void load_prog(const char* filename);
-  load_prog("/bin/hello");
+  // extern void load_prog(const char* filename);
+  // load_prog("/bin/hello");
+  _trap();
 
   panic("Should not reach here");
 }
