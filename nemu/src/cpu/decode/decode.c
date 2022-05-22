@@ -323,3 +323,30 @@ void operand_write(Operand *op, rtlreg_t* src) {
   else if (op->type == OP_TYPE_MEM) { rtl_sm(&op->addr, op->width, src); }
   else { assert(0); }
 }
+
+make_DHelper(mov_load_cr){
+  decode_op_rm(eip, id_dest, false, id_src, false);
+  switch (id_src->reg)
+  {
+  case 0:
+    /* code */
+    id_src->val=cpu.CR0;
+    break;
+  case 3:
+    /* code */
+    id_src->val=cpu.CR3;
+    break;
+  default:
+    break;
+  }
+#ifdef DEBUG
+  sprintf(id_dest->str, 5, "%%cr%d", id_dest->reg);
+#endif
+}
+
+make_DHelper(mov_store_cr){
+  decode_op_rm(eip, id_dest, false, id_src, false);
+#ifdef DEBUG
+  sprintf(id_dest->str, 5, "%%cr%d", id_dest->reg);
+#endif
+}
