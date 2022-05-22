@@ -19,6 +19,7 @@ void load_prog(const char *filename) {
   current = &pcb[i];
   Log("return");
   ((void (*)(void))entry)();
+  Log("return");
   _Area stack;
   stack.start = pcb[i].stack;
   stack.end = stack.start + sizeof(pcb[i].stack);
