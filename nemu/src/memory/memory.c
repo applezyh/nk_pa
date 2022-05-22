@@ -74,6 +74,7 @@ uint32_t vaddr_read(vaddr_t addr, int len) {
 		uint32_t instr = paddr_read(paddr, len);
 		if(paddr>=0x8048000 && instr==0){
 			printf("addr: %x inst: %x\n", paddr, instr);
+			assert(0);
 		}
 		return instr;
 	}
