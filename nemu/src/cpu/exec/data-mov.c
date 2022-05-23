@@ -84,7 +84,6 @@ make_EHelper(popa) {
     rtl_pop(&(cpu.edx));
     rtl_pop(&(cpu.ecx));
     rtl_pop(&(cpu.eax));
-    cpu.esp=temp;
   print_asm("popa");
 }
 
