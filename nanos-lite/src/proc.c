@@ -26,17 +26,19 @@ void load_prog(const char *filename) {
   Log("pcb[%d] eip: %x", i, pcb[i].tf->eip);
 }
 
+int current_prog = 0;
+
 _RegSet* schedule(_RegSet *prev) {
   if(current != NULL)
     current->tf = prev;
   else
-    current = &pcb[0];
+    current = &pcb[current_prog];
   static int num = 1;
   static int freq = 100;
-  if(current==&pcb[0])
+  if(current==&pcb[current_prog])
 	  num++;
   else
-    current=&pcb[0];
+    current=&pcb[current_prog];
   //Log("%d", num);
   if(num == freq){
    current=&pcb[1];

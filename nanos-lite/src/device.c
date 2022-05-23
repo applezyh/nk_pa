@@ -17,6 +17,10 @@ size_t events_read(void *buf, size_t len) {
       k ^= 0x8000;
       down = true;
     }
+    if(down && k == _KEY_F12){
+	extern int current_prog;
+    	current_prog = 2 - current_prog;
+    }
     size_t n = sprintf(tbuf,"k%c %s\n",down?'d':'u',keyname[k]);
     memcpy(buf,tbuf,n>len?len:n);
     
