@@ -8,6 +8,7 @@ uint32_t raise_intr(uint8_t NO, vaddr_t ret_addr) {
 
   //TODO();
   rtl_push(&cpu.eflag);
+  cpu.eflags.IF=0;
   rtl_push(&ret_addr);
   rtl_push(&cpu.cs);
   uint32_t gate[2];
