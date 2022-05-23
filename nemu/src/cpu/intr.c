@@ -19,4 +19,5 @@ uint32_t raise_intr(uint8_t NO, vaddr_t ret_addr) {
 }
 
 void dev_raise_intr() {
+	cpu.dev_intr = true;
 }

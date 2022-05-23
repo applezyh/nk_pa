@@ -36,7 +36,19 @@ typedef struct {
     };
     vaddr_t eip;
 
-    rtlreg_t eflag;
+    union {
+      rtlreg_t eflag;
+		struct {
+			unsigned int CF:1;
+			unsigned int   :5;
+			unsigned int ZF:1;
+			unsigned int SF:1;
+			unsigned int TF:1;
+			unsigned int IF:1;
+			unsigned int DF:1;
+			unsigned int OF:1;
+		}eflags;
+	};
 
     rtlreg_t cs, ss, ds, es, fs, gs;
 
@@ -49,8 +61,7 @@ typedef struct {
 
     rtlreg_t CR3, CR0;
     
-    
-
+    bool dev_intr;
 } CPU_state;
 
 

@@ -261,4 +261,10 @@ void exec_wrapper(bool print_flag) {
   void difftest_step(uint32_t,uint8_t);
   difftest_step(eip,decoding.opcode);
 #endif
+  if(cpu.dev_intr&&cpu.eflags.IF){
+  cpu.dev_intr = false;
+  extern uint32_t raise_intr(uint8_t NO, vaddr_t ret_addr);
+  raise_intr(32, cpu.eip);
+  update_eip();
+  }
 }
