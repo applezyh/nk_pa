@@ -265,6 +265,6 @@ void exec_wrapper(bool print_flag) {
   cpu.dev_intr = false;
   extern uint32_t raise_intr(uint8_t NO, vaddr_t ret_addr);
   cpu.eip = raise_intr(32, cpu.eip);
-  Log("raise instr to: %x", cpu.eip);
+  //Log("raise instr to: %x", cpu.eip);
   }
 }
