@@ -22,7 +22,7 @@ _RegSet* irq_handle(_RegSet *tf) {
       next = tf;
     }
   }
-  printf("irq_handle\n");
+  printf("irq_handle next eip\n", next->eip);
   return next;
 }
 
