@@ -41,7 +41,7 @@ _RegSet* schedule(_RegSet *prev) {
    current=&pcb[1];
    num=0;
   }
-  Log("ptr=0x%x", (uint32_t)current->as.ptr);
+  //Log("ptr=0x%x", (uint32_t)current->as.ptr);
   _switch(&current->as);
   //Log("schedule return eip %x", current->tf->eip);
   return current->tf;
