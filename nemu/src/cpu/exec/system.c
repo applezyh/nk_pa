@@ -37,7 +37,7 @@ make_EHelper(mov_cr2r) {
 
 make_EHelper(int) {
   //TODO();
-  Log("int ret addr: 0x%x\n", decoding.seq_eip);
+  Log("int ret addr: 0x%x", decoding.seq_eip);
   *eip=raise_intr(id_dest->val, decoding.seq_eip);
   
   print_asm("int %s", id_dest->str);
@@ -51,7 +51,7 @@ make_EHelper(iret) {
   rtl_pop(&cpu.cs);
   rtl_pop(eip);
   rtl_pop(&cpu.eflag);
-  Log("iret to: 0x%x\n", *eip);
+  Log("iret to: 0x%x", *eip);
   print_asm("iret");
 }
 
