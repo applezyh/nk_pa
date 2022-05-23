@@ -85,8 +85,6 @@ make_EHelper(popa) {
     rtl_pop(&(cpu.ecx));
     rtl_pop(&(cpu.eax));
     cpu.esp=temp;
-    Log("esp = %x", cpu.esp);
-
   print_asm("popa");
 }
 
