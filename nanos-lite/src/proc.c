@@ -37,6 +37,7 @@ _RegSet* schedule(_RegSet *prev) {
 	  num++;
   else
     current=&pcb[0];
+  Log("%d", num);
   if(num == freq){
    current=&pcb[1];
    num=0;
