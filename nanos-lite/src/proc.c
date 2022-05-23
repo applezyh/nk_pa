@@ -32,12 +32,12 @@ _RegSet* schedule(_RegSet *prev) {
   else
     current = &pcb[0];
   static int num = 1;
-  static int freq = 1000;
+  static int freq = 100;
   if(current==&pcb[0])
 	  num++;
   else
     current=&pcb[0];
-  Log("%d", num);
+  //Log("%d", num);
   if(num == freq){
    current=&pcb[1];
    num=0;
