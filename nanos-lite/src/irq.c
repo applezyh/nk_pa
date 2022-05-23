@@ -7,7 +7,9 @@ static _RegSet* do_event(_Event e, _RegSet* r) {
   switch (e.event) {
     case _EVENT_SYSCALL: return do_syscall(r); break;
     case _EVENT_TRAP: printf("event:self-trapped\n");return schedule(r); break; 
-    case _EVENT_IRQ_TIME: printf("event:time_irq"); return schedule(r); break;
+    case _EVENT_IRQ_TIME: 
+		      //printf("event:time_irq"); 
+		      return schedule(r); break;
     default: panic("Unhandled event ID = %d", e.event);
   }
   return NULL;
