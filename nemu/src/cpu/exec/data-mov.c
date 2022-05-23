@@ -58,6 +58,7 @@ make_EHelper(pusha) {
     rtl_push(&si);
     rtl_push(&di);
   } else {
+    Log("esp = %x", cpu.esp);
     uint32_t temp = cpu.esp;
     rtl_push(&(cpu.eax));
     rtl_push(&(cpu.ecx));
@@ -84,6 +85,7 @@ make_EHelper(popa) {
     rtl_pop(&(cpu.ecx));
     rtl_pop(&(cpu.eax));
     cpu.esp=temp;
+    Log("esp = %x", cpu.esp);
 
   print_asm("popa");
 }
