@@ -85,18 +85,17 @@ void _switch(_Protect *p) {
 void _unmap(_Protect *p, void *va) {}
 extern void* memcpy(void*, void*, int);
 _RegSet *_umake(_Protect *p, _Area ustack, _Area kstack, void *entry, char *const argv[], char *const envp[]) {
-  uint32_t *ptr = ustack.end;
-  for (int i = 0; i < 8; i++) 
-		*ptr-- = 0x0; 
-
-  *ptr-- = 0x2; //eflags
-  *ptr-- = 0x8; //cs
-  *ptr-- = (uint32_t)entry; //eip 
-  *ptr-- = 0x0; //error code
-  *ptr-- = 0x81; //irq id
-
-  for (int i = 0; i < 8; i++)
-		*ptr-- = 0x0;
-  ptr++;
+  int arg1=0;
+  char* arg2=NULL;
+  memcpy(ustack.end - 4, (void*)arg2, 4);
+  memcpy(ustack.end - 8, (void*)arg2, 4);
+  memcpy(ustack.end - 12, (void*)arg1, 4);
+  memcpy(ustack.end - 16, (void*)arg1, 4);
+  _RegSet tf;
+  tf.eflags = 0x02;
+  tf.cs = 8;
+  tf.eip = (uintptr_t)entry;
+  void* ptr = (void*)(ustack.end - 16 - sizeof(_RegSet));
+  memcpy(ptr, (void*)&tf, sizeof(_RegSet));
   return (_RegSet*)ptr;
 }
