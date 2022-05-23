@@ -23,7 +23,7 @@ void load_prog(const char *filename) {
   stack.start = pcb[i].stack;
   stack.end = stack.start + sizeof(pcb[i].stack);
   pcb[i].tf = _umake(&pcb[i].as, stack, stack, (void *)entry, NULL, NULL);
-  Log("pcb[%d] esp: %x", i, pcb[i].tf->esp);
+  Log("pcb[%d] eip: %x", i, pcb[i].tf->eip);
 }
 
 _RegSet* schedule(_RegSet *prev) {
