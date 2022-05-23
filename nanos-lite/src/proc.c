@@ -29,7 +29,7 @@ void load_prog(const char *filename) {
 _RegSet* schedule(_RegSet *prev) {
   if(current != NULL)
     current->tf = prev;
-  current = (current == &pcb[0] ? &pcb[1] : &pcb[0]);
+  current = (current == &pcb[0] ? &pcb[0] : &pcb[0]);
   Log("ptr=0x%x", (uint32_t)current->as.ptr);
   _switch(&current->as);
   //Log("schedule return eip %x", current->tf->eip);
